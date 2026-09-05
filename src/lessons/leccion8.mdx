@@ -1,0 +1,447 @@
+# Ecuaciones spline cúbico natural para tres puntos
+
+$$
+(x_0,y_0),\qquad (x_1,y_1),\qquad (x_2,y_2)
+$$
+
+se construyen **2 polinomios cúbicos**, uno en cada intervalo:
+
+$$
+[x_0,x_1]\qquad\text{y}\qquad[x_1,x_2].
+$$
+
+La forma general es
+
+$$
+s_i(x)=a_i+b_i(x-x_i)+c_i(x-x_i)^2+d_i(x-x_i)^3.
+$$
+
+## 1. Ecuaciones de los dos polinomios
+
+Para el intervalo $[x_0,x_1]$:
+
+$$
+\underline{
+s_0(x)=a_0+b_0(x-x_0)+c_0(x-x_0)^2+d_0(x-x_0)^3
+}
+$$
+
+Para el intervalo $[x_1,x_2]$:
+
+$$
+\underline{
+s_1(x)=a_1+b_1(x-x_1)+c_1(x-x_1)^2+d_1(x-x_1)^3
+}
+$$
+
+Las incógnitas son:
+
+$$
+a_0,b_0,c_0,d_0,a_1,b_1,c_1,d_1.
+$$
+
+En total son **8 incógnitas**, por lo tanto necesitamos **8 ecuaciones**.
+
+---
+
+## 2. Primera derivada
+
+Partimos de
+
+$$
+s_i(x)=a_i+b_i(x-x_i)+c_i(x-x_i)^2+d_i(x-x_i)^3.
+$$
+
+Derivando término a término:
+
+$$
+\frac{d}{dx}a_i=0,
+$$
+
+$$
+\frac{d}{dx}\left[b_i(x-x_i)\right]=b_i,
+$$
+
+$$
+\frac{d}{dx}\left[c_i(x-x_i)^2\right]
+=2c_i(x-x_i),
+$$
+
+$$
+\frac{d}{dx}\left[d_i(x-x_i)^3\right]
+=3d_i(x-x_i)^2.
+$$
+
+Por tanto,
+
+$$
+\underline{
+s_i'(x)
+=
+b_i+2c_i(x-x_i)+3d_i(x-x_i)^2
+}
+$$
+
+En particular:
+
+$$
+\underline{
+s_0'(x)=b_0+2c_0(x-x_0)+3d_0(x-x_0)^2
+}
+$$
+
+y
+
+$$
+\underline{
+s_1'(x)=b_1+2c_1(x-x_1)+3d_1(x-x_1)^2
+}
+$$
+
+---
+
+## 3. Segunda derivada
+
+Ahora derivamos
+
+$$
+s_i'(x)
+=
+b_i+2c_i(x-x_i)+3d_i(x-x_i)^2.
+$$
+
+Entonces
+
+$$
+\underline{
+s_i''(x)
+=
+2c_i+6d_i(x-x_i)
+}
+$$
+
+Para cada intervalo:
+
+$$
+\underline{
+s_0''(x)=2c_0+6d_0(x-x_0)
+}
+$$
+
+$$
+\underline{
+s_1''(x)=2c_1+6d_1(x-x_1)
+}
+$$
+
+---
+
+## 4. Ecuaciones de interpolación
+
+Cada polinomio debe pasar por los puntos de su intervalo.
+
+### En $x_0$
+
+Debe cumplirse
+
+$$
+s_0(x_0)=y_0.
+$$
+
+Sustituyendo:
+
+$$
+a_0+b_0(x_0-x_0)
++c_0(x_0-x_0)^2
++d_0(x_0-x_0)^3
+=y_0.
+$$
+
+Como
+
+$$
+x_0-x_0=0,
+$$
+
+queda
+
+$$
+\underline{a_0=y_0}
+$$
+
+Esta es la **ecuación 1**.
+
+---
+
+### En $x_1$, usando $s_0$
+
+$$
+s_0(x_1)=y_1.
+$$
+
+Sustituyendo:
+
+$$
+a_0+b_0(x_1-x_0)
++c_0(x_1-x_0)^2
++d_0(x_1-x_0)^3
+=y_1.
+$$
+
+Por tanto,
+
+$$
+\underline{
+a_0+b_0(x_1-x_0)
++c_0(x_1-x_0)^2
++d_0(x_1-x_0)^3
+=y_1
+}
+$$
+
+Esta es la **ecuación 2**.
+
+---
+
+### En $x_1$, usando $s_1$
+
+También debe cumplirse
+
+$$
+s_1(x_1)=y_1.
+$$
+
+Entonces:
+
+$$
+a_1+b_1(x_1-x_1)
++c_1(x_1-x_1)^2
++d_1(x_1-x_1)^3
+=y_1.
+$$
+
+Queda
+
+$$
+\underline{a_1=y_1}
+$$
+
+Esta es la **ecuación 3**.
+
+---
+
+### En $x_2$, usando $s_1$
+
+$$
+s_1(x_2)=y_2.
+$$
+
+Entonces:
+
+$$
+\underline{
+a_1+b_1(x_2-x_1)
++c_1(x_2-x_1)^2
++d_1(x_2-x_1)^3
+=y_2
+}
+$$
+
+Esta es la **ecuación 4**.
+
+---
+
+## 5. Continuidad de la primera derivada en $x_1$
+
+En el punto interior $x_1$, las pendientes deben ser iguales:
+
+$$
+s_0'(x_1)=s_1'(x_1).
+$$
+
+Para $s_0'$:
+
+$$
+s_0'(x_1)
+=
+b_0+2c_0(x_1-x_0)
++3d_0(x_1-x_0)^2.
+$$
+
+Para $s_1'$:
+
+$$
+s_1'(x_1)
+=
+b_1+2c_1(x_1-x_1)
++3d_1(x_1-x_1)^2.
+$$
+
+Como $x_1-x_1=0$,
+
+$$
+s_1'(x_1)=b_1.
+$$
+
+Por tanto,
+
+$$
+\underline{
+b_0+2c_0(x_1-x_0)
++3d_0(x_1-x_0)^2
+=b_1
+}
+$$
+
+Esta es la **ecuación 5**.
+
+---
+
+## 6. Continuidad de la segunda derivada en $x_1$
+
+Debe cumplirse
+
+$$
+s_0''(x_1)=s_1''(x_1).
+$$
+
+Tenemos
+
+$$
+s_0''(x_1)
+=
+2c_0+6d_0(x_1-x_0),
+$$
+
+mientras que
+
+$$
+s_1''(x_1)
+=
+2c_1+6d_1(x_1-x_1).
+$$
+
+Por tanto,
+
+$$
+s_1''(x_1)=2c_1.
+$$
+
+Así:
+
+$$
+\underline{
+2c_0+6d_0(x_1-x_0)=2c_1
+}
+$$
+
+Esta es la **ecuación 6**.
+
+---
+
+## 7. Condiciones de frontera
+
+Para un **spline cúbico natural**, la segunda derivada en los extremos es cero:
+
+$$
+s_0''(x_0)=0
+$$
+
+y
+
+$$
+s_1''(x_2)=0.
+$$
+
+### Extremo izquierdo
+
+$$
+s_0''(x_0)
+=
+2c_0+6d_0(x_0-x_0)=0.
+$$
+
+Entonces
+
+$$
+\underline{2c_0=0}
+$$
+
+o directamente
+
+$$
+\underline{c_0=0}
+$$
+
+Esta es la **ecuación 7**.
+
+### Extremo derecho
+
+$$
+s_1''(x_2)
+=
+2c_1+6d_1(x_2-x_1)=0.
+$$
+
+Por tanto,
+
+$$
+\underline{
+2c_1+6d_1(x_2-x_1)=0
+}
+$$
+
+Esta es la **ecuación 8**.
+
+---
+
+## 8. Sistema completo para encontrar las incógnitas
+
+Así, las ocho ecuaciones son:
+
+$$
+\underline{a_0=y_0}
+$$
+
+$$
+\underline{
+a_0+b_0(x_1-x_0)
++c_0(x_1-x_0)^2
++d_0(x_1-x_0)^3=y_1
+}
+$$
+
+$$
+\underline{a_1=y_1}
+$$
+
+$$
+\underline{
+a_1+b_1(x_2-x_1)
++c_1(x_2-x_1)^2
++d_1(x_2-x_1)^3=y_2
+}
+$$
+
+$$
+\underline{
+b_0+2c_0(x_1-x_0)
++3d_0(x_1-x_0)^2=b_1
+}
+$$
+
+$$
+\underline{
+2c_0+6d_0(x_1-x_0)=2c_1
+}
+$$
+
+$$
+\underline{2c_0=0}
+$$
+
+$$
+\underline{
+2c_1+6d_1(x_2-x_1)=0
+}
+$$

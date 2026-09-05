@@ -1,0 +1,794 @@
+---
+---
+
+import {Pizarron1,
+        Pizarron2,
+        Pizarron3,
+        Pizarron4,
+        Pizarron5,
+        Pizarron6,
+        Pizarron7,
+        Pizarron8,
+        Pizarron9,
+        Pizarron10,
+        Pizarron11,
+        Pizarron12,
+        Pizarron13,
+        Pizarron14,
+        Pizarron15,
+        Pizarron16,
+        Pizarron17,
+        Pizarron18,
+        Pizarron19,
+        Pizarron20,
+} from "../components/pizzaras/pizarra4";
+
+
+# Errores en Métodos Numéricos
+
+## 1. ¿Qué es el error?
+
+
+En la ingeniería, las ciencias y los métodos numéricos, prácticamente todos los resultados son aproximaciones. Ya sea una medición realizada con un instrumento o un cálculo efectuado por una computadora, siempre existe una diferencia entre el valor obtenido y el valor que se considera verdadero.
+
+Esta diferencia recibe el nombre de **error** y constituye uno de los conceptos fundamentales del análisis numérico.
+
+### Definición de error
+
+El error es la diferencia entre un valor verdadero o de referencia y un valor aproximado.
+
+Matemáticamente se expresa como:
+
+$E=x_{\text{verdadero}}-x_{\text{aproximado}}$
+
+Por ejemplo, si la longitud real de una pieza es:
+
+$10.00\ \text{m}$
+
+y la medición obtenida es:
+
+$9.97\ \text{m}$
+
+entonces:
+
+$E=10.00-9.97=0.03\ \text{m}$
+
+Esto significa que la medición presenta una diferencia de **0.03 m** respecto del valor verdadero.
+
+### ¿Por qué existen errores?
+
+Los errores aparecen porque ningún proceso de medición o cálculo es perfecto. Entre las principales causas se encuentran:
+
+* Limitaciones de los instrumentos.
+* Aproximaciones matemáticas.
+* Errores humanos.
+* Limitaciones de las computadoras.
+* Simplificaciones de los modelos físicos.
+
+### Importancia del error
+
+Conocer el error permite evaluar la calidad de un resultado. Un valor aproximado puede ser suficientemente bueno para una aplicación determinada, aunque no coincida exactamente con el valor verdadero.
+
+## Resumen
+
+El error no representa una equivocación, sino la diferencia inevitable entre un valor ideal y uno obtenido mediante mediciones o cálculos.
+<Pizarron1/>
+
+---
+
+## 2. Valor verdadero, valor aproximado e incertidumbre
+
+
+Antes de analizar los errores es necesario distinguir tres conceptos que suelen confundirse: valor verdadero, valor aproximado e incertidumbre.
+
+### Valor verdadero
+
+Es el valor ideal de una magnitud.
+
+En muchas situaciones no puede conocerse exactamente, por lo que se utiliza un patrón certificado o un valor aceptado como referencia.
+
+### Valor aproximado
+
+Es el resultado obtenido mediante una medición, un experimento o un cálculo numérico.
+
+Toda aproximación contiene cierto grado de error.
+
+### Incertidumbre
+
+La incertidumbre representa el intervalo dentro del cual probablemente se encuentra el valor verdadero.
+
+Por ejemplo:
+
+$25.30\pm0.05\ \text{cm}$
+
+indica que el valor verdadero probablemente se encuentra entre:
+
+$25.25\ \text{cm}$
+
+y
+
+$25.35\ \text{cm}$
+
+### Diferencia entre error e incertidumbre
+
+Aunque ambos conceptos están relacionados, no significan lo mismo.
+
+El **error** es la diferencia entre el valor verdadero y el valor obtenido.
+
+La **incertidumbre** expresa el rango de valores dentro del cual se espera que se encuentre el valor verdadero.
+
+## Resumen
+
+El valor aproximado describe el resultado obtenido, el valor verdadero representa la referencia ideal y la incertidumbre expresa el grado de confianza de la medición.
+<Pizarron2/>
+
+---
+
+## 3. Error absoluto
+
+
+El error absoluto es la forma más sencilla de cuantificar la diferencia entre un valor verdadero y un valor aproximado.
+
+### Definición
+
+Se define como:
+
+$E_a=\left|x_v-x_a\right|$
+
+El valor absoluto garantiza que el error siempre sea positivo.
+
+### Ejemplo
+
+Considérese una resistencia cuyo valor nominal es:
+
+$100\ \Omega$
+
+Si la medición produce:
+
+$98\ \Omega$
+
+entonces:
+
+$E_a=|100-98|=2\ \Omega$
+
+### Características
+
+El error absoluto:
+
+* Conserva las mismas unidades de la magnitud medida.
+* Indica la magnitud del error.
+* No permite saber si el error es grande o pequeño respecto del tamaño del problema.
+
+Por ejemplo, un error de **1 cm** puede ser insignificante al medir una carretera, pero muy importante en una pieza de precisión.
+
+## Resumen
+
+El error absoluto proporciona la diferencia real entre dos valores, pero debe complementarse con otras medidas para interpretar su importancia.
+<Pizarron3/>
+
+---
+
+## 4. Error relativo y error porcentual
+
+
+El error absoluto no considera el tamaño de la magnitud medida. Para resolver esta limitación se utilizan el error relativo y el error porcentual.
+
+### Error relativo
+
+Se define como:
+
+$E_r=\frac{E_a}{|x_v|}$
+
+Al dividir entre el valor verdadero, el error relativo expresa qué fracción representa el error respecto de la magnitud medida.
+
+No posee unidades.
+
+### Error porcentual
+
+El error porcentual se obtiene multiplicando el error relativo por cien:
+
+$E_p=E_r\times100%$
+
+### Ejemplo
+
+Si:
+
+$x_v=50$
+
+y
+
+$x_a=49$
+
+entonces:
+
+$E_a=1$
+
+$E_r=\frac{1}{50}=0.02$
+
+$E_p=2%$
+
+### Interpretación
+
+El error porcentual facilita la comparación entre diferentes problemas porque expresa el error como una fracción del valor verdadero.
+
+## Resumen
+
+El error relativo y el error porcentual permiten evaluar la importancia del error independientemente de las unidades utilizadas.
+<Pizarron4/>
+
+---
+
+## 5. Comparación entre error absoluto y relativo
+
+
+Dos errores absolutos iguales pueden tener significados completamente diferentes dependiendo del tamaño de la magnitud medida.
+
+### Ejemplo comparativo
+
+| Valor verdadero | Error absoluto | Error porcentual |
+| --------------: | -------------: | ---------------: |
+|              10 |              1 |             10 % |
+|            1000 |              1 |            0.1 % |
+
+Aunque el error absoluto es el mismo, su importancia cambia considerablemente.
+
+### Interpretación
+
+Perder un peso no representa el mismo impacto para una persona que posee diez pesos que para otra que posee mil.
+
+Del mismo modo, un error debe analizarse en función del tamaño de la cantidad involucrada.
+
+### Aplicaciones
+
+En ingeniería suele emplearse el error porcentual para comparar la calidad de distintos procedimientos de medición o de diferentes algoritmos.
+
+## Resumen
+
+El error absoluto mide la diferencia, mientras que el error relativo y porcentual permiten valorar la importancia de esa diferencia.
+<Pizarron5/>
+
+---
+
+## 6. Error verdadero y error aproximado
+
+
+En muchos problemas de métodos numéricos el valor verdadero es desconocido. En estas situaciones es necesario utilizar otras formas de estimar el error.
+
+### Error verdadero
+
+Se define como:
+
+$E_v=x_v-x_a$
+
+Solo puede calcularse cuando el valor verdadero es conocido.
+
+### Error aproximado
+
+Cuando se emplean métodos iterativos, suele utilizarse:
+
+$E_{ap}=x_i-x_{i-1}$
+
+Este error compara dos aproximaciones consecutivas.
+
+### Interpretación
+
+Considérese la secuencia:
+
+$1.4$
+
+$1.41$
+
+$1.414$
+
+$1.4142$
+
+Cada nueva aproximación cambia menos respecto de la anterior.
+
+Esto indica que el algoritmo está estabilizando su solución.
+
+Sin embargo, un error aproximado pequeño no garantiza que la solución sea exactamente correcta.
+
+## Resumen
+
+El error aproximado permite controlar el progreso de un algoritmo cuando el valor verdadero no está disponible.
+<Pizarron6/>
+
+---
+
+## 7. Errores inherentes y condicionamiento
+
+
+Todo problema numérico comienza con datos que ya contienen cierta incertidumbre. Esa incertidumbre puede afectar el resultado dependiendo de la sensibilidad del problema.
+
+### Errores inherentes
+
+Los datos experimentales rara vez son exactos.
+
+Por ejemplo:
+
+$9.8\ \text{m/s}^2$
+
+es una aproximación del valor:
+
+$9.80665\ \text{m/s}^2$
+
+Desde el inicio existe una pequeña diferencia.
+
+### Condicionamiento
+
+El condicionamiento describe cómo afectan al resultado pequeñas variaciones en los datos de entrada.
+
+Un problema bien condicionado produce cambios pequeños cuando los datos cambian ligeramente.
+
+Un problema mal condicionado puede producir grandes variaciones incluso ante errores muy pequeños.
+
+### Importancia
+
+El condicionamiento depende del problema matemático y no del algoritmo utilizado.
+
+Por ello, incluso un método numérico excelente puede obtener malos resultados si el problema es muy sensible.
+
+## Resumen
+
+Los errores pueden existir antes de iniciar cualquier cálculo y su efecto depende de la sensibilidad propia del problema.
+<Pizarron7/>
+
+---
+
+## 8. Error de redondeo
+
+
+Las computadoras almacenan números utilizando una cantidad finita de bits. Debido a esta limitación, muchos números deben aproximarse.
+
+### Redondeo
+
+El redondeo consiste en conservar únicamente una cantidad limitada de cifras.
+
+Por ejemplo:
+
+$\pi=3.14159265\ldots$
+
+puede almacenarse como:
+
+$3.14$
+
+### Representación binaria
+
+Algunos números decimales, como:
+
+$0.1$
+
+no poseen una representación binaria exacta.
+
+La computadora almacena una aproximación extremadamente cercana.
+
+### Consecuencias
+
+Miles o millones de operaciones pueden acumular pequeños errores de redondeo y modificar el resultado final.
+
+## Resumen
+
+El error de redondeo surge por las limitaciones de representación de los números dentro de la computadora.
+<Pizarron8/>
+
+---
+
+## 9. Error de truncamiento
+
+
+Muchos procedimientos matemáticos son infinitos. Como una computadora solo puede realizar un número finito de operaciones, es necesario truncarlos.
+
+### Definición
+
+El error de truncamiento aparece cuando un proceso infinito se reemplaza por una aproximación finita.
+
+### Serie de Taylor
+
+Por ejemplo:
+
+$e^x=1+x+\frac{x^2}{2!}+\frac{x^3}{3!}+\cdots$
+
+En la práctica puede utilizarse únicamente:
+
+$1+x+\frac{x^2}{2!}$
+
+Los términos omitidos generan un error de truncamiento.
+
+### Otros ejemplos
+
+* Integración numérica.
+* Diferenciación numérica.
+* Métodos iterativos.
+* Solución de ecuaciones diferenciales.
+
+## Resumen
+
+El error de truncamiento proviene del método utilizado y no de la computadora.
+<Pizarron9/>
+
+---
+
+## 10. Comparación entre redondeo y truncamiento
+
+
+Los errores de redondeo y truncamiento tienen orígenes diferentes, aunque ambos afectan la calidad de los resultados numéricos.
+
+### Error de redondeo
+
+Se origina por:
+
+* Representación finita.
+* Memoria de la computadora.
+* Cantidad limitada de bits.
+
+### Error de truncamiento
+
+Se produce por:
+
+* Aproximaciones matemáticas.
+* Series finitas.
+* Métodos numéricos.
+* Número limitado de iteraciones.
+
+### Diferencias
+
+El redondeo depende del hardware y de la representación numérica.
+
+El truncamiento depende del algoritmo y del modelo matemático.
+
+## Resumen
+
+Comprender el origen de ambos errores permite seleccionar estrategias adecuadas para reducir su efecto.
+<Pizarron10/>
+
+---
+
+## 11. Errores sistemáticos y aleatorios
+
+
+Además de los errores computacionales, las mediciones experimentales presentan errores relacionados con el comportamiento del proceso de medición.
+
+### Error sistemático
+
+Produce un desplazamiento constante respecto del valor verdadero.
+
+Generalmente es consecuencia de:
+
+* Mala calibración.
+* Procedimientos incorrectos.
+* Instrumentos defectuosos.
+
+Afecta principalmente la exactitud.
+
+### Error aleatorio
+
+Produce variaciones impredecibles entre mediciones.
+
+Sus causas incluyen:
+
+* Vibraciones.
+* Ruido.
+* Temperatura.
+* Lectura del operador.
+
+Afecta principalmente la precisión.
+
+### Comparación
+
+El error sistemático desplaza los resultados.
+
+El error aleatorio aumenta su dispersión.
+
+## Resumen
+
+En un experimento real pueden coexistir ambos tipos de error.
+<Pizarron11/>
+
+---
+
+## 12. Errores humanos, instrumentales y metodológicos
+
+
+No todos los errores tienen un origen matemático. Muchos aparecen durante la obtención de los datos.
+
+### Errores humanos
+
+Incluyen:
+
+* Lectura incorrecta.
+* Registro equivocado.
+* Interpretación inadecuada.
+* Distracción del operador.
+
+### Errores instrumentales
+
+Se deben a:
+
+* Desgaste.
+* Descalibración.
+* Resolución limitada.
+* Defectos del equipo.
+
+### Errores metodológicos
+
+Provienen de:
+
+* Procedimientos inadecuados.
+* Hipótesis incorrectas.
+* Técnicas de medición deficientes.
+* Simplificaciones excesivas.
+
+## Resumen
+
+La calidad de un resultado depende tanto del procedimiento experimental como del cálculo matemático.
+<Pizarron12/>
+
+---
+
+## 13. Error de modelado
+
+
+Todo modelo matemático representa una simplificación de la realidad. Como consecuencia, siempre existe un error asociado al propio modelo.
+
+### Modelos simplificados
+
+Por ejemplo, al estudiar la caída libre suele suponerse que no existe resistencia del aire.
+
+Esta hipótesis simplifica enormemente el análisis.
+
+Sin embargo, para objetos ligeros o velocidades elevadas, la resistencia del aire modifica significativamente el movimiento.
+
+### Importancia
+
+El error de modelado no depende del algoritmo utilizado.
+
+Incluso un cálculo exacto puede producir un resultado incorrecto si el modelo no representa adecuadamente el fenómeno físico.
+
+## Resumen
+
+Los modelos permiten resolver problemas complejos, pero siempre introducen cierto grado de aproximación.
+<Pizarron13/>
+
+---
+
+## 14. Propagación de errores
+
+
+Los errores presentes en los datos iniciales no desaparecen durante los cálculos. Por el contrario, pueden transmitirse y acumularse.
+
+### Propagación
+
+El proceso puede representarse como:
+
+**Dato → Operación → Resultado → Nueva operación → Resultado final**
+
+Cada operación utiliza resultados anteriores, por lo que hereda parte de sus errores.
+
+### Acumulación
+
+En algoritmos con miles de operaciones, pequeños errores individuales pueden convertirse en diferencias apreciables.
+
+### Control
+
+Los métodos numéricos incluyen estrategias para limitar la propagación y evitar que los errores crezcan sin control.
+
+## Resumen
+
+Comprender la propagación del error es fundamental para interpretar correctamente los resultados computacionales.
+<Pizarron14/>
+
+---
+
+## 15. Sensibilidad
+
+
+No todos los problemas reaccionan igual ante pequeñas variaciones en los datos.
+
+### Sensibilidad
+
+La sensibilidad describe cuánto cambia el resultado cuando los datos de entrada sufren pequeñas modificaciones.
+
+En funciones con gran pendiente, una pequeña variación puede producir un cambio importante.
+
+En funciones con pendiente pequeña, el efecto suele ser menor.
+
+### Relación con la derivada
+
+Intuitivamente, la derivada mide la rapidez con que cambia una función.
+
+Por ello, también proporciona una idea de la sensibilidad local del problema.
+
+### Aplicaciones
+
+La sensibilidad es importante en:
+
+* Diseño.
+* Optimización.
+* Simulación.
+* Métodos iterativos.
+* Análisis de estabilidad.
+
+## Resumen
+
+Los problemas muy sensibles requieren especial cuidado porque amplifican los errores presentes en los datos.
+<Pizarron15/>
+
+---
+
+## 16. Tolerancia y criterio de parada
+
+
+Los métodos iterativos necesitan un criterio que indique cuándo detener el proceso de cálculo.
+
+### Tolerancia
+
+La tolerancia representa el error máximo aceptable para considerar que una solución es suficientemente buena.
+
+Generalmente se representa mediante:
+
+$\varepsilon$
+
+### Criterio de parada
+
+Muchos algoritmos utilizan condiciones como:
+
+$E<\varepsilon$
+
+Cuando el error es menor que la tolerancia establecida, el algoritmo finaliza.
+
+### Selección de la tolerancia
+
+Una tolerancia demasiado grande puede producir resultados poco precisos.
+
+Una tolerancia excesivamente pequeña incrementa el tiempo de cálculo sin aportar mejoras significativas.
+
+## Resumen
+
+La tolerancia permite equilibrar precisión y costo computacional.
+<Pizarron16/>
+
+---
+
+## 17. Residuo, convergencia y estabilidad
+
+
+Además del error, existen otros indicadores que permiten evaluar la calidad de un algoritmo numérico.
+
+### Residuo
+
+El residuo mide qué tan bien satisface una solución aproximada la ecuación original.
+
+Un residuo pequeño indica que la ecuación se cumple aproximadamente.
+
+Sin embargo, un residuo pequeño no garantiza necesariamente un error pequeño.
+
+### Convergencia
+
+Un método converge cuando sus aproximaciones se acercan progresivamente a la solución buscada.
+
+### Estabilidad
+
+La estabilidad describe la capacidad del algoritmo para controlar la propagación de errores durante las iteraciones.
+
+## Resumen
+
+Residuo, convergencia y estabilidad complementan el análisis del error en métodos numéricos.
+<Pizarron17/>
+
+---
+
+## 18. Clasificación general de los errores
+
+
+Los errores pueden clasificarse según su origen y la forma en que afectan los resultados.
+
+### Errores de medición
+
+Provienen de instrumentos y procedimientos experimentales.
+
+### Errores matemáticos
+
+Se originan en aproximaciones analíticas y modelos simplificados.
+
+### Errores computacionales
+
+Incluyen:
+
+* Redondeo.
+* Truncamiento.
+* Representación numérica.
+
+### Errores experimentales
+
+Comprenden:
+
+* Sistemáticos.
+* Aleatorios.
+* Humanos.
+* Instrumentales.
+* Ambientales.
+
+## Resumen
+
+En un problema real pueden coexistir varios tipos de error de manera simultánea.
+<Pizarron18/>
+
+---
+
+## 19. Caso integrador
+
+
+La resolución de un problema de ingeniería involucra múltiples etapas, cada una susceptible de introducir errores.
+
+### Flujo de un problema
+
+El proceso general puede resumirse como:
+
+**Medición → Datos → Modelo → Algoritmo → Computadora → Resultado**
+
+### Posibles fuentes de error
+
+Durante la medición pueden aparecer errores humanos e instrumentales.
+
+Los datos pueden contener incertidumbre.
+
+El modelo puede simplificar excesivamente la realidad.
+
+El algoritmo puede introducir truncamiento.
+
+La computadora produce redondeo.
+
+Las operaciones sucesivas generan propagación de errores.
+
+### Evaluación
+
+La calidad del resultado depende del efecto conjunto de todas estas fuentes y no únicamente del algoritmo utilizado.
+
+## Resumen
+
+Analizar cada etapa del proceso permite identificar el origen de los errores y mejorar la confiabilidad de los resultados.
+<Pizarron19/>
+
+---
+
+## 20. Panorama general de los errores
+
+
+Los errores constituyen un elemento inseparable de la medición, el modelado y el cálculo numérico. Comprender su origen y comportamiento permite interpretar adecuadamente cualquier resultado obtenido en ingeniería.
+
+### Clasificación general
+
+Los errores pueden estudiarse desde tres perspectivas principales:
+
+* **Magnitud:** error absoluto, relativo, porcentual, verdadero y aproximado.
+* **Origen:** redondeo, truncamiento, sistemático, aleatorio, humano, instrumental, metodológico y de modelado.
+* **Efecto:** influencia sobre la exactitud, la precisión, la convergencia y la estabilidad.
+
+Cada clasificación aporta información diferente acerca de la calidad del resultado.
+
+### El proceso completo en ingeniería
+
+Todo problema sigue una secuencia similar:
+
+**Medición → Datos → Modelo → Método numérico → Computadora → Resultado → Análisis del error**
+
+Una vez obtenido el resultado, es necesario determinar si el error es aceptable para la aplicación.
+
+Si cumple los criterios establecidos, el resultado puede utilizarse con confianza. En caso contrario, deben revisarse los datos, el modelo o el método empleado.
+
+### Importancia del análisis del error
+
+El objetivo del análisis de errores no es eliminar completamente las diferencias con el valor verdadero, ya que esto rara vez es posible. Su finalidad consiste en conocer su magnitud, identificar su origen y controlar su influencia sobre los resultados.
+
+Este análisis permite:
+
+* Comparar métodos numéricos.
+* Evaluar mediciones.
+* Seleccionar algoritmos adecuados.
+* Establecer tolerancias.
+* Garantizar la confiabilidad de diseños y simulaciones.
+
+## Resumen
+
+El estudio de los errores proporciona las herramientas necesarias para juzgar la calidad de cualquier resultado numérico. A partir de esta unidad es posible analizar con mayor profundidad el comportamiento de los algoritmos y comprender cómo las aproximaciones afectan las soluciones empleadas en la ingeniería y la ciencia.
+<Pizarron20/>

@@ -1,0 +1,970 @@
+import {Pizarron1,
+        Pizarron2,
+        Pizarron3,
+        Pizarron4,
+        Pizarron5,
+        Pizarron6,
+        Pizarron7,
+        Pizarron8,
+        Pizarron9,
+        Pizarron10,
+        Pizarron11,
+        Pizarron12,
+        Pizarron13,
+        Pizarron14,
+        Pizarron15,
+        Pizarron16,
+        Pizarron17,
+        Pizarron18,
+        Pizarron19,
+        Pizarron20,
+} from "../components/pizzaras/pizarra7";
+
+# Polinomio de interpolación de Newton
+
+ ## 1. ¿Qué es el método de Newton?
+
+### Introducción
+
+En muchos problemas de ingeniería se dispone de varios datos experimentales y se necesita construir una función que pase exactamente por todos ellos. Cuando dos puntos ya no son suficientes para describir el comportamiento de una variable, la interpolación lineal deja de ser adecuada y es necesario emplear métodos más generales.
+
+Uno de los más importantes es el **método de interpolación de Newton**, basado en diferencias divididas.
+
+### Concepto
+
+El método de Newton construye un **polinomio interpolante** que pasa exactamente por todos los datos conocidos.
+
+A diferencia de otros métodos, el polinomio se construye de manera progresiva: cada nuevo dato añade un término adicional sin modificar los anteriores.
+
+El proceso general puede resumirse como:
+
+$$$
+\text{Datos}
+\rightarrow
+\text{Diferencias divididas}
+\rightarrow
+\text{Polinomio}
+\rightarrow
+\text{Valor estimado}
+$$$
+
+### Objetivo
+
+El propósito del método es estimar valores dentro del intervalo conocido mediante un polinomio que represente el comportamiento de los datos.
+
+### Características
+
+El método de Newton:
+
+* utiliza uno o varios puntos experimentales;
+* genera un único polinomio interpolante;
+* permite agregar nuevos datos fácilmente;
+* reutiliza cálculos previos.
+
+## Resumen
+
+El método de Newton amplía la idea de la interpolación lineal utilizando varios puntos para construir una aproximación más flexible y precisa.
+<Pizarron1/>
+---
+
+## 2. Newton e interpolación lineal
+
+### Introducción
+
+El método de Newton puede entenderse como una extensión natural de la interpolación lineal.
+
+### Interpolación lineal
+
+La interpolación lineal utiliza únicamente dos puntos y construye una recta.
+
+Su polinomio es de grado uno:
+
+$$$
+P_1(x)
+$$$
+
+Es apropiada cuando el comportamiento entre ambos puntos puede considerarse aproximadamente lineal.
+
+### Método de Newton
+
+Cuando existen más datos, Newton incorpora nuevos términos para representar la curvatura de la función.
+
+Con:
+
+* dos puntos se obtiene un polinomio lineal;
+* tres puntos, un polinomio cuadrático;
+* cuatro puntos, un polinomio cúbico.
+
+### Construcción progresiva
+
+Cada nuevo punto aporta información adicional y mejora la representación del fenómeno sin reconstruir completamente el polinomio.
+
+### Comparación
+
+| Interpolación lineal                 | Método de Newton                              |
+| ------------------------------------ | --------------------------------------------- |
+| Dos puntos                           | Varios puntos                                 |
+| Recta                                | Polinomio                                     |
+| Grado uno                            | Grado creciente                               |
+| Fórmula única                        | Construcción progresiva                       |
+| No incorpora nuevos datos fácilmente | Permite agregar puntos sin rehacer el cálculo |
+
+## Resumen
+
+El método de Newton conserva la idea básica de interpolar, pero la extiende para describir funciones con mayor complejidad mediante polinomios de grado superior.
+<Pizarron2/>
+---
+
+## 3. Diferencias divididas de orden cero y primer orden
+
+### Introducción
+
+Las diferencias divididas constituyen la herramienta fundamental del método de Newton.
+
+### Diferencia dividida de orden cero
+
+La diferencia de orden cero corresponde simplemente al valor conocido de la función:
+
+$$$
+f[x_i]=f(x_i)
+$$$
+
+No implica ningún cálculo adicional.
+
+### Diferencia dividida de primer orden
+
+Se define como:
+
+$$$
+f[x_0,x_1]
+=
+
+\frac{f(x_1)-f(x_0)}
+{x_1-x_0}
+$$$
+
+### Relación con la pendiente
+
+Esta expresión coincide exactamente con la pendiente utilizada en la interpolación lineal.
+
+Por ello, la diferencia dividida de primer orden representa la tasa promedio de cambio entre dos puntos.
+
+### Interpretación
+
+Si el valor es positivo, la función es creciente en ese intervalo.
+
+Si es negativo, la función es decreciente.
+
+### Ejemplo
+
+Para los puntos:
+
+$$$
+(1,3)
+$$$
+
+y
+
+$$$
+(4,9)
+$$$
+
+se obtiene:
+
+$$$
+f[1,4] = \frac{9-3}{4-1}
+$$$
+
+Esto significa que la función aumenta, en promedio, dos unidades por cada unidad de incremento en (x).
+
+## Resumen
+
+Las diferencias divididas de primer orden generalizan el concepto de pendiente y constituyen el primer coeficiente del polinomio de Newton.
+<Pizarron3/>
+---
+
+## 4. Diferencias divididas de segundo y tercer orden
+
+### Introducción
+
+Las diferencias divididas pueden calcularse de manera recursiva para obtener información sobre la curvatura del conjunto de datos.
+
+### Diferencia de segundo orden
+
+Se define mediante:
+
+$$$
+f[x_0,x_1,x_2]
+=
+
+\frac{
+f[x_1,x_2]-f[x_0,x_1]
+}
+{x_2-x_0}
+$$$
+
+Esta diferencia mide cómo cambia la pendiente entre dos intervalos consecutivos.
+
+### Diferencia de tercer orden
+
+Se calcula como:
+
+$$$
+f[x_0,x_1,x_2,x_3]
+=
+
+\frac{
+f[x_1,x_2,x_3]-f[x_0,x_1,x_2]
+}
+{x_3-x_0}
+$$$
+
+### Interpretación
+
+Cada nuevo orden analiza las variaciones del orden anterior.
+
+Mientras el primer orden describe la pendiente, los órdenes superiores capturan cambios más complejos en el comportamiento de la función.
+
+### Construcción recursiva
+
+Cada diferencia dividida depende de dos diferencias del orden inmediato inferior.
+
+Esta estructura hace posible organizar los cálculos en una tabla triangular.
+
+## Resumen
+
+Las diferencias divididas de orden superior permiten construir polinomios capaces de representar funciones con curvatura creciente.
+<Pizarron4/>
+---
+
+## 5. Tabla de diferencias divididas
+
+### Introducción
+
+Los cálculos de las diferencias divididas se organizan mediante una tabla que facilita la obtención de los coeficientes del polinomio.
+
+### Estructura
+
+La tabla contiene columnas para:
+
+* los valores de (x);
+* los valores de (f(x));
+* diferencias divididas de primer orden;
+* diferencias de segundo orden;
+* diferencias de tercer orden;
+* órdenes superiores cuando sean necesarios.
+
+### Organización triangular
+
+Cada nueva columna posee un elemento menos que la anterior.
+
+Esta disposición genera una estructura triangular.
+
+### Obtención de los coeficientes
+
+Los coeficientes del polinomio de Newton corresponden al primer elemento de cada columna de diferencias divididas.
+
+Por ejemplo:
+
+$$$
+a_0=f[x_0]
+$$$
+
+$$$
+a_1=f[x_0,x_1]
+$$$
+
+$$$
+a_2=f[x_0,x_1,x_2]
+$$$
+
+### Ventajas
+
+La tabla:
+
+* organiza los cálculos;
+* evita operaciones repetidas;
+* facilita agregar nuevos puntos;
+* permite identificar rápidamente los coeficientes.
+
+## Resumen
+
+La tabla de diferencias divididas constituye la base práctica para construir el polinomio interpolante de Newton.
+<Pizarron5/>
+---
+
+## 6. Construcción progresiva del polinomio
+
+### Introducción
+
+Una de las principales ventajas del método de Newton es que el polinomio se construye de forma gradual.
+
+### Primer polinomio
+
+Con un solo punto:
+
+$$$
+P_0(x)=a_0
+$$$
+
+### Segundo polinomio
+
+Con dos puntos:
+
+$$$
+P_1(x)=a_0+a_1(x-x_0)
+$$$
+
+### Tercer polinomio
+
+Al incorporar un nuevo punto:
+
+$$$
+P_2(x)
+=
+
+P_1(x)
++
+a_2(x-x_0)(x-x_1)
+$$$
+
+### Cuarto polinomio
+
+Con otro punto adicional:
+
+$$$
+P_3(x)
+=
+
+P_2(x)
++
+a_3(x-x_0)(x-x_1)(x-x_2)
+$$$
+
+### Interpretación
+
+Cada nuevo dato agrega únicamente un término al polinomio existente.
+
+Los términos anteriores permanecen sin modificación.
+
+### Analogía
+
+El procedimiento puede compararse con la construcción de un edificio.
+
+Cada piso nuevo se apoya sobre la estructura existente sin necesidad de reconstruir la cimentación.
+
+## Resumen
+
+La construcción progresiva permite ampliar el polinomio reutilizando completamente el trabajo realizado en etapas anteriores.
+<Pizarron6/>
+---
+
+## 7. Polinomio de primer grado
+
+### Introducción
+
+Cuando se dispone de dos puntos, el método de Newton produce exactamente el mismo resultado que la interpolación lineal.
+
+### Forma del polinomio
+
+El polinomio es:
+
+$$$
+P_1(x)
+=
+
+a_0
++
+a_1(x-x_0)
+$$$
+
+donde:
+
+$$$
+a_0=f(x_0)
+$$$
+
+y
+
+$$$
+a_1=f[x_0,x_1]
+$$$
+
+### Interpretación
+
+El primer término representa el valor inicial.
+
+El segundo incorpora la pendiente entre ambos puntos.
+
+### Relación con la interpolación lineal
+
+Al desarrollar la expresión se obtiene la misma ecuación utilizada en la interpolación lineal.
+
+Por ello, ambos métodos coinciden exactamente en este caso.
+
+## Resumen
+
+El polinomio de primer grado constituye el punto de partida del método de Newton y demuestra que la interpolación lineal es un caso particular de este procedimiento.
+<Pizarron7/>
+---
+
+## 8. Ejemplo del polinomio lineal
+
+### Introducción
+
+Un ejemplo sencillo permite comprobar que el método de Newton reproduce correctamente los datos conocidos.
+
+### Datos
+
+Se consideran los puntos:
+
+$$$
+(1,3)
+$$$
+
+y
+
+$$$
+(4,9)
+$$$
+
+### Diferencia dividida
+
+$$$
+a_1
+=
+
+ \frac{9-3}{4-1}
+
+$$$
+
+### Polinomio
+
+$$$
+P_1(x)
+=
+
+3
++
+2(x-1)
+$$$
+
+Desarrollando:
+
+$$$
+P_1(x)
+=
+
+2x+1
+$$$
+
+### Verificación
+
+Para:
+
+$$$
+x=1
+$$$
+
+$$$
+P_1(1)=3
+$$$
+
+Para:
+
+$$$
+x=4
+$$$
+
+$$$
+P_1(4)=9
+$$$
+
+El polinomio reproduce exactamente ambos puntos.
+
+## Resumen
+
+El ejemplo confirma que el método de Newton coincide con la interpolación lineal cuando únicamente se utilizan dos datos.
+<Pizarron8/>
+---
+
+## 9. Polinomio de segundo grado
+
+### Introducción
+
+Al incorporar un tercer punto aparece un nuevo término que permite representar funciones con curvatura.
+
+### Forma general
+
+El polinomio cuadrático es:
+
+$$$
+P_2(x)
+=
+
+a_0
++
+a_1(x-x_0)
++
+a_2(x-x_0)(x-x_1)
+$$$
+
+### Nuevo coeficiente
+
+El coeficiente:
+
+$$$
+a_2
+=
+
+f[x_0,x_1,x_2]
+$$$
+
+proviene de la diferencia dividida de segundo orden.
+
+### Significado
+
+El nuevo término corrige la aproximación lineal e incorpora la curvatura necesaria para pasar por el tercer punto.
+
+## Resumen
+
+Cada diferencia dividida de orden superior añade la información necesaria para representar comportamientos más complejos.
+<Pizarron9/>
+---
+
+## 10. Ejemplo del polinomio cuadrático
+
+### Introducción
+
+Cuando los datos provienen de una función cuadrática, el método de Newton puede recuperarla exactamente.
+
+### Datos
+
+$$$
+(1,1)
+$$$
+
+$$$
+(2,4)
+$$$
+
+$$$
+(3,9)
+$$$
+
+### Construcción
+
+Se calculan las diferencias divididas y se sustituyen en el polinomio de segundo grado.
+
+Después de simplificar se obtiene:
+
+$$$
+P(x)=x^2
+$$$
+
+### Verificación
+
+El polinomio satisface:
+
+$$$
+P(1)=1
+$$$
+
+$$$
+P(2)=4
+$$$
+
+$$$
+P(3)=9
+$$$
+
+### Interpretación
+
+Como la función original es cuadrática y se utilizaron tres puntos distintos, el método reproduce exactamente la función.
+
+## Resumen
+
+El ejemplo muestra que el método de Newton puede reconstruir completamente funciones polinomiales cuando se dispone del número adecuado de datos.
+<Pizarron10/>
+---
+
+## 11. Polinomio de tercer grado
+
+### Introducción
+
+Con cuatro puntos distintos se obtiene un polinomio cúbico.
+
+### Forma general
+
+$$$
+P_3(x)
+=
+
+a_0
++
+a_1(x-x_0)
++
+a_2(x-x_0)(x-x_1)
++
+a_3(x-x_0)(x-x_1)(x-x_2)
+$$$
+
+### Patrón de construcción
+
+Cada nuevo término incorpora:
+
+* una nueva diferencia dividida;
+* un nuevo factor;
+* un nuevo punto.
+
+Este patrón continúa para grados superiores.
+
+## Resumen
+
+La estructura repetitiva del método permite extender fácilmente el polinomio cuando se dispone de nuevos datos.
+<Pizarron11/>
+---
+
+## 12. Evaluación del polinomio
+
+### Introducción
+
+Una vez construido el polinomio, puede utilizarse para estimar valores intermedios.
+
+### Procedimiento
+
+Para evaluar el polinomio basta con sustituir el valor deseado de (x).
+
+Por ejemplo:
+
+$$$
+x=2.5
+$$$
+
+El resultado obtenido constituye la estimación interpolada.
+
+### Verificación
+
+En los nodos originales siempre se cumple:
+
+$$$
+P(x_i)=f(x_i)
+$$$
+
+Esta propiedad permite comprobar fácilmente la correcta construcción del polinomio.
+
+## Resumen
+
+La evaluación del polinomio transforma el modelo obtenido mediante diferencias divididas en una herramienta práctica para estimar valores.
+<Pizarron12/>
+---
+
+## 13. Forma anidada
+
+### Introducción
+
+Aunque el polinomio puede escribirse de forma expandida, existe una representación más eficiente conocida como **forma anidada**.
+
+### Expresión
+
+El polinomio puede reorganizarse como:
+
+$$$
+P(x)
+=
+
+a_0
++
+(x-x_0)
+\left(
+a_1
++
+(x-x_1)
+\left(
+a_2+\cdots
+\right)
+\right)
+$$$
+
+### Ventajas
+
+La forma anidada:
+
+* reduce el número de multiplicaciones;
+* disminuye el costo computacional;
+* mejora la estabilidad numérica;
+* facilita la programación.
+
+### Analogía
+
+Puede imaginarse como una serie de cajas dentro de otras cajas, donde cada nivel contiene al siguiente.
+
+## Resumen
+
+La forma anidada mantiene el mismo polinomio, pero permite evaluarlo de manera más eficiente.
+<Pizarron13/>
+
+---
+
+## 14. Incorporación de nuevos puntos
+
+### Introducción
+
+Una de las principales fortalezas del método de Newton es la facilidad para incorporar nuevos datos.
+
+### Procedimiento
+
+Si ya se dispone del polinomio:
+
+$$$
+P_2(x)
+$$$
+
+y aparece un cuarto punto, únicamente es necesario:
+
+* calcular una nueva diferencia dividida;
+* añadir un término adicional.
+
+Los coeficientes anteriores permanecen inalterados.
+
+### Ventajas
+
+Esta característica evita reconstruir completamente el polinomio y reduce significativamente el trabajo de cálculo.
+
+### Aplicaciones
+
+Resulta especialmente útil cuando los datos experimentales se obtienen de forma progresiva.
+
+## Resumen
+
+El método de Newton permite ampliar el modelo sin repetir todos los cálculos realizados previamente.
+<Pizarron14/>
+
+---
+
+## 15. Error del polinomio interpolante
+
+### Introducción
+
+Aunque el polinomio pasa por todos los datos conocidos, puede diferir de la función real entre los nodos.
+
+### Definición
+
+El error se expresa como:
+
+$$$
+E(x)
+=
+
+f(x)-P(x)
+$$$
+
+### Propiedades
+
+El error es exactamente cero en todos los puntos utilizados para construir el polinomio.
+
+Entre ellos puede existir una diferencia cuya magnitud depende de:
+
+* la función original;
+* el grado del polinomio;
+* la distribución de los nodos.
+
+### Error teórico
+
+Si la función posee suficientes derivadas,
+
+$$$
+E(x)
+=
+
+\frac{
+f^{(n+1)}(\xi)
+}{
+(n+1)!
+}
+\prod_{i=0}^{n}(x-x_i)
+$$$
+
+para algún valor $\xi$ dentro del intervalo.
+
+## Resumen
+
+El método reproduce exactamente los datos conocidos, pero no garantiza una representación perfecta de la función entre ellos.
+<Pizarron15/>
+
+---
+
+## 16. Diferencias divididas y diferencias finitas
+
+### Introducción
+
+Las diferencias divididas y las diferencias finitas son procedimientos relacionados, aunque no equivalentes.
+
+### Diferencias divididas
+
+Pueden utilizarse con cualquier distribución de los puntos.
+
+No requieren espaciamiento uniforme.
+
+### Diferencias finitas
+
+Suponen que los nodos cumplen:
+
+$$$
+x_{i+1}-x_i=h
+$$$
+
+donde (h) es constante.
+
+### Comparación
+
+| Diferencias divididas    | Diferencias finitas                 |
+| ------------------------ | ----------------------------------- |
+| Espaciamiento cualquiera | Espaciamiento uniforme              |
+| Método general           | Caso particular                     |
+| Newton general           | Newton hacia adelante y hacia atrás |
+
+## Resumen
+
+Las diferencias finitas constituyen una simplificación del método general cuando los datos están igualmente espaciados.
+<Pizarron16/>
+
+---
+
+## 17. Aplicaciones en ingeniería
+
+### Introducción
+
+El método de Newton se emplea ampliamente para representar datos experimentales y consultar tablas técnicas.
+
+### Ingeniería mecánica
+
+Interpolación de propiedades termodinámicas y curvas esfuerzo-deformación.
+
+### Ingeniería civil
+
+Estimación de perfiles topográficos y propiedades de materiales.
+
+### Ingeniería eléctrica
+
+Procesamiento de señales y calibración de sensores.
+
+### Ingeniería química
+
+Interpolación de propiedades físicas y datos experimentales.
+
+### Computación científica
+
+Implementación de algoritmos para aproximar funciones y construir modelos numéricos.
+
+## Resumen
+
+El método de Newton constituye una herramienta fundamental para estimar valores intermedios a partir de conjuntos de datos discretos.
+<Pizarron17/>
+
+---
+
+## 18. Ventajas y limitaciones
+
+### Introducción
+
+Como todo método numérico, la interpolación de Newton posee fortalezas y restricciones.
+
+### Ventajas
+
+* Funciona con datos no igualmente espaciados.
+* Construcción progresiva.
+* Permite agregar nuevos puntos.
+* Reutiliza cálculos previos.
+* Puede evaluarse eficientemente mediante la forma anidada.
+* Pasa exactamente por todos los datos.
+
+### Limitaciones
+
+* Puede presentar oscilaciones con muchos puntos.
+* Es sensible al ruido experimental.
+* La extrapolación es poco confiable.
+* El costo aumenta con polinomios de grado elevado.
+* Puede aparecer el fenómeno de Runge.
+
+## Resumen
+
+La principal fortaleza del método es su flexibilidad; su principal limitación aparece cuando se utilizan muchos datos o funciones altamente variables.
+<Pizarron18/>
+
+---
+
+## 19. Integración mediante un ejemplo completo
+
+### Introducción
+
+La aplicación completa del método reúne todos los conceptos estudiados en la unidad.
+
+### Secuencia de trabajo
+
+El procedimiento general es:
+
+1. Organizar los datos.
+2. Construir la tabla de diferencias divididas.
+3. Obtener los coeficientes.
+4. Formar el polinomio.
+5. Evaluarlo en el punto deseado.
+6. Verificar el resultado.
+
+### Validación
+
+Siempre debe comprobarse que el polinomio reproduce exactamente los nodos utilizados durante su construcción.
+
+Asimismo, el valor interpolado debe interpretarse considerando el comportamiento físico del problema.
+
+## Resumen
+
+La resolución ordenada de un ejemplo completo muestra cómo las diferencias divididas, el polinomio y la evaluación forman parte de un único procedimiento coherente.
+<Pizarron19/>
+
+---
+
+## 20. Panorama general del método de Newton
+
+### Introducción
+
+El método de interpolación de Newton constituye una de las técnicas más importantes para construir polinomios interpolantes a partir de datos discretos.
+
+### Integración de conceptos
+
+El proceso completo puede resumirse como:
+
+$$$
+\text{Datos}
+\rightarrow
+\text{Diferencias divididas}
+\rightarrow
+\text{Coeficientes}
+\rightarrow
+\text{Polinomio}
+\rightarrow
+\text{Evaluación}
+$$$
+
+Cada nueva diferencia dividida aporta un coeficiente adicional y cada nuevo dato incorpora un término al polinomio sin modificar los anteriores.
+
+### Ideas fundamentales
+
+* Las diferencias divididas generan los coeficientes del polinomio.
+* Cada nuevo punto añade un término adicional.
+* El polinomio pasa exactamente por todos los datos conocidos.
+* La forma anidada mejora la eficiencia computacional.
+* Para grandes conjuntos de datos pueden ser preferibles métodos por tramos, como los splines cúbicos.
+
+### Relación con otros métodos
+
+La interpolación lineal representa el caso más simple del método de Newton.
+
+Las diferencias finitas constituyen una versión especializada cuando los datos están igualmente espaciados.
+
+Los splines ofrecen una alternativa cuando se requiere evitar las oscilaciones de polinomios de alto grado.
+
+## Resumen
+
+El método de Newton combina una construcción progresiva, una interpretación algebraica clara y una implementación computacional eficiente. Su estudio proporciona una base sólida para comprender técnicas de interpolación más avanzadas y resolver problemas de aproximación numérica en ingeniería y ciencias aplicadas.
+<Pizarron20/>

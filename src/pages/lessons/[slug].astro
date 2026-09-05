@@ -1,0 +1,34 @@
+---
+import Layout from "../../layouts/Layout.astro";
+
+export function getStaticPaths() {
+  const archivos = import.meta.glob("../../lessons/*.mdx", {
+    eager: true,
+  });
+
+  return Object.entries(archivos).map(([ruta, modulo]: [string, any]) => {
+    const archivo = ruta.split("/").pop() ?? "";
+    const slug = archivo.replace(/\.mdx$/, "");
+
+    return {
+      params: { slug },
+      props: {
+        Content: modulo.Content,
+        frontmatter: modulo.frontmatter,
+      },
+    };
+  });
+}
+
+const { Content, frontmatter } = Astro.props;
+---
+
+<Layout>
+  <main>
+    {frontmatter?.title && <h1>{frontmatter.title}</h1>}
+
+    <article>
+      <Content />
+    </article>
+  </main>
+</Layout>

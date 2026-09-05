@@ -1,0 +1,960 @@
+
+import {Pizarron1,
+        Pizarron2,
+        Pizarron3,
+        Pizarron4,
+        Pizarron5,
+        Pizarron6,
+        Pizarron7,
+        Pizarron8,
+        Pizarron9,
+        Pizarron10,
+        Pizarron11,
+        Pizarron12,
+        Pizarron13,
+        Pizarron14,
+        Pizarron15,
+        Pizarron16
+} from "../components/pizzaras/pizarra6";
+
+
+# Interpolación Lineal
+
+## 1. ¿Qué es la interpolación lineal?
+
+### Introducción
+
+En ingeniería es frecuente disponer únicamente de algunos valores medidos o registrados de una variable. Sin embargo, muchas veces es necesario conocer el valor correspondiente a un punto intermedio que no fue medido directamente.
+
+La **interpolación lineal** es uno de los métodos numéricos más sencillos para resolver este problema.
+
+### Concepto de interpolación lineal
+
+La interpolación lineal consiste en estimar un valor comprendido entre dos datos conocidos, suponiendo que el comportamiento entre ellos puede aproximarse mediante una línea recta.
+
+El proceso puede representarse como:
+
+$$$
+\text{Datos conocidos}
+\rightarrow
+\text{Recta}
+\rightarrow
+\text{Valor estimado}
+$$$
+
+### ¿Por qué funciona?
+
+Cuando dos puntos se encuentran relativamente próximos y la variable cambia de forma gradual, una recta constituye una buena aproximación local del fenómeno.
+
+Aunque el comportamiento real pueda ser curvo, en intervalos pequeños la diferencia suele ser reducida.
+
+### Ejemplo intuitivo
+
+Si la temperatura es:
+
+* 20 °C a las 10:00,
+* 24 °C a las 11:00,
+
+es razonable estimar que alrededor de las 10:30 la temperatura será cercana a:
+
+$$$
+22^\circ\text{C}
+$$$
+
+si el cambio ocurre aproximadamente de forma uniforme.
+
+### Características
+
+La interpolación lineal:
+
+* utiliza únicamente dos puntos;
+* estima valores dentro del intervalo conocido;
+* supone una tasa de cambio constante;
+* es rápida y sencilla de aplicar.
+
+## Resumen
+
+La interpolación lineal permite estimar valores intermedios utilizando únicamente dos datos conocidos y la hipótesis de un comportamiento aproximadamente lineal.
+<Pizarron1/>
+---
+
+## 2. Interpretación geométrica
+
+### Introducción
+
+La interpolación lineal puede comprenderse fácilmente mediante una representación gráfica en el plano cartesiano.
+
+### Dos puntos determinan una recta
+
+Sean los puntos:
+
+$$$
+(x_0,y_0)
+$$$
+
+y
+
+$$$
+(x_1,y_1)
+$$$
+
+Existe una única recta que pasa por ambos.
+
+Todo valor estimado mediante interpolación lineal se obtiene sobre esa recta.
+
+### Interpolación
+
+Cuando el valor buscado satisface:
+
+$$$
+x_0<x<x_1
+$$$
+
+se dice que se está interpolando.
+
+En esta situación el cálculo utiliza información situada a ambos lados del punto buscado.
+
+### Extrapolación
+
+Si el valor buscado cumple:
+
+$$$
+x<x_0
+$$$
+
+o
+
+$$$
+x>x_1
+$$$
+
+el procedimiento corresponde a una extrapolación.
+
+En este caso la incertidumbre aumenta porque el comportamiento del fenómeno fuera del intervalo puede cambiar.
+
+### Confiabilidad
+
+La interpolación suele proporcionar resultados más confiables que la extrapolación porque utiliza información directamente relacionada con el intervalo donde se realiza la estimación.
+
+## Resumen
+
+Geométricamente, interpolar significa localizar un punto sobre la recta que une dos datos conocidos y cuya coordenada horizontal pertenece al intervalo comprendido entre ellos.
+<Pizarron2/>
+
+---
+
+## 3. Pendiente y ecuación de la recta
+
+### Introducción
+
+La interpolación lineal se basa completamente en la ecuación de una recta. Por ello, comprender el concepto de pendiente resulta fundamental.
+
+### Pendiente
+
+La pendiente representa la razón de cambio entre dos variables.
+
+Se define como:
+
+$$$
+m=\frac{\Delta y}{\Delta x}
+$$$
+
+o, utilizando dos puntos,
+
+$$$
+m=\frac{y_1-y_0}{x_1-x_0}
+$$$
+
+### Interpretación física
+
+La pendiente indica cuánto cambia la variable dependiente cuando la variable independiente aumenta una unidad.
+
+Por ejemplo, si:
+
+$$$
+m=5
+$$$
+
+significa que por cada unidad que aumenta (x), el valor de (y) aumenta cinco unidades.
+
+### Pendiente positiva
+
+Cuando:
+
+$$$
+m>0
+$$$
+
+la función es creciente.
+
+### Pendiente negativa
+
+Cuando:
+
+$$$
+m<0
+$$$
+
+la función es decreciente.
+
+### Relación con la interpolación
+
+La interpolación lineal supone que esa tasa de cambio permanece constante entre los dos puntos considerados.
+
+## Resumen
+
+La pendiente expresa la velocidad constante de cambio entre dos datos y constituye el fundamento matemático de la interpolación lineal.
+<Pizarron3/>
+
+---
+
+## 4. Derivación de la fórmula
+
+### Introducción
+
+La fórmula de interpolación lineal no es una expresión nueva; proviene directamente de la ecuación punto-pendiente de una recta.
+
+### Ecuación punto-pendiente
+
+La ecuación general es:
+
+$$$
+y-y_0=m(x-x_0)
+$$$
+
+### Sustitución de la pendiente
+
+Reemplazando:
+
+$$$
+m=\frac{y_1-y_0}{x_1-x_0}
+$$$
+
+se obtiene:
+
+$$$
+y-y_0=
+\frac{y_1-y_0}{x_1-x_0}(x-x_0)
+$$$
+
+Finalmente,
+
+$$$
+\boxed{
+y=
+y_0+
+\frac{y_1-y_0}{x_1-x_0}(x-x_0)
+}
+$$$
+
+### Significado de cada término
+
+* (x_0,y_0): primer dato.
+* (x_1,y_1): segundo dato.
+* (x): valor conocido donde se desea interpolar.
+* (y): valor estimado.
+
+### Interpretación
+
+La expresión calcula cuánto debe aumentar o disminuir (y) a partir del primer punto considerando la pendiente constante.
+
+## Resumen
+
+La fórmula de interpolación lineal es simplemente una aplicación de la ecuación de una recta que pasa por dos puntos conocidos.
+<Pizarron4/>
+
+---
+
+## 5. El factor de interpolación
+
+### Introducción
+
+La fórmula puede escribirse de una manera más intuitiva mediante un parámetro que representa el avance relativo dentro del intervalo.
+
+### Definición
+
+El factor de interpolación se define como:
+
+$$$
+t=
+\frac{x-x_0}{x_1-x_0}
+$$$
+
+### Interpretación
+
+El valor de (t) indica qué fracción del intervalo se ha recorrido.
+
+Si:
+
+$$$
+t=0
+$$$
+
+el punto coincide con el primer dato.
+
+Si:
+
+$$$
+t=1
+$$$
+
+coincide con el segundo.
+
+Cuando:
+
+$$$
+t=0.5
+$$$
+
+el punto está exactamente a la mitad.
+
+### Nueva forma de la ecuación
+
+La interpolación lineal puede escribirse como:
+
+$$$
+y=y_0+t(y_1-y_0)
+$$$
+
+Esta expresión muestra claramente que el incremento de (y) es proporcional al avance realizado sobre el eje (x).
+
+### Analogía
+
+El factor (t) puede imaginarse como una barra de progreso:
+
+* 0 % corresponde al primer punto.
+* 100 % corresponde al segundo.
+* Cualquier porcentaje intermedio produce un incremento proporcional.
+
+## Resumen
+
+El factor de interpolación expresa el porcentaje recorrido entre dos datos y facilita la interpretación geométrica del procedimiento.
+<Pizarron5/>
+
+---
+
+## 6. Procedimiento general
+
+### Introducción
+
+La resolución de un problema de interpolación lineal sigue siempre una secuencia ordenada de pasos.
+
+### Paso 1. Identificar los datos
+
+Determinar correctamente:
+
+$$$
+x_0,\quad y_0,\quad x_1,\quad y_1
+$$$
+
+y el valor de (x) para el cual se desea calcular (y).
+
+### Paso 2. Verificar el intervalo
+
+Comprobar que:
+
+$$$
+x_0\le x\le x_1
+$$$
+
+Si esta condición no se cumple, el procedimiento deja de ser interpolación y pasa a ser extrapolación.
+
+### Paso 3. Calcular la pendiente
+
+Obtener:
+
+$$$
+m=
+\frac{y_1-y_0}{x_1-x_0}
+$$$
+
+### Paso 4. Sustituir en la fórmula
+
+Calcular:
+
+$$$
+y=
+y_0+
+m(x-x_0)
+$$$
+
+o, equivalentemente,
+
+$$$
+y=
+y_0+t(y_1-y_0)
+$$$
+
+### Paso 5. Verificar el resultado
+
+Es importante revisar:
+
+* unidades;
+* signo de la pendiente;
+* coherencia física;
+* que el resultado quede entre (y_0) y (y_1) cuando corresponda.
+
+### Errores frecuentes
+
+Los errores más comunes son:
+
+* intercambiar los datos;
+* utilizar unidades distintas;
+* aplicar el método fuera del intervalo;
+* omitir el signo de la pendiente.
+
+## Resumen
+
+Aplicar siempre el mismo procedimiento reduce errores y facilita la resolución sistemática de problemas de interpolación lineal.
+<Pizarron6/>
+
+---
+
+## 7. Ejemplo básico
+
+### Introducción
+
+Un ejemplo completo permite relacionar la interpretación geométrica con el desarrollo algebraico.
+
+### Datos
+
+Se conocen:
+
+$$$
+(2,10)
+$$$
+
+y
+
+$$$
+(6,30)
+$$$
+
+Se desea calcular el valor cuando:
+
+$$$
+x=4
+$$$
+
+### Cálculo
+
+La pendiente es:
+
+$$$
+m=
+\frac{30-10}{6-2}
+=
+
+5
+$$$
+
+La ecuación queda:
+
+$$$
+y=
+10+
+5(4-2)
+$$$
+
+$$$
+y=20
+$$$
+
+### Interpretación
+
+El valor buscado está exactamente a la mitad del intervalo.
+
+Por ello, también se encuentra a la mitad entre:
+
+$$$
+10
+$$$
+
+y
+
+$$$
+30
+$$$
+
+obteniéndose:
+
+$$$
+20
+$$$
+
+### Verificación
+
+El resultado pertenece al intervalo comprendido entre los valores extremos y coincide con la posición del punto sobre la recta.
+
+## Resumen
+
+La resolución paso a paso muestra que la interpolación lineal consiste en trasladar el desplazamiento horizontal hacia un incremento proporcional en la variable dependiente.
+<Pizarron7/>
+
+---
+
+## 8. Interpolación en tablas técnicas
+
+### Introducción
+
+Uno de los usos más frecuentes de la interpolación lineal consiste en obtener valores intermedios dentro de tablas técnicas.
+
+### Ejemplo
+
+Considérese la siguiente tabla:
+
+| Temperatura (°C) | Densidad (kg/m³) |
+| ---------------: | ---------------: |
+|               20 |            998.2 |
+|               30 |            995.7 |
+
+Se desea estimar la densidad para:
+
+$$$
+24^\circ\text{C}
+$$$
+
+### Desarrollo
+
+La pendiente es:
+
+$$$
+m=
+\frac{995.7-998.2}{30-20}
+=
+
+-0.25
+$$$
+
+Sustituyendo:
+
+$$$
+\rho=
+998.2+
+(-0.25)(24-20)
+$$$
+
+$$$
+\rho=
+997.2\ \text{kg/m}^3
+$$$
+
+### Interpretación
+
+La pendiente negativa indica que la densidad disminuye cuando la temperatura aumenta.
+
+El resultado posee significado físico porque se encuentra entre los dos valores conocidos.
+
+### Aplicaciones
+
+Las tablas técnicas aparecen en:
+
+* termodinámica;
+* mecánica de fluidos;
+* transferencia de calor;
+* ingeniería química;
+* propiedades de materiales.
+
+## Resumen
+
+La interpolación lineal permite utilizar tablas discretas como si describieran un comportamiento continuo.
+<Pizarron8/>
+
+---
+
+## 9. Pendiente negativa
+
+### Introducción
+
+No todas las variables aumentan simultáneamente. Muchas relaciones físicas presentan una pendiente negativa.
+
+### Ejemplo
+
+Considérese:
+
+* 100 °C → 500 kPa.
+* 140 °C → 420 kPa.
+
+La pendiente es:
+
+$$$
+m=
+\frac{420-500}{140-100}
+=
+
+-2
+$$$
+
+Esto significa que la presión disminuye dos unidades por cada incremento unitario de temperatura dentro del intervalo considerado.
+
+### Significado del signo
+
+El signo negativo únicamente indica la dirección del cambio.
+
+No debe eliminarse durante el cálculo.
+
+### Interpretación física
+
+Una pendiente negativa representa una relación inversa entre las variables.
+
+Mientras una aumenta, la otra disminuye.
+
+## Resumen
+
+La pendiente negativa forma parte natural de muchos fenómenos físicos y debe conservarse correctamente durante toda la interpolación.
+<Pizarron9/>
+
+---
+
+## 10. Interpretación porcentual
+
+### Introducción
+
+El factor de interpolación permite interpretar el procedimiento mediante porcentajes.
+
+### Ejemplo
+
+Supóngase el intervalo:
+
+$$$
+50
+\quad\text{a}\quad
+90
+$$$
+
+El valor buscado es:
+
+$$$
+60
+$$$
+
+El avance relativo es:
+
+$$$
+t=
+\frac{60-50}{90-50}
+=
+
+0.25
+$$$
+
+Es decir, se ha recorrido el 25 % del intervalo.
+
+### Aplicación al valor de salida
+
+Si la segunda variable cambia de:
+
+$$$
+200
+$$$
+
+a
+
+$$$
+300
+$$$
+
+el incremento total es:
+
+$$$
+100
+$$$
+
+El 25 % corresponde a:
+
+$$$
+25
+$$$
+
+por lo que:
+
+$$$
+y=225
+$$$
+
+### Interpretación
+
+El porcentaje recorrido sobre el eje horizontal coincide con el porcentaje recorrido sobre el eje vertical siempre que el comportamiento sea lineal.
+
+## Resumen
+
+La interpretación porcentual convierte la interpolación lineal en un problema de proporcionalidad directa.
+<Pizarron10/>
+
+---
+
+## 11. Error de interpolación
+
+### Introducción
+
+La interpolación lineal proporciona una aproximación. Cuando la función real no es una recta aparece un error.
+
+### Definición
+
+El error viene dado por:
+
+$$$
+E(x)=
+f(x)-P_1(x)
+$$$
+
+donde:
+
+* (f(x)) es la función real;
+* (P_1(x)) es la recta interpolante.
+
+### Expresión del error
+
+Si la función posee segunda derivada continua,
+
+$$$
+E(x)=
+\frac{f''(\xi)}{2}
+(x-x_0)(x-x_1)
+$$$
+
+para algún valor (\xi) dentro del intervalo.
+
+### Interpretación
+
+El error depende principalmente de:
+
+* la curvatura de la función;
+* la longitud del intervalo;
+* la posición del punto interpolado.
+
+### Caso exacto
+
+Si la función es una recta,
+
+$$$
+f''(x)=0
+$$$
+
+y el error desaparece.
+
+### Influencia del intervalo
+
+Cuanto más próximos se encuentren los datos, menor suele ser el error cometido.
+
+## Resumen
+
+La interpolación lineal es exacta únicamente para funciones lineales. En funciones curvas, el error depende de la curvatura y del tamaño del intervalo.
+<Pizarron11/>
+
+---
+
+## 12. Ventajas y limitaciones
+
+### Introducción
+
+La simplicidad de la interpolación lineal constituye su principal fortaleza, pero también determina sus limitaciones.
+
+### Ventajas
+
+Entre sus principales ventajas destacan:
+
+* requiere únicamente dos puntos;
+* posee una fórmula sencilla;
+* demanda poco tiempo de cálculo;
+* es fácil de programar;
+* produce resultados exactos en los extremos.
+
+### Limitaciones
+
+El método presenta restricciones importantes:
+
+* supone comportamiento lineal;
+* no utiliza información adicional;
+* pierde precisión en intervalos grandes;
+* no representa adecuadamente curvas pronunciadas;
+* no reproduce cambios bruscos.
+
+### Cuándo utilizarla
+
+Es recomendable cuando:
+
+* los datos están próximos;
+* la función cambia lentamente;
+* se necesita rapidez;
+* la precisión requerida es moderada.
+
+## Resumen
+
+La interpolación lineal constituye un excelente método para aproximaciones locales, pero no sustituye técnicas más avanzadas cuando la curvatura es significativa.
+<Pizarron12/>
+
+---
+
+## 13. Aplicaciones en ingeniería
+
+### Introducción
+
+La interpolación lineal se utiliza diariamente en numerosas áreas de la ingeniería.
+
+### Ingeniería mecánica
+
+Permite estimar propiedades de materiales, temperaturas, presiones y variables obtenidas de tablas experimentales.
+
+### Ingeniería civil
+
+Se emplea para estimar elevaciones, perfiles de terreno, deformaciones y propiedades de materiales de construcción.
+
+### Ingeniería eléctrica
+
+Se utiliza en sensores, calibración de instrumentos, conversión de señales y procesamiento de datos.
+
+### Ingeniería química
+
+Facilita la consulta de tablas termodinámicas, propiedades físicas y concentraciones intermedias.
+
+### Instrumentación
+
+Los sistemas de adquisición de datos emplean frecuentemente interpolación lineal para convertir mediciones discretas en señales continuas aproximadas.
+
+## Resumen
+
+La interpolación lineal constituye una herramienta básica para estimar valores entre datos conocidos en prácticamente todas las ramas de la ingeniería.
+<Pizarron13/>
+
+---
+
+## 14. Implementación computacional
+
+### Introducción
+
+La simplicidad de la interpolación lineal facilita su implementación en cualquier lenguaje de programación.
+
+### Algoritmo general
+
+El procedimiento computacional consiste en:
+
+1. Leer los datos.
+2. Verificar que el valor buscado pertenezca al intervalo.
+3. Comprobar que:
+
+$$$
+x_1\neq x_0
+$$$
+
+4. Calcular el factor:
+
+$$$
+t=
+\frac{x-x_0}{x_1-x_0}
+$$$
+
+5. Obtener:
+
+$$$
+y=
+y_0+t(y_1-y_0)
+$$$
+
+6. Mostrar el resultado.
+
+### Validaciones necesarias
+
+Todo programa debe verificar:
+
+* datos ordenados;
+* igualdad de unidades;
+* ausencia de división entre cero;
+* que no se esté extrapolando accidentalmente.
+
+### Ventajas computacionales
+
+La implementación requiere muy pocas operaciones aritméticas, lo que permite utilizarla incluso en dispositivos con recursos limitados.
+
+## Resumen
+
+La interpolación lineal es uno de los métodos numéricos más fáciles de automatizar debido a su estructura algebraica sencilla.
+<Pizarron14/>
+
+---
+
+## 15. Integración mediante un problema completo
+
+### Introducción
+
+Resolver un problema completo permite integrar todos los conceptos desarrollados durante la unidad.
+
+### Procedimiento de análisis
+
+Para resolver correctamente una interpolación lineal conviene verificar siempre:
+
+* que el valor buscado pertenezca al intervalo;
+* que la pendiente tenga el signo correcto;
+* que las unidades sean consistentes;
+* que el resultado sea físicamente razonable.
+
+### Validación del resultado
+
+Una buena práctica consiste en responder preguntas como:
+
+* ¿El resultado se encuentra entre los valores extremos?
+* ¿El comportamiento coincide con el fenómeno físico?
+* ¿Se utilizó correctamente la correspondencia entre los datos?
+* ¿Existe alguna posibilidad de extrapolación?
+
+### Interpretación
+
+El cálculo matemático debe complementarse con una interpretación física. Un resultado correcto desde el punto de vista algebraico puede ser inaceptable si contradice el comportamiento esperado del sistema.
+
+## Resumen
+
+La resolución sistemática y la validación final permiten utilizar la interpolación lineal de forma confiable en problemas reales.
+<Pizarron15/>
+
+---
+
+## 16. Panorama general de la interpolación lineal
+
+### Introducción
+
+La interpolación lineal constituye el método más sencillo para estimar valores intermedios y representa el punto de partida para comprender técnicas de interpolación más avanzadas.
+
+### Integración de conceptos
+
+El procedimiento completo puede resumirse como:
+
+$$$
+\text{Datos conocidos}
+\rightarrow
+\text{Recta}
+\rightarrow
+\text{Pendiente}
+\rightarrow
+\text{Fórmula}
+\rightarrow
+\text{Valor estimado}
+$$$
+
+Durante este proceso intervienen conceptos como:
+
+* pendiente;
+* proporcionalidad;
+* factor de interpolación;
+* ecuación de la recta;
+* error de aproximación.
+
+### Ideas fundamentales
+
+La interpolación lineal:
+
+* solo debe utilizarse dentro del intervalo conocido;
+* supone una tasa de cambio constante;
+* proviene directamente de la ecuación de una recta;
+* proporciona una estimación cuya calidad depende de la linealidad del fenómeno;
+* mejora cuando los puntos están próximos entre sí.
+
+### Relación con otros métodos
+
+Cuando dos puntos no son suficientes para representar adecuadamente una función, pueden emplearse métodos de mayor complejidad, como la interpolación polinomial, los polinomios de Lagrange, el método de Newton o los splines.
+
+Estos métodos conservan el mismo objetivo —estimar valores intermedios—, pero utilizan funciones capaces de representar mejor fenómenos con curvatura.
+
+## Resumen
+
+La interpolación lineal combina sencillez, rapidez e interpretación geométrica clara. Su comprensión proporciona la base necesaria para estudiar métodos de interpolación más avanzados y para resolver una amplia variedad de problemas de ingeniería mediante aproximaciones numéricas.
+<Pizarron16/>

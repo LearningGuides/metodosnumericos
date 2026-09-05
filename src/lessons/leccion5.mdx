@@ -1,0 +1,1506 @@
+---
+---
+
+import {Pizarron1,
+        Pizarron2,
+        Pizarron3,
+        Pizarron4,
+        Pizarron5,
+        Pizarron6,
+        Pizarron7,
+        Pizarron8,
+        Pizarron9,
+        Pizarron10,
+        Pizarron11,
+        Pizarron12,
+        Pizarron13,
+        Pizarron14,
+        Pizarron15,
+        Pizarron16,
+        Pizarron17,
+        Pizarron18,
+} from "../components/pizzaras/pizarra5";
+
+
+# Interpolación Numérica
+
+## 1. Concepto de interpolación
+
+### Introducción
+
+En numerosos problemas de ingeniería se dispone de información únicamente en ciertos puntos. Por ejemplo, puede conocerse la temperatura a las 10:00 y a las 11:00, pero no a las 10:30. La interpolación permite estimar ese valor intermedio utilizando los datos conocidos.
+
+### Definición de interpolación
+
+La **interpolación** es un procedimiento matemático que permite estimar el valor de una variable dentro de un intervalo delimitado por datos conocidos.
+
+El proceso general puede representarse como:
+
+$$$
+\text{Datos conocidos}
+\rightarrow
+\text{Función interpolante}
+\rightarrow
+\text{Valor estimado}
+$$$
+
+### Datos conocidos y valor buscado
+
+Supóngase que se conocen los valores:
+
+$$$
+(x_0,y_0)
+$$$
+
+y
+
+$$$
+(x_1,y_1)
+$$$
+
+y se desea estimar el valor de (y) correspondiente a un punto (x) ubicado entre (x_0) y (x_1).
+
+La interpolación construye una función que pasa por los datos conocidos y permite evaluar ese punto intermedio.
+
+### Interpretación gráfica
+
+En una gráfica, los datos experimentales aparecen como puntos aislados. La función interpolante conecta esos puntos mediante una línea o curva.
+
+El valor desconocido se obtiene evaluando la curva en una posición intermedia.
+
+### Ejemplo cotidiano
+
+Si la temperatura es:
+
+$$$
+20^\circ\text{C}
+$$$
+
+a las 10:00 y:
+
+$$$
+24^\circ\text{C}
+$$$
+
+a las 11:00, puede estimarse una temperatura intermedia para las 10:30.
+
+Si el cambio es aproximadamente uniforme, el valor estimado sería cercano a:
+
+$$$
+22^\circ\text{C}
+$$$
+
+### Limitaciones
+
+La interpolación no determina necesariamente el valor exacto. La calidad de la estimación depende de:
+
+* La cantidad de datos.
+* La distribución de los puntos.
+* El comportamiento real del fenómeno.
+* El método seleccionado.
+* La presencia de ruido experimental.
+
+## Resumen
+
+Interpolar significa estimar un valor situado dentro de un intervalo conocido. Para hacerlo se construye una función que representa el comportamiento de los datos disponibles.
+<Pizarron1/>
+---
+
+## 2. Datos discretos y funciones continuas
+
+### Introducción
+
+Los experimentos y mediciones suelen proporcionar datos en posiciones específicas. Sin embargo, muchos problemas requieren conocer el comportamiento de una variable en todos los puntos de un intervalo.
+
+### Datos discretos
+
+Un conjunto de datos discretos está formado por pares ordenados como:
+
+| (x) | (y) |
+| --: | --: |
+|   1 |   2 |
+|   2 |   4 |
+|   3 |   8 |
+
+Estos datos solo informan los valores de la variable en (x=1), (x=2) y (x=3).
+
+No proporcionan directamente el valor de (y) para posiciones como:
+
+$$$
+x=1.5
+$$$
+
+o:
+
+$$$
+x=2.7
+$$$
+
+### Función continua
+
+Una función continua permite estimar el valor de la variable para cualquier punto dentro del intervalo.
+
+La interpolación transforma conceptualmente:
+
+$$$
+\text{Puntos discretos}
+\rightarrow
+\text{Función continua}
+$$$
+
+La función obtenida debe pasar por los puntos conocidos.
+
+### Origen de los datos discretos
+
+Los datos discretos pueden provenir de:
+
+* Mediciones experimentales.
+* Tablas técnicas.
+* Simulaciones.
+* Sensores.
+* Ensayos de laboratorio.
+* Registros históricos.
+
+### Diferencia entre dato y modelo
+
+Los puntos medidos constituyen la información disponible. La función interpolante es una representación matemática construida a partir de esa información.
+
+Por ello, la función no debe confundirse con el fenómeno real. Es una aproximación diseñada para estimar valores entre los datos.
+
+### Sede la forma de la función
+
+La función interpolante puede ser:
+
+* Lineal.
+* Polinomial.
+* Construida mediante Lagrange.
+* Construida mediante Newton.
+* Formada por splines.
+
+La edepende de la cantidad y distribución de los datos.
+
+## Resumen
+
+Los experimentos producen valores discretos. La interpolación construye una función continua que permite estimar el comportamiento entre esos puntos.
+<Pizarron2/>
+---
+
+## 3. Interpolación y extrapolación
+
+### Introducción
+
+La interpolación y la extrapolación emplean datos conocidos para estimar valores, pero se aplican en regiones diferentes.
+
+### Interpolación
+
+Se realiza cuando el valor buscado se encuentra dentro del intervalo cubierto por los datos.
+
+Si se conocen valores en:
+
+$$$
+x=1,\quad x=2,\quad x=3
+$$$
+
+estimar el valor en:
+
+$$$
+x=2.5
+$$$
+
+es un problema de interpolación.
+
+### Extrapolación
+
+Se realiza cuando el valor buscado está fuera del intervalo conocido.
+
+Con los mismos datos, estimar el valor en:
+
+$$$
+x=4
+$$$
+
+es una extrapolación.
+
+### Diferencia de confiabilidad
+
+La interpolación suele ser más confiable porque utiliza información a ambos lados del punto buscado.
+
+La extrapolación prolonga una tendencia más allá de la región observada. Esto implica mayor incertidumbre porque el fenómeno puede cambiar fuera del intervalo.
+
+### Ejemplo
+
+Supóngase que se dispone de datos de temperatura entre las 8:00 y las 12:00.
+
+Estimar la temperatura a las 10:00 corresponde a interpolación.
+
+Estimar la temperatura a las 15:00 corresponde a extrapolación.
+
+La segunda estimación es menos segura porque pueden ocurrir cambios no representados en los datos anteriores.
+
+### Riesgos de extrapolación
+
+La extrapolación puede fallar cuando:
+
+* El fenómeno cambia de tendencia.
+* Existen límites físicos.
+* Aparecen nuevas condiciones.
+* El modelo utilizado solo es válido localmente.
+* Los datos disponibles cubren un intervalo muy pequeño.
+
+## Resumen
+
+La interpolación estima dentro del intervalo conocido y suele ofrecer mayor confiabilidad. La extrapolación estima fuera del intervalo y presenta una incertidumbre mayor.
+<Pizarron3/>
+---
+
+## 4. Interpolación lineal
+
+### Introducción
+
+La interpolación lineal es el método más sencillo. Se utiliza cuando se dispone de dos puntos y se supone que el comportamiento entre ellos puede representarse mediante una recta.
+
+### Ecuación de la recta interpolante
+
+Dados dos puntos:
+
+$$$
+(x_0,y_0)
+$$$
+
+y
+
+$$$
+(x_1,y_1)
+$$$
+
+el polinomio lineal interpolante es:
+
+$$$
+P_1(x)=y_0+\frac{y_1-y_0}{x_1-x_0}(x-x_0)
+$$$
+
+### Interpretación de la fórmula
+
+La expresión:
+
+$$$
+\frac{y_1-y_0}{x_1-x_0}
+$$$
+
+representa la pendiente de la recta que une ambos puntos.
+
+La diferencia:
+
+$$$
+x-x_0
+$$$
+
+indica cuánto se ha avanzado desde el primer dato.
+
+### Forma equivalente
+
+La fórmula también puede escribirse como:
+
+$$$
+P_1(x)=
+\frac{x_1-x}{x_1-x_0}y_0
++
+\frac{x-x_0}{x_1-x_0}y_1
+$$$
+
+Esta forma muestra que el valor interpolado es una combinación ponderada de (y_0) y (y_1).
+
+### Suposición principal
+
+La interpolación lineal supone que el cambio entre los dos puntos es uniforme.
+
+Esta aproximación suele ser razonable cuando:
+
+* Los puntos están próximos.
+* El fenómeno cambia lentamente.
+* La curvatura real es pequeña.
+* No se requiere una exactitud muy elevada.
+
+### Limitaciones
+
+El método puede producir errores importantes si la función real presenta una curvatura fuerte entre los puntos.
+
+## Resumen
+
+La interpolación lineal conecta dos datos mediante una recta. Es sencilla y eficiente, pero su calidad depende de que el comportamiento real sea aproximadamente lineal en el intervalo.
+<Pizarron4/>
+---
+
+## 5. Ejemplo de interpolación lineal
+
+### Introducción
+
+La aplicación paso a paso de la fórmula permite comprender cómo se relaciona el cálculo algebraico con la posición del punto sobre una recta.
+
+### Datos del problema
+
+Se conocen los puntos:
+
+$$$
+(2,10)
+$$$
+
+y:
+
+$$$
+(6,30)
+$$$
+
+Se desea estimar el valor de (y) cuando:
+
+$$$
+x=4
+$$$
+
+### Sustitución en la fórmula
+
+La fórmula es:
+
+$$$
+P_1(x)=y_0+\frac{y_1-y_0}{x_1-x_0}(x-x_0)
+$$$
+
+Sustituyendo:
+
+$$$
+P_1(4)=10+\frac{30-10}{6-2}(4-2)
+$$$
+
+### Cálculo de la pendiente
+
+$$$
+\frac{30-10}{6-2}=\frac{20}{4}=5
+$$$
+
+Entonces:
+
+$$$
+P_1(4)=10+5(2)
+$$$
+
+$$$
+P_1(4)=20
+$$$
+
+### Resultado
+
+El valor interpolado es:
+
+$$$
+\boxed{P_1(4)=20}
+$$$
+
+### Interpretación gráfica
+
+El valor (x=4) se encuentra exactamente a la mitad entre (x=2) y (x=6).
+
+Como la recta crece uniformemente entre (y=10) y (y=30), el valor correspondiente también se encuentra a la mitad:
+
+$$$
+\frac{10+30}{2}=20
+$$$
+
+### Verificación
+
+El polinomio lineal resultante puede simplificarse:
+
+$$$
+P_1(x)=10+5(x-2)
+$$$
+
+$$$
+P_1(x)=5x
+$$$
+
+Al evaluar:
+
+$$$
+P_1(4)=5(4)=20
+$$$
+
+## Resumen
+
+La interpolación lineal utiliza la pendiente entre dos puntos para estimar un valor intermedio. El resultado puede interpretarse tanto algebraica como gráficamente.
+<Pizarron5/>
+---
+
+## 6. Interpolación polinomial
+
+### Introducción
+
+Una recta puede ser insuficiente para representar fenómenos curvos. En esos casos se emplean polinomios de grado mayor.
+
+### Relación entre puntos y grado
+
+En general:
+
+* Dos puntos determinan un polinomio de grado máximo uno.
+* Tres puntos determinan un polinomio de grado máximo dos.
+* Cuatro puntos determinan un polinomio de grado máximo tres.
+* (n+1) puntos determinan un polinomio de grado máximo (n).
+
+### Forma general
+
+Un polinomio de grado (n) se escribe como:
+
+$$$
+P_n(x)=a_0+a_1x+a_2x^2+\cdots+a_nx^n
+$$$
+
+Los coeficientes:
+
+$$$
+a_0,a_1,\ldots,a_n
+$$$
+
+se calculan de manera que el polinomio pase exactamente por todos los puntos conocidos.
+
+### Mayor grado y flexibilidad
+
+Un polinomio de grado mayor puede adaptarse a formas más complejas.
+
+Por ejemplo:
+
+* Una recta solo representa crecimiento o disminución constante.
+* Una parábola puede representar curvatura.
+* Un polinomio cúbico puede cambiar su concavidad.
+
+### Condición de interpolación
+
+Si se conocen los puntos:
+
+$$$
+(x_i,y_i)
+$$$
+
+el polinomio debe satisfacer:
+
+$$$
+P_n(x_i)=y_i
+$$$
+
+para cada dato.
+
+### Riesgos del grado elevado
+
+Aumentar el grado no garantiza una mejor aproximación. Los polinomios de alto grado pueden:
+
+* Oscilar entre los puntos.
+* Ser sensibles a pequeños cambios.
+* Generar errores grandes cerca de los extremos.
+* Resultar difíciles de evaluar numéricamente.
+
+## Resumen
+
+La interpolación polinomial utiliza un polinomio que pasa por todos los datos. Más puntos permiten mayor flexibilidad, pero también pueden generar inestabilidad y oscilaciones.
+<Pizarron6/>
+---
+
+## 7. Construcción mediante un sistema de ecuaciones
+
+### Introducción
+
+Un polinomio interpolante puede obtenerse sustituyendo cada punto conocido en su forma general y resolviendo el sistema resultante.
+
+### Ejemplo con tres puntos
+
+Supóngase que se conocen:
+
+$$$
+(x_0,y_0),\quad(x_1,y_1),\quad(x_2,y_2)
+$$$
+
+Se busca un polinomio cuadrático:
+
+$$$
+P_2(x)=a_0+a_1x+a_2x^2
+$$$
+
+### Ecuaciones generadas por los puntos
+
+Al sustituir el primer punto:
+
+$$$
+a_0+a_1x_0+a_2x_0^2=y_0
+$$$
+
+Con el segundo:
+
+$$$
+a_0+a_1x_1+a_2x_1^2=y_1
+$$$
+
+Con el tercero:
+
+$$$
+a_0+a_1x_2+a_2x_2^2=y_2
+$$$
+
+Se obtiene un sistema de tres ecuaciones con tres incógnitas.
+
+### Forma matricial
+
+El sistema puede escribirse como:
+
+$$$
+\begin{bmatrix}
+1 & x_0 & x_0^2\\
+1 & x_1 & x_1^2\\
+1 & x_2 & x_2^2
+\end{bmatrix}
+\begin{bmatrix}
+a_0\\
+a_1\\
+a_2
+\end{bmatrix}
+=
+
+\begin{bmatrix}
+y_0\\
+y_1\\
+y_2
+\end{bmatrix}
+$$$
+
+Esta matriz se conoce como matriz de Vandermonde.
+
+### Interpretación
+
+Cada punto aporta una condición y, por tanto, una ecuación.
+
+Para determinar un polinomio de grado (n) se requieren (n+1) coeficientes y, por ello, (n+1) datos distintos.
+
+### Limitaciones del procedimiento
+
+Aunque el método es directo, puede ser poco conveniente cuando:
+
+* Existen muchos puntos.
+* La matriz está mal condicionada.
+* Se agregan nuevos datos.
+* Se requiere recalcular el sistema completo.
+
+## Resumen
+
+Un polinomio interpolante puede construirse resolviendo un sistema de ecuaciones. Cada punto proporciona una condición necesaria para determinar los coeficientes.
+<Pizarron7/>
+---
+
+## 8. Método de Lagrange
+
+### Introducción
+
+El método de Lagrange permite construir el polinomio interpolante directamente, sin resolver un sistema de ecuaciones para los coeficientes.
+
+### Fórmula general
+
+Para (n+1) puntos:
+
+$$$
+(x_0,y_0),\ldots,(x_n,y_n)
+$$$
+
+el polinomio de Lagrange es:
+
+$$$
+P_n(x)=\sum_{i=0}^{n}y_iL_i(x)
+$$$
+
+donde:
+
+$$$
+L_i(x)=
+\prod_{\substack{j=0\\j\neq i}}^{n}
+\frac{x-x_j}{x_i-x_j}
+$$$
+
+### Propiedad fundamental
+
+Cada polinomio base cumple:
+
+$$$
+L_i(x_i)=1
+$$$
+
+y:
+
+$$$
+L_i(x_j)=0
+\qquad
+\text{para }j\neq i
+$$$
+
+Esto significa que cada término selecciona uno de los valores (y_i) y anula los demás en los nodos conocidos.
+
+### Caso de tres puntos
+
+Para tres datos se tiene:
+
+$$$
+P_2(x)=y_0L_0(x)+y_1L_1(x)+y_2L_2(x)
+$$$
+
+con:
+
+$$$
+L_0(x)=
+\frac{(x-x_1)(x-x_2)}
+{(x_0-x_1)(x_0-x_2)}
+$$$
+
+$$$
+L_1(x)=
+\frac{(x-x_0)(x-x_2)}
+{(x_1-x_0)(x_1-x_2)}
+$$$
+
+$$$
+L_2(x)=
+\frac{(x-x_0)(x-x_1)}
+{(x_2-x_0)(x_2-x_1)}
+$$$
+
+### Ventajas
+
+* Proporciona una fórmula explícita.
+* No requiere resolver un sistema.
+* Funciona con puntos no uniformemente espaciados.
+* Es fácil de formular para pocos datos.
+
+### Limitaciones
+
+Si se agrega un punto nuevo, es necesario reconstruir todos los polinomios base.
+
+Además, para muchos puntos la expresión puede volverse extensa y costosa de evaluar.
+
+## Resumen
+
+Lagrange construye el polinomio como una suma de funciones base. Cada función vale uno en un nodo y cero en los demás.
+<Pizarron8/>
+---
+
+## 9. Ejemplo del método de Lagrange
+
+### Introducción
+
+La aplicación de Lagrange permite comprobar cómo el polinomio resultante reproduce exactamente los datos conocidos.
+
+### Datos
+
+Se tienen los puntos:
+
+$$$
+(1,1),\quad(2,4),\quad(3,9)
+$$$
+
+Estos valores corresponden a la función:
+
+$$$
+f(x)=x^2
+$$$
+
+aunque inicialmente puede suponerse que la función es desconocida.
+
+### Construcción de (L_0(x))
+
+$$$
+L_0(x)=
+\frac{(x-2)(x-3)}
+{(1-2)(1-3)}
+$$$
+
+$$$
+L_0(x)=\frac{(x-2)(x-3)}{2}
+$$$
+
+### Construcción de (L_1(x))
+
+$$$
+L_1(x)=
+\frac{(x-1)(x-3)}
+{(2-1)(2-3)}
+$$$
+
+$$$
+L_1(x)=-(x-1)(x-3)
+$$$
+
+### Construcción de (L_2(x))
+
+$$$
+L_2(x)=
+\frac{(x-1)(x-2)}
+{(3-1)(3-2)}
+$$$
+
+$$$
+L_2(x)=\frac{(x-1)(x-2)}{2}
+$$$
+
+### Formación del polinomio
+
+$$$
+P_2(x)=1L_0(x)+4L_1(x)+9L_2(x)
+$$$
+
+Sustituyendo:
+
+$$$
+P_2(x)=
+\frac{(x-2)(x-3)}{2}
+-4(x-1)(x-3)
++\frac{9(x-1)(x-2)}{2}
+$$$
+
+### Simplificación
+
+Al desarrollar y reducir términos se obtiene:
+
+$$$
+P_2(x)=x^2
+$$$
+
+### Verificación
+
+$$$
+P_2(1)=1
+$$$
+
+$$$
+P_2(2)=4
+$$$
+
+$$$
+P_2(3)=9
+$$$
+
+El polinomio pasa exactamente por los tres puntos.
+
+### Interpretación
+
+Como los datos provienen de una función cuadrática y se utilizaron tres puntos distintos, el método recupera exactamente la función original.
+
+## Resumen
+
+El método de Lagrange construye una expresión que reproduce todos los datos conocidos. En este caso, el polinomio interpolante coincide con (x^2).
+<Pizarron9/>
+---
+
+## 10. Interpolación de Newton
+
+### Introducción
+
+El método de Newton construye el polinomio de manera progresiva. Esta característica resulta útil cuando se incorporan nuevos puntos.
+
+### Forma general
+
+El polinomio de Newton se expresa como:
+
+$$$
+P_n(x)=
+b_0+
+b_1(x-x_0)+
+b_2(x-x_0)(x-x_1)+\cdots
++b_n(x-x_0)(x-x_1)\cdots(x-x_{n-1})
+$$$
+
+Los coeficientes (b_i) se obtienen mediante diferencias divididas.
+
+### Construcción progresiva
+
+Con un punto:
+
+$$$
+P_0(x)=b_0
+$$$
+
+Con dos puntos:
+
+$$$
+P_1(x)=b_0+b_1(x-x_0)
+$$$
+
+Con tres puntos:
+
+$$$
+P_2(x)=P_1(x)+b_2(x-x_0)(x-x_1)
+$$$
+
+Cada nuevo dato agrega un término al polinomio existente.
+
+### Ventaja al incorporar datos
+
+Si se añade un nuevo punto, no es necesario reconstruir completamente el polinomio. Basta con calcular una nueva diferencia dividida y agregar un término.
+
+### Comparación con Lagrange
+
+Lagrange y Newton producen el mismo polinomio interpolante, aunque utilizan formas algebraicas diferentes.
+
+Lagrange resulta directo para un conjunto fijo de puntos.
+
+Newton suele ser más conveniente cuando:
+
+* Se agregan datos progresivamente.
+* Se requiere una tabla de coeficientes.
+* Se desea una evaluación eficiente.
+
+## Resumen
+
+Newton representa el polinomio de forma incremental. Cada nuevo dato genera un coeficiente y un término adicional.
+<Pizarron10/>
+---
+
+## 11. Diferencias divididas de Newton
+
+### Introducción
+
+Las diferencias divididas permiten obtener los coeficientes del polinomio de Newton cuando los puntos no necesariamente están igualmente espaciados.
+
+### Diferencia dividida de orden cero
+
+La diferencia de orden cero es simplemente:
+
+$$$
+f[x_i]=f(x_i)
+$$$
+
+### Primera diferencia dividida
+
+Entre dos puntos:
+
+$$$
+f[x_i,x_{i+1}]
+=
+
+\frac{f(x_{i+1})-f(x_i)}
+{x_{i+1}-x_i}
+$$$
+
+Esta expresión representa una pendiente promedio.
+
+### Segunda diferencia dividida
+
+Se calcula mediante:
+
+$$$
+f[x_i,x_{i+1},x_{i+2}]
+=
+
+\frac{
+f[x_{i+1},x_{i+2}]
+-
+
+f[x_i,x_{i+1}]
+}{
+x_{i+2}-x_i
+}
+$$$
+
+### Forma general
+
+Las diferencias de orden superior se construyen recursivamente:
+
+$$$
+f[x_i,\ldots,x_{i+k}]
+=
+
+\frac{
+f[x_{i+1},\ldots,x_{i+k}]
+-
+
+f[x_i,\ldots,x_{i+k-1}]
+}{
+x_{i+k}-x_i
+}
+$$$
+
+### Coeficientes del polinomio
+
+Los coeficientes de Newton se toman de la parte superior de cada columna:
+
+$$$
+b_0=f[x_0]
+$$$
+
+$$$
+b_1=f[x_0,x_1]
+$$$
+
+$$$
+b_2=f[x_0,x_1,x_2]
+$$$
+
+y así sucesivamente.
+
+### Tabla triangular
+
+La tabla se organiza con columnas correspondientes a:
+
+* (x).
+* (f(x)).
+* Primeras diferencias.
+* Segundas diferencias.
+* Diferencias de orden superior.
+
+Cada columna genera un coeficiente nuevo.
+
+## Resumen
+
+Las diferencias divididas organizan el cálculo de los coeficientes de Newton. Funcionan incluso cuando los puntos poseen espaciamientos diferentes.
+<Pizarron11/>
+---
+
+## 12. Diferencias finitas
+
+### Introducción
+
+Cuando los datos están igualmente espaciados, las diferencias divididas pueden simplificarse mediante diferencias finitas.
+
+### Espaciamiento uniforme
+
+Los nodos cumplen:
+
+$$$
+x_{i+1}-x_i=h
+$$$
+
+donde (h) es constante.
+
+Por ejemplo:
+
+$$$
+x=0,\ 1,\ 2,\ 3
+$$$
+
+posee:
+
+$$$
+h=1
+$$$
+
+### Primera diferencia
+
+Se define como:
+
+$$$
+\Delta y_i=y_{i+1}-y_i
+$$$
+
+### Segunda diferencia
+
+$$$
+\Delta^2y_i=
+\Delta y_{i+1}-\Delta y_i
+$$$
+
+### Tercera diferencia
+
+$$$
+\Delta^3y_i=
+\Delta^2y_{i+1}-\Delta^2y_i
+$$$
+
+### Tabla de diferencias
+
+La tabla incluye columnas como:
+
+| $x$ | $y$ | $\Delta y$ | $\Delta^2y$ | $\Delta^3y$ |
+| --: | --: | ---------: | ----------: | ----------: |
+
+Las diferencias se calculan de manera sucesiva.
+
+### Relación con el grado del polinomio
+
+Para datos generados por un polinomio:
+
+* Un polinomio lineal tiene primeras diferencias constantes.
+* Un polinomio cuadrático tiene segundas diferencias constantes.
+* Un polinomio cúbico tiene terceras diferencias constantes.
+
+### Restricción principal
+
+Las fórmulas de diferencias finitas requieren que el espaciamiento entre los nodos sea uniforme.
+
+Si los valores de (x) no están igualmente separados, deben utilizarse diferencias divididas.
+
+## Resumen
+
+Las diferencias finitas simplifican la interpolación cuando los datos poseen un paso constante. Su estructura permite reconocer también el grado del comportamiento polinomial.
+<Pizarron12/>
+---
+
+## 13. Splines cúbicos
+
+### Introducción
+
+Un polinomio único de grado elevado puede presentar oscilaciones no deseadas. Los splines evitan este problema construyendo varios polinomios de bajo grado, uno en cada intervalo.
+
+### Interpolación por tramos
+
+En lugar de utilizar un solo polinomio para todos los puntos, se define:
+
+$$$
+S_i(x)
+$$$
+
+en cada intervalo:
+
+$$$
+[x_i,x_{i+1}]
+$$$
+
+Cada tramo puede representarse mediante un polinomio cúbico:
+
+$$$
+S_i(x)=a_i+b_i(x-x_i)+c_i(x-x_i)^2+d_i(x-x_i)^3
+$$$
+
+### Condiciones de interpolación
+
+Cada spline debe pasar por los extremos de su intervalo:
+
+$$$
+S_i(x_i)=y_i
+$$$
+
+$$$
+S_i(x_{i+1})=y_{i+1}
+$$$
+
+### Condiciones de suavidad
+
+En los puntos de unión se exige continuidad de:
+
+* La función.
+* La primera derivada.
+* La segunda derivada.
+
+Estas condiciones producen una curva suave, sin esquinas ni cambios bruscos de curvatura.
+
+### Splines naturales
+
+En un spline cúbico natural se impone:
+
+$$$
+S''(x_0)=0
+$$$
+
+y:
+
+$$$
+S''(x_n)=0
+$$$
+
+Estas condiciones simplifican el comportamiento en los extremos.
+
+### Ventajas
+
+Los splines:
+
+* Evitan grandes oscilaciones.
+* Funcionan bien con muchos datos.
+* Producen curvas suaves.
+* Tienen buen comportamiento numérico.
+* Permiten modificar localmente una parte sin alterar toda la curva.
+
+### Aplicaciones
+
+Son comunes en:
+
+* Diseño asistido por computadora.
+* Trayectorias.
+* Gráficos computacionales.
+* Tablas experimentales.
+* Reconstrucción de señales.
+
+## Resumen
+
+Los splines cúbicos construyen una curva suave mediante varios polinomios de tercer grado. Son especialmente útiles para grandes conjuntos de datos.
+<Pizarron13/>
+---
+
+## 14. Error de interpolación y fenómeno de Runge
+
+### Introducción
+
+Una función interpolante coincide con los datos conocidos, pero puede diferir de la función real entre los nodos.
+
+### Error de interpolación
+
+El error en un punto (x) se define como:
+
+$$$
+E(x)=f(x)-P_n(x)
+$$$
+
+donde:
+
+* (f(x)) es la función real.
+* (P_n(x)) es el polinomio interpolante.
+
+### Fórmula del error polinomial
+
+Si la función posee suficientes derivadas, el error puede expresarse como:
+
+$$$
+E(x)=
+\frac{f^{(n+1)}(\xi)}
+{(n+1)!}
+\prod_{i=0}^{n}(x-x_i)
+$$$
+
+para algún valor $\xi$ dentro del intervalo.
+
+### Factores que influyen en el error
+
+El error depende de:
+
+* La forma de la función.
+* El grado del polinomio.
+* La posición de los nodos.
+* La distancia entre ellos.
+* La ubicación del punto interpolado.
+
+### Fenómeno de Runge
+
+El fenómeno de Runge ocurre cuando un polinomio de grado elevado oscila fuertemente, especialmente cerca de los extremos del intervalo.
+
+Esto puede suceder incluso si el polinomio pasa exactamente por todos los puntos.
+
+### Más grado no siempre significa mayor calidad
+
+Agregar puntos igualmente espaciados y aumentar el grado puede empeorar la aproximación.
+
+Para reducir el problema pueden utilizarse:
+
+* Splines.
+* Nodos distribuidos de manera adecuada.
+* Polinomios por tramos.
+* Nodos de Chebyshev.
+
+### Error en los nodos
+
+En los puntos utilizados para interpolar:
+
+$$$
+P_n(x_i)=f(x_i)
+$$$
+
+por lo que el error es cero.
+
+Sin embargo, entre los nodos puede ser diferente de cero e incluso crecer considerablemente.
+
+## Resumen
+
+El polinomio interpolante pasa por todos los datos, pero no necesariamente reproduce bien la función entre ellos. Los polinomios de grado elevado pueden generar oscilaciones importantes.
+<Pizarron14/>
+---
+
+## 15. Interpolación y ajuste de curvas
+
+### Introducción
+
+No siempre es conveniente construir una función que pase exactamente por todos los puntos. Cuando los datos contienen ruido, puede ser preferible identificar una tendencia general.
+
+### Interpolación
+
+La interpolación obliga a que la función cumpla:
+
+$$$
+P(x_i)=y_i
+$$$
+
+para todos los datos.
+
+Por tanto, la curva pasa exactamente por cada punto.
+
+### Ajuste de curvas
+
+El ajuste busca una función que represente la tendencia de los datos, aunque no pase exactamente por todos ellos.
+
+En una regresión se busca minimizar alguna medida global del error, como:
+
+$$$
+\sum_{i=1}^{n}
+\left(y_i-\hat{y}_i\right)^2
+$$$
+
+### Comparación
+
+| Interpolación                             | Ajuste o regresión                    |
+| ------- | --- |
+| Pasa por todos los puntos.                | Sigue la tendencia general.           |
+| Adecuada para datos considerados exactos. | Adecuada para datos con ruido.        |
+| El error en los nodos es cero.            | Puede existir error en cada dato.     |
+| Puede oscilar con muchos puntos.          | Suaviza fluctuaciones experimentales. |
+| Estima valores intermedios.               | Modela relaciones generales.          |
+
+### Ejemplo experimental
+
+Si se mide una variable con un sensor, los datos pueden incluir pequeñas variaciones aleatorias.
+
+Una curva interpolante podría reproducir cada fluctuación como si fuera real.
+
+Una curva de ajuste busca representar el comportamiento dominante y reducir el efecto del ruido.
+
+### Elección
+
+Debe utilizarse interpolación cuando:
+
+* Los datos son confiables.
+* Se necesita pasar exactamente por ellos.
+* Se desean valores intermedios.
+
+Debe utilizarse ajuste cuando:
+
+* Existe ruido experimental.
+* Interesa la tendencia.
+* Se busca un modelo general.
+* No es necesario reproducir cada medición.
+
+## Resumen
+
+La interpolación reproduce exactamente los datos, mientras que el ajuste de curvas representa su tendencia. La edepende de la naturaleza y confiabilidad de la información.
+<Pizarron15/>
+---
+
+## 16. Aplicaciones de la interpolación
+
+### Introducción
+
+La interpolación aparece en numerosas áreas de ingeniería porque permite estimar valores no medidos directamente.
+
+### Ingeniería civil
+
+Se utiliza para:
+
+* Estimar elevaciones en levantamientos topográficos.
+* Construir perfiles de terreno.
+* Obtener propiedades de materiales a temperaturas intermedias.
+* Representar curvas de carga y deformación.
+
+### Ingeniería mecánica
+
+Permite:
+
+* Estimar propiedades termodinámicas.
+* Construir trayectorias de mecanismos.
+* Representar perfiles de velocidad.
+* Diseñar superficies en sistemas CAD.
+* Consultar tablas de materiales.
+
+### Ingeniería eléctrica
+
+Se aplica en:
+
+* Reconstrucción de señales.
+* Estimación de valores entre muestras.
+* Calibración de sensores.
+* Tablas de componentes.
+* Procesamiento digital.
+
+### Ingeniería química
+
+Se emplea para:
+
+* Consultar propiedades físicas.
+* Estimar concentraciones.
+* Construir curvas de equilibrio.
+* Obtener valores intermedios de temperatura y presión.
+* Procesar datos experimentales.
+
+### Computación
+
+Sus aplicaciones incluyen:
+
+* Escalado de imágenes.
+* Animación.
+* Gráficos por computadora.
+* Reconstrucción de superficies.
+* Procesamiento de señales.
+* Visualización científica.
+
+### Tablas técnicas
+
+Muchas propiedades se presentan en tablas discretas. La interpolación permite calcular valores intermedios sin realizar un experimento nuevo.
+
+## Resumen
+
+La interpolación conecta datos discretos y valores continuos en múltiples áreas de la ingeniería, la ciencia y la computación.
+<Pizarron16/>
+---
+
+## 17. Sedel método de interpolación
+
+### Introducción
+
+No existe un método de interpolación universalmente superior. La edepende de las características del problema y de los datos.
+
+### Interpolación lineal
+
+Es adecuada cuando:
+
+* Solo existen dos puntos.
+* El intervalo es pequeño.
+* El fenómeno es aproximadamente lineal.
+* Se requiere un cálculo rápido.
+
+Su principal ventaja es la simplicidad.
+
+### Lagrange
+
+Es conveniente cuando:
+
+* Existen pocos puntos.
+* Los nodos no son uniformes.
+* No se agregarán datos nuevos.
+* Se desea una fórmula explícita.
+
+Su desventaja es que debe reconstruirse si cambia el conjunto de puntos.
+
+### Newton con diferencias divididas
+
+Es recomendable cuando:
+
+* Los puntos no están igualmente espaciados.
+* Se agregarán nuevos datos.
+* Se desea una construcción progresiva.
+* Se requiere reutilizar cálculos anteriores.
+
+### Newton con diferencias finitas
+
+Se utiliza cuando:
+
+* Los datos están igualmente espaciados.
+* Existe un paso constante.
+* Se dispone de tablas ordenadas.
+* Se busca simplificar el cálculo.
+
+### Splines
+
+Son apropiados cuando:
+
+* Existen muchos puntos.
+* Se necesita una curva suave.
+* Se desean evitar oscilaciones.
+* Importa la continuidad de las derivadas.
+* Se trabaja con diseño geométrico o trayectorias.
+
+### Factores de decisión
+
+La sedebe considerar:
+
+* Número de datos.
+* Distribución de los nodos.
+* Suavidad requerida.
+* Precisión deseada.
+* Costo computacional.
+* Posibilidad de agregar datos.
+* Presencia de ruido.
+* Riesgo de oscilaciones.
+
+### Resumen comparativo
+
+| Método              | Uso principal                           |
+| -- | ----- |
+| Lineal              | Dos puntos o comportamiento casi lineal |
+| Lagrange            | Pocos puntos y conjunto fijo            |
+| Newton              | Incorporación progresiva de datos       |
+| Diferencias finitas | Datos igualmente espaciados             |
+| Splines             | Muchos datos y necesidad de suavidad    |
+
+## Resumen
+
+La edel método depende de la estructura de los datos y del propósito del análisis. Seleccionar adecuadamente la herramienta es tan importante como aplicar correctamente la fórmula.
+<Pizarron17/>
+---
+
+## 18. Integración de los métodos de interpolación
+
+### Introducción
+
+La interpolación reúne conceptos relacionados con datos discretos, funciones continuas, construcción de polinomios, estimación y control del error.
+
+### Proceso general
+
+El proceso puede representarse como:
+
+$$$
+\text{Datos discretos}
+\rightarrow
+\text{Método de interpolación}
+\rightarrow
+\text{Función interpolante}
+\rightarrow
+\text{Valor estimado}
+$$$
+
+La estimación debe realizarse dentro del intervalo conocido para mantener una confiabilidad razonable.
+
+### Métodos principales
+
+#### Interpolación lineal
+
+Une dos puntos mediante una recta.
+
+#### Interpolación polinomial
+
+Construye un polinomio que pasa por todos los datos.
+
+#### Lagrange
+
+Utiliza polinomios base que seleccionan cada valor conocido.
+
+#### Newton
+
+Construye el polinomio progresivamente mediante diferencias divididas.
+
+#### Diferencias finitas
+
+Simplifica el procedimiento cuando los nodos están igualmente espaciados.
+
+#### Splines
+
+Construye polinomios por tramos para producir curvas suaves.
+
+### Error de interpolación
+
+El hecho de que una función pase por los puntos conocidos no garantiza que represente perfectamente el fenómeno real.
+
+El error depende de:
+
+* La forma de la función.
+* El número y posición de los datos.
+* El método elegido.
+* El grado del polinomio.
+* La región donde se evalúa.
+
+### Interpolación y extrapolación
+
+La interpolación estima dentro del intervalo de datos.
+
+La extrapolación prolonga el comportamiento fuera de ese intervalo y suele presentar mayor incertidumbre.
+
+### Interpolación y ajuste
+
+La interpolación pasa por todos los puntos.
+
+El ajuste de curvas busca representar la tendencia y resulta más apropiado cuando existen errores experimentales o ruido.
+
+### Ideas fundamentales
+
+* Interpolar significa estimar dentro de un intervalo conocido.
+* Los datos discretos pueden representarse mediante una función continua.
+* Un polinomio de mayor grado no siempre produce una mejor aproximación.
+* Los splines ofrecen estabilidad y suavidad en conjuntos numerosos.
+* El método debe seleccionarse según la estructura y calidad de los datos.
+* La extrapolación requiere mayor precaución que la interpolación.
+
+## Resumen
+
+La interpolación es una herramienta fundamental para estimar valores intermedios a partir de información conocida. Su aplicación confiable exige seleccionar el método adecuado, interpretar sus supuestos y evaluar el posible error de la aproximación.
+<Pizarron18/>

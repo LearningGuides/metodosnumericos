@@ -1,0 +1,411 @@
+---
+---
+
+
+import {Pizarron1,
+        Pizarron2,
+        Pizarron3,
+        Pizarron4,
+        Pizarron5,
+        Pizarron6,
+        Pizarron7,
+        Pizarron8,
+        Pizarron9,
+        Pizarron10,
+        Pizarron11,
+} from "../components/pizzaras/pizarra2";
+
+# Cifras Significativas
+
+## 1. Introducción a las cifras significativas
+
+Toda medición realizada en un laboratorio, un taller o una obra de ingeniería posee un grado de precisión limitado por el instrumento utilizado. Por esta razón, los resultados de una medición no pueden expresarse con una cantidad arbitraria de decimales. Las **cifras significativas** permiten representar únicamente la información que realmente es confiable.
+
+### La importancia de medir correctamente
+
+Al medir una longitud con una regla, un vernier o una cinta métrica, el resultado depende de la precisión del instrumento. Un instrumento más preciso permite obtener una medición con mayor cantidad de información confiable.
+
+Aunque dos instrumentos midan el mismo objeto, el número de cifras significativas puede ser diferente debido a la resolución de cada uno.
+
+### Definición de cifras significativas
+
+Las **cifras significativas** son todos los dígitos conocidos con certeza más un último dígito estimado.
+
+Los dígitos conocidos corresponden a los valores que el instrumento permite leer directamente, mientras que el último dígito representa una estimación realizada por el observador.
+
+### Relación entre medición, precisión y cifras significativas
+
+Existe una relación directa entre estos tres conceptos:
+
+**Medición → Precisión → Cifras significativas**
+
+Una mayor precisión en la medición permite expresar el resultado con un mayor número de cifras significativas.
+
+### Las cifras significativas y la información confiable
+
+Las cifras significativas no modifican el valor físico de una magnitud; únicamente indican cuánta información confiable conocemos sobre ella.
+
+Puede compararse con una fotografía: una imagen de alta resolución contiene más detalles que una de baja resolución, aunque ambas representen el mismo objeto.
+
+## Resumen
+Las cifras significativas constituyen una forma estandarizada de expresar la precisión de una medición. Su uso evita atribuir una exactitud que realmente no posee el instrumento utilizado.
+
+<Pizarron1/>
+---
+
+## 2. Medición, precisión e incertidumbre
+
+
+
+Toda medición experimental está acompañada por un cierto grado de incertidumbre. Ningún instrumento puede proporcionar un valor absolutamente exacto.
+
+### La precisión de los instrumentos
+
+Cada instrumento posee una resolución determinada que establece el menor cambio que puede detectarse.
+
+Por ejemplo:
+
+| Instrumento | Precisión aproximada |
+| ----------- | -------------------- |
+| Regla       | ±1 mm                |
+| Vernier     | ±0.02 mm             |
+| Micrómetro  | ±0.001 mm            |
+
+Mientras mayor sea la precisión del instrumento, menor será la incertidumbre de la medición.
+
+### El último dígito estimado
+
+Al realizar una medición, los primeros dígitos se leen directamente del instrumento, mientras que el último se obtiene mediante una estimación visual.
+
+Por ejemplo, si una pieza mide aproximadamente **12.5 cm**, el valor **12** corresponde a una lectura segura y el **5** representa la mejor estimación posible.
+
+### La incertidumbre en las mediciones
+
+Toda medición presenta incertidumbre debido a diversos factores:
+
+* Limitaciones del instrumento.
+* Posición del observador.
+* Condiciones del ambiente.
+* Técnica de medición.
+
+Por esta razón, nunca puede afirmarse que una medición sea completamente exacta.
+
+## Resumen
+La incertidumbre es una característica inherente a cualquier proceso de medición. Las cifras significativas permiten expresar esa incertidumbre de manera adecuada.
+
+<Pizarron2/>
+---
+
+## 3. Importancia de las cifras significativas
+
+
+
+Las cifras significativas permiten comunicar resultados experimentales de forma clara y coherente con la precisión alcanzada durante la medición.
+
+### Aplicaciones en ingeniería
+
+Su uso es fundamental en diversas actividades:
+
+* Laboratorios experimentales.
+* Diseño de componentes.
+* Procesos de manufactura.
+* Simulaciones computacionales.
+* Control de calidad.
+
+En todos estos casos es indispensable reportar únicamente la información que realmente puede garantizarse.
+
+### Evitar una falsa precisión
+
+Es incorrecto escribir más cifras de las que permite la medición.
+
+Por ejemplo, si una longitud fue medida como **25.4 cm**, escribir **25.400000 cm** sugiere una precisión inexistente y puede conducir a interpretaciones erróneas.
+
+### Comunicación científica
+
+El empleo correcto de las cifras significativas facilita el intercambio de información entre científicos e ingenieros, ya que todos interpretan la precisión de la misma manera.
+
+## Resumen
+Las cifras significativas no solo describen un valor numérico, sino también la confianza que puede depositarse en él.
+
+<Pizarron3/>
+---
+
+## 4. Reglas generales para identificar cifras significativas
+
+
+
+Para determinar cuántas cifras significativas posee un número es necesario aplicar un conjunto de reglas sencillas basadas en la posición de sus dígitos.
+
+### Dígitos distintos de cero
+
+Todos los dígitos diferentes de cero siempre son significativos.
+
+Ejemplo:
+
+* 458 tiene tres cifras significativas.
+
+### Ceros entre dígitos distintos de cero
+
+Los ceros situados entre cifras diferentes de cero siempre cuentan como significativos.
+
+Ejemplo:
+
+* 1005 tiene cuatro cifras significativas.
+
+### Ceros a la izquierda
+
+Los ceros colocados antes del primer dígito distinto de cero no son significativos.
+
+Ejemplo:
+
+* 0.0035 posee únicamente dos cifras significativas.
+
+### Ceros finales en números decimales
+
+Cuando un número contiene punto decimal, los ceros al final son significativos.
+
+Ejemplo:
+
+* 2.500 tiene cuatro cifras significativas.
+
+### Ceros finales en números enteros
+
+En números enteros sin punto decimal, los ceros finales pueden resultar ambiguos y requieren información adicional para determinar si son significativos.
+
+## Resumen
+Comprender la función que desempeñan los ceros permite identificar correctamente las cifras significativas en cualquier número.
+
+<Pizarron4/>
+---
+
+## 5. Clasificación de los ceros
+
+
+
+Los ceros representan el aspecto que genera más confusión al trabajar con cifras significativas. Su interpretación depende exclusivamente de la posición que ocupan dentro del número.
+
+### Números sin ceros
+
+En valores como **45.8**, todas las cifras son significativas.
+
+### Ceros internos
+
+En un número como **1005**, los ceros se encuentran entre cifras distintas de cero, por lo que ambos son significativos.
+
+### Ceros iniciales
+
+En **0.00350**, los ceros ubicados antes del primer dígito diferente de cero únicamente indican la posición del punto decimal y no cuentan como cifras significativas.
+
+### Ceros finales decimales
+
+En **2.500**, todos los ceros finales son significativos porque indican el nivel de precisión alcanzado durante la medición.
+
+### Ceros finales enteros
+
+En un número como **2500**, no puede determinarse únicamente a partir de su escritura cuántas cifras significativas posee. Esta ambigüedad se elimina mediante la notación científica.
+
+## Resumen
+La posición de un cero determina si aporta información sobre la precisión de una medición o simplemente indica la ubicación del punto decimal.
+
+<Pizarron5/>
+---
+
+## 6. Notación científica y cifras significativas
+
+
+
+La notación científica facilita la escritura de números muy grandes o muy pequeños y elimina la ambigüedad relacionada con los ceros finales.
+
+### Forma general
+
+Todo número en notación científica se expresa como:
+
+[
+a \times 10^n
+]
+
+donde **a** es un número mayor o igual que 1 y menor que 10, mientras que **n** es un exponente entero.
+
+### Eliminación de ambigüedad
+
+Considérese el número **2500**.
+
+Puede escribirse como:
+
+* (2.5 \times 10^3): dos cifras significativas.
+* (2.500 \times 10^3): cuatro cifras significativas.
+
+La notación científica indica de manera explícita cuántas cifras son significativas.
+
+### Ventajas
+
+* Evita confusiones.
+* Simplifica cálculos.
+* Facilita la representación de magnitudes muy grandes o muy pequeñas.
+* Expresa claramente la precisión de una medición.
+
+## Resumen
+La notación científica es una herramienta esencial para representar cantidades con precisión y sin ambigüedades.
+
+<Pizarron6/>
+---
+
+## 7. Cifras significativas en suma y resta
+
+
+
+Las operaciones de suma y resta siguen una regla distinta a la utilizada en multiplicaciones y divisiones.
+
+### Regla general
+
+Al sumar o restar, el resultado debe conservar el mismo número de decimales que el dato menos preciso.
+
+### Ejemplo
+
+[
+15.24+2.3=17.54
+]
+
+El segundo número posee únicamente un decimal.
+
+Por lo tanto, el resultado correcto es:
+
+[
+17.5
+]
+
+### ¿Por qué se consideran los decimales?
+
+En estas operaciones interesa la posición decimal hasta la cual existe información confiable, no el número total de cifras significativas.
+
+## Resumen
+En sumas y restas, la precisión del resultado depende del número con menor cantidad de decimales.
+
+<Pizarron7/>
+---
+
+## 8. Cifras significativas en multiplicación y división
+
+
+
+Las multiplicaciones y divisiones utilizan una regla diferente debido a la forma en que se propagan los errores.
+
+### Regla general
+
+El resultado debe conservar el mismo número de cifras significativas que el dato con menor cantidad de cifras significativas.
+
+### Ejemplo
+
+[
+3.25 \times 2.1=6.825
+]
+
+Como **2.1** posee dos cifras significativas, el resultado debe expresarse como:
+
+[
+6.8
+]
+
+### Comparación con suma y resta
+
+* En suma y resta se consideran los **decimales**.
+* En multiplicación y división se consideran las **cifras significativas**.
+
+## Resumen
+Aplicar correctamente esta regla garantiza que el resultado conserve un nivel de precisión coherente con los datos originales.
+
+<Pizarron8/>
+---
+
+## 9. Redondeo
+
+
+
+Después de realizar una operación es necesario ajustar el resultado al número correcto de cifras significativas.
+
+### Procedimiento de redondeo
+
+Se observa el primer dígito que será eliminado.
+
+* Si es menor que cinco, el último dígito conservado permanece igual.
+* Si es cinco o mayor, el último dígito conservado aumenta una unidad.
+
+### Ejemplos
+
+* 8.432 → 8.43
+* 5.786 → 5.79
+* 12.649 → 12.65
+
+### Importancia del redondeo
+
+El redondeo evita presentar resultados con una precisión mayor que la realmente disponible.
+
+Además, mantiene la consistencia entre los datos medidos y los cálculos realizados.
+
+## Resumen
+Redondear correctamente es una etapa indispensable para expresar resultados numéricos de manera confiable.
+
+<Pizarron9/>
+---
+
+## 10. Cifras significativas y métodos numéricos
+
+
+
+En los métodos numéricos las cifras significativas adquieren una importancia especial porque los algoritmos realizan miles o incluso millones de operaciones.
+
+### El origen de los errores
+
+Durante un cálculo numérico pueden ocurrir varias etapas:
+
+**Medición → Redondeo → Error → Algoritmo → Nuevo error → Resultado final**
+
+Cada operación puede introducir pequeñas diferencias respecto al valor verdadero.
+
+### Acumulación de errores
+
+Aunque cada error individual sea muy pequeño, la repetición de numerosas operaciones puede provocar una acumulación significativa.
+
+Este fenómeno recibe el nombre de propagación o acumulación de errores.
+
+### Relación con los métodos numéricos
+
+Los algoritmos numéricos están diseñados para controlar estos errores y evitar que crezcan hasta afectar de forma importante el resultado final.
+
+Por ello, el manejo adecuado de las cifras significativas y el redondeo constituye una parte esencial del análisis numérico.
+
+## Resumen
+Las cifras significativas permiten controlar la precisión de los cálculos y comprender cómo los errores pueden propagarse durante la ejecución de un algoritmo numérico.
+
+<Pizarron10/>
+---
+
+## 11. Panorama general de las cifras significativas
+
+
+
+Las cifras significativas integran los conceptos de medición, precisión y redondeo, proporcionando una base sólida para el estudio de los métodos numéricos.
+
+### Relación entre los conceptos
+
+El proceso puede resumirse de la siguiente manera:
+
+**Medición → Precisión → Incertidumbre → Identificación de cifras significativas → Operaciones → Redondeo → Métodos numéricos → Resultados confiables**
+
+Cada etapa depende de la anterior y contribuye a obtener resultados consistentes y científicamente válidos.
+
+### Ideas fundamentales
+
+Durante esta unidad se desarrollaron tres principios esenciales:
+
+* La precisión depende de la calidad de la medición y no del número de decimales escritos.
+* Nunca deben agregarse cifras significativas que no estén respaldadas por la medición.
+* Siempre que sea posible, el redondeo debe realizarse al finalizar los cálculos para minimizar la acumulación de errores.
+
+### Relación con los métodos numéricos
+
+Los métodos numéricos utilizan operaciones repetitivas sobre valores aproximados. Por ello, comprender el manejo de las cifras significativas resulta indispensable para interpretar correctamente los resultados y evaluar su confiabilidad.
+
+## Resumen
+Las cifras significativas constituyen el lenguaje de la precisión en la ciencia y la ingeniería. Su correcta aplicación permite comunicar mediciones con honestidad, controlar la propagación de errores y garantizar que los resultados obtenidos mediante métodos numéricos reflejen fielmente la calidad de la información disponible.
+<Pizarron11/>

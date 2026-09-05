@@ -1,0 +1,73 @@
+---
+import "../styles/global.css";
+import "katex/dist/katex.min.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "Métodos Numéricos",
+  description = "Curso de métodos numéricos",
+} = Astro.props;
+
+const archivos = import.meta.glob("../lessons/*.md", {
+  eager: true,
+});
+
+const lecciones = Object.entries(archivos)
+  .map(([ruta, modulo]: [string, any]) => {
+    const archivo = ruta.split("/").pop() ?? "";
+    const slug = archivo.replace(/\.md$/, "");
+
+    const titulo =
+      modulo.frontmatter?.title ??
+      slug
+        .replaceAll("-", " ")
+        .replaceAll("_", " ")
+        .replace(/\b\w/g, (letra) => letra.toUpperCase());
+
+    return {
+      slug,
+      titulo,
+      orden: modulo.frontmatter?.order ?? 999,
+    };
+  })
+  .sort((a, b) => a.orden - b.orden);
+
+const rutaActual = Astro.url.pathname;
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1"
+    />
+
+    <meta name="description" content={description} />
+
+    <title>{title} | Métodos Numéricos</title>
+  </head>
+
+  <body>
+    <header class="site-header">
+      <a class="site-brand" href="/metodosnumericos">
+        <span class="site-brand-icon">∑</span>
+        <span>Métodos Numéricos</span>
+      </a>
+
+      <a class="site-header-link" href="/metodosnumericos">
+        Todas las lecciones
+      </a>
+    </header>
+
+        <main class="documentation-content">
+          <slot />
+        </main>
+  </body>
+</html>

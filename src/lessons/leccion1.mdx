@@ -1,0 +1,525 @@
+---
+---
+
+
+import {Pizarron1,
+        Pizarron2,
+        Pizarron3,
+        Pizarron4,
+        Pizarron5,
+        Pizarron6,
+        Pizarron7,
+        Pizarron8,
+        Pizarron9,
+        Pizarron10,
+        Pizarron11,
+        Pizarron12,
+} from "../components/pizzaras/pizarra1";
+
+
+# Introducción a los Métodos Numéricos
+
+## 1. ¿Qué son los métodos numéricos?
+
+
+En la ingeniería, la ciencia y muchas áreas del conocimiento existen problemas cuya solución es demasiado compleja para obtenerse mediante procedimientos matemáticos exactos. En estos casos se emplean los **métodos numéricos**, un conjunto de técnicas que permiten calcular soluciones aproximadas utilizando algoritmos y computadoras.
+
+El desarrollo de estas herramientas ha permitido resolver problemas que antes eran prácticamente imposibles de abordar, como el diseño de puentes, la simulación del comportamiento de un avión o el análisis de una turbina.
+
+### Problemas reales
+
+Muchas situaciones de ingeniería requieren conocer el comportamiento de estructuras, máquinas o sistemas físicos antes de construirlos. Algunos ejemplos son:
+
+* Diseño de puentes capaces de soportar grandes cargas.
+* Análisis del flujo de aire alrededor de un avión.
+* Simulación del funcionamiento de turbinas para producir energía.
+
+Todos estos problemas se describen mediante modelos matemáticos que suelen involucrar ecuaciones muy complejas.
+
+### Definición de métodos numéricos
+
+Los **métodos numéricos** son técnicas matemáticas que permiten obtener soluciones aproximadas a problemas mediante la aplicación ordenada de algoritmos.
+
+A diferencia de los procedimientos analíticos, cuyo objetivo es encontrar una solución exacta, los métodos numéricos buscan una aproximación suficientemente cercana para que resulte útil en la práctica.
+
+### ¿Por qué existen?
+
+En numerosos casos ocurre alguna de las siguientes situaciones:
+
+* No existe una solución exacta conocida.
+* La solución exacta requiere un tiempo excesivo de cálculo.
+* El problema contiene millones de datos.
+* El modelo matemático es demasiado complejo.
+
+Ante estas dificultades, se construye el siguiente proceso:
+
+**Problema real → Modelo matemático → Método numérico → Solución aproximada**
+
+La solución obtenida no es perfecta, pero puede alcanzar un nivel de precisión suficiente para tomar decisiones confiables.
+
+### El papel de la computadora
+
+Las computadoras no resuelven problemas por sí mismas. Su función consiste en ejecutar instrucciones previamente definidas en un algoritmo.
+
+El algoritmo indica paso a paso qué operaciones realizar para aproximarse a la solución buscada.
+
+## Resumen
+
+Los métodos numéricos nacen como respuesta a la necesidad de resolver problemas complejos que aparecen en la vida real. Su objetivo no es reemplazar a las matemáticas tradicionales, sino ampliar su capacidad mediante algoritmos que producen soluciones aproximadas con ayuda de la computadora.
+<Pizarron1/>
+---
+
+## 2. Características fundamentales de los métodos numéricos
+
+
+Los métodos numéricos poseen características que los distinguen de otros procedimientos matemáticos. Comprender estas propiedades permite entender por qué son tan importantes en la ingeniería moderna.
+
+### Soluciones aproximadas
+
+La principal característica consiste en que los resultados obtenidos son aproximaciones de la solución verdadera.
+
+Esto no significa que sean incorrectos. Una aproximación puede ser extremadamente cercana al valor exacto y resultar completamente adecuada para una aplicación práctica.
+
+### Algoritmos
+
+Todo método numérico se expresa mediante un algoritmo.
+
+Un algoritmo es una secuencia ordenada de instrucciones que especifica cómo resolver un problema paso a paso.
+
+Al igual que una receta de cocina, si diferentes personas siguen exactamente las mismas instrucciones obtendrán el mismo procedimiento.
+
+### Operaciones finitas
+
+Los métodos numéricos realizan un número limitado de operaciones.
+
+No es posible efectuar cálculos infinitos dentro de una computadora, por lo que todos los procesos deben finalizar después de cierta cantidad de pasos.
+
+### Control del error
+
+Como los resultados son aproximados, siempre existe un error asociado.
+
+Los métodos numéricos incluyen mecanismos para estimar ese error y verificar si la solución es suficientemente precisa.
+
+### Implementación computacional
+
+Los algoritmos están diseñados para ejecutarse en computadoras.
+
+Esto permite resolver problemas de gran tamaño en tiempos razonables, algo imposible mediante cálculos manuales.
+
+## Resumen
+
+Los métodos numéricos combinan algoritmos, cálculos finitos y control del error para producir soluciones aproximadas que pueden implementarse eficientemente en computadoras.
+<Pizarron2/>
+
+---
+
+## 3. Importancia de los métodos numéricos en la ingeniería
+
+
+Actualmente prácticamente todas las ramas de la ingeniería utilizan métodos numéricos para analizar, diseñar y optimizar sistemas.
+
+#### Ingeniería civil
+
+Se emplean para calcular esfuerzos en edificios, puentes, presas y carreteras.
+
+También permiten analizar el comportamiento de estructuras frente a cargas o sismos.
+
+#### Ingeniería mecánica
+
+Son fundamentales para diseñar motores, engranes, turbinas y mecanismos.
+
+Además permiten estudiar vibraciones, transferencia de calor y movimiento de fluidos.
+
+#### Ingeniería eléctrica
+
+Se utilizan para analizar circuitos eléctricos, sistemas de potencia, control automático y procesamiento de señales.
+
+#### Ingeniería química
+
+Permiten modelar reactores químicos, procesos industriales, intercambio de calor y transporte de masa.
+
+#### Ingeniería en computación
+
+Se aplican en inteligencia artificial, gráficos por computadora, simulaciones, aprendizaje automático y procesamiento de imágenes.
+
+### La importancia de los modelos matemáticos
+
+Aunque cada disciplina aborda problemas diferentes, todas parten de un mismo esquema:
+
+* Se observa un problema real.
+* Se construye un modelo matemático.
+* Se aplica un método numérico.
+* Se obtiene una solución aproximada.
+
+## Resumen
+
+Los métodos numéricos constituyen una herramienta transversal en la ingeniería, ya que permiten resolver problemas que aparecen en prácticamente todas las áreas tecnológicas.
+<Pizarron3/>
+
+---
+
+## 4. Relación entre matemáticas y computación
+
+
+Los métodos numéricos representan el vínculo entre los modelos matemáticos y los programas de computadora.
+
+### Problema real
+
+Todo comienza con una situación del mundo real que necesita analizarse o resolverse.
+
+### Modelo matemático
+
+El problema se expresa mediante ecuaciones o relaciones matemáticas.
+
+Este modelo describe el comportamiento del sistema estudiado.
+
+### Método numérico
+
+Cuando el modelo no puede resolverse exactamente, se selecciona un método numérico adecuado.
+
+### Algoritmo
+
+El método se convierte en una serie de pasos ordenados.
+
+Estos pasos constituyen el algoritmo que posteriormente ejecutará la computadora.
+
+### Programa
+
+El algoritmo se implementa en un lenguaje de programación o software especializado.
+
+### Resultados
+
+Finalmente se obtienen valores numéricos que permiten interpretar el comportamiento del problema original.
+
+## Resumen
+
+Los métodos numéricos hacen posible transformar un problema físico en un programa capaz de generar resultados útiles para la toma de decisiones.
+<Pizarron4/>
+
+---
+
+## 5. Solución exacta y solución aproximada
+
+
+Uno de los conceptos fundamentales consiste en diferenciar entre una solución exacta y una aproximación.
+
+### Solución exacta
+
+Es el valor matemático verdadero de un problema.
+
+Un ejemplo clásico es el número π, cuya representación decimal es infinita.
+
+### Solución aproximada
+
+Consiste en utilizar únicamente una cantidad limitada de cifras.
+
+Por ejemplo:
+
+* Valor exacto: π = 3.1415926535…
+* Aproximación: 3.14
+
+### La utilidad de las aproximaciones
+
+En la práctica no siempre es necesario conocer todos los decimales.
+
+Por ejemplo, al medir una mesa basta una precisión de milímetros o centímetros; utilizar decenas de decimales no aporta beneficios reales.
+
+### Aproximar no significa equivocarse
+
+Una buena aproximación es aquella cuya diferencia respecto al valor exacto es suficientemente pequeña para la aplicación que se está resolviendo.
+
+## Resumen
+
+Las soluciones aproximadas permiten resolver problemas complejos con rapidez y precisión adecuada, haciendo posible el uso práctico de los métodos numéricos.
+<Pizarron5/>
+
+---
+
+## 6. Errores numéricos
+
+
+Toda aproximación genera un error. Comprender su origen y magnitud es esencial para evaluar la calidad de los resultados.
+
+### Error absoluto
+
+Mide la diferencia entre el valor exacto y el valor aproximado.
+
+$E_a=|x_{exacto}-x_{aproximado}|$
+
+### Error relativo
+
+Relaciona el error absoluto con el tamaño del valor exacto.
+
+$E_r=\frac{E_a}{|x_{exacto}|}$
+
+### Error porcentual
+
+Expresa el error relativo como porcentaje.
+
+$E_p=E_r\times100%$
+
+### Error por redondeo
+
+Se produce cuando una computadora conserva únicamente un número limitado de cifras significativas.
+
+Por ejemplo:
+
+π = 3.141592653…
+
+↓
+
+3.141593
+
+### Error por truncamiento
+
+Aparece cuando un método reemplaza un proceso infinito por uno finito.
+
+Por ejemplo, al detener una serie matemática después de cierto número de términos.
+
+### Diferencias entre ambos
+
+* El **redondeo** es consecuencia de las limitaciones de representación de la computadora.
+* El **truncamiento** es consecuencia del propio método numérico utilizado.
+
+## Resumen
+
+Conocer el origen y la magnitud de los errores permite determinar si una solución aproximada es suficientemente confiable.
+<Pizarron6/>
+
+---
+
+## 7. Exactitud, precisión y convergencia
+
+
+Además del error, existen conceptos que permiten evaluar la calidad de un método numérico.
+
+### Exactitud
+
+Indica qué tan cerca se encuentra un resultado respecto al valor verdadero.
+
+Una solución muy exacta presenta un error pequeño.
+
+### Precisión
+
+Describe la capacidad de obtener resultados consistentes al repetir un procedimiento.
+
+Es posible ser muy preciso sin ser exacto, si todas las mediciones presentan el mismo desplazamiento respecto al valor real.
+
+### Diferencia entre exactitud y precisión
+
+* **Exactitud:** cercanía al valor verdadero.
+* **Precisión:** repetibilidad de los resultados.
+
+Idealmente, un método debe poseer ambas características.
+
+### Convergencia
+
+Un método converge cuando, al repetir sus iteraciones, las aproximaciones se acercan progresivamente a la solución exacta.
+
+La convergencia garantiza que el algoritmo mejora la calidad del resultado conforme avanza el proceso.
+
+## Resumen
+
+La exactitud, la precisión y la convergencia permiten evaluar si un método numérico produce resultados confiables y útiles.
+<Pizarron7/>
+
+---
+
+## 8. Aplicaciones de los métodos numéricos
+
+
+Los métodos numéricos tienen aplicaciones en prácticamente todos los campos de la ingeniería y la ciencia.
+
+### Ingeniería civil
+
+* Diseño de puentes.
+* Análisis estructural.
+* Simulación sísmica.
+
+### Ingeniería mecánica
+
+* Diseño de motores.
+* Análisis térmico.
+* Dinámica de mecanismos.
+
+### Ingeniería eléctrica
+
+* Circuitos eléctricos.
+* Sistemas de potencia.
+* Electrónica.
+
+### Ingeniería química
+
+* Reactores químicos.
+* Procesos industriales.
+* Transferencia de calor.
+
+### Ingeniería en computación
+
+* Inteligencia artificial.
+* Simulación.
+* Computación gráfica.
+
+## Resumen
+
+La amplia variedad de aplicaciones demuestra que los métodos numéricos constituyen una herramienta indispensable para resolver problemas reales.
+<Pizarron8/>
+
+---
+
+## 9. Software utilizado en métodos numéricos
+
+
+Los algoritmos numéricos requieren herramientas computacionales que permitan implementarlos de manera eficiente.
+
+### MATLAB
+
+Software ampliamente utilizado en ingeniería para análisis numérico, simulación y desarrollo de algoritmos.
+
+### GNU Octave
+
+Alternativa libre compatible con gran parte de MATLAB.
+
+### Python
+
+Lenguaje de programación de propósito general con bibliotecas especializadas para cálculo científico, como NumPy, SciPy y Matplotlib.
+
+### Excel
+
+Adecuado para introducir conceptos básicos y resolver problemas de pequeña escala mediante hojas de cálculo.
+
+### R
+
+Especializado en análisis estadístico y procesamiento de datos.
+
+### Scilab
+
+Plataforma libre orientada al cálculo científico y la simulación.
+
+### Mathematica
+
+Sistema de cálculo simbólico y numérico utilizado en investigación y educación.
+
+## Resumen
+
+Aunque cada herramienta posee características particulares, todas implementan algoritmos que permiten resolver problemas mediante métodos numéricos.
+<Pizarron9/>
+
+---
+
+## 10. Clasificación general de los métodos numéricos
+
+
+Los métodos numéricos abarcan diversas áreas de estudio, cada una orientada a resolver un tipo específico de problema matemático.
+
+### Métodos para raíces de ecuaciones
+
+Permiten encontrar los valores de una variable que satisfacen una ecuación no lineal.
+
+### Sistemas de ecuaciones lineales
+
+Se utilizan para resolver simultáneamente varias ecuaciones con múltiples incógnitas.
+
+### Interpolación
+
+Construye funciones que pasan por un conjunto de datos conocidos para estimar valores intermedios.
+
+### Integración numérica
+
+Calcula áreas bajo curvas cuando la integración analítica es difícil o imposible.
+
+### Diferenciación numérica
+
+Estima derivadas utilizando valores discretos de una función.
+
+### Ecuaciones diferenciales ordinarias (EDO)
+
+Permiten aproximar la solución de problemas que describen fenómenos dinámicos, como movimiento, crecimiento o transferencia de calor.
+
+### Optimización
+
+Busca los valores que minimizan o maximizan una función, respetando las condiciones del problema.
+
+## Resumen
+
+Cada una de estas áreas representa una rama fundamental de los métodos numéricos y constituye una herramienta específica para resolver distintos tipos de problemas.
+<Pizarron10/>
+
+---
+
+## 11. Características de un buen método numérico
+
+
+No todos los métodos numéricos ofrecen el mismo desempeño. Para seleccionar el más adecuado es necesario evaluar varias características.
+
+### Precisión
+
+Debe producir resultados cercanos al valor verdadero.
+
+### Estabilidad
+
+Pequeños errores durante el cálculo no deben provocar grandes desviaciones en el resultado final.
+
+### Convergencia
+
+Las aproximaciones deben acercarse progresivamente a la solución buscada.
+
+### Eficiencia
+
+El método debe utilizar una cantidad razonable de tiempo y recursos computacionales.
+
+### Facilidad de implementación
+
+Debe ser posible programarlo e integrarlo en aplicaciones reales sin una complejidad excesiva.
+
+### Equilibrio entre características
+
+En la práctica, la elección de un método implica encontrar un equilibrio entre precisión, estabilidad, rapidez y facilidad de implementación, de acuerdo con las necesidades del problema.
+
+## Resumen
+
+Un buen método numérico combina precisión, estabilidad, convergencia, eficiencia y simplicidad, permitiendo obtener resultados confiables con un costo computacional adecuado.
+<Pizarron11/>
+
+---
+
+## 12. Panorama general de los métodos numéricos
+
+
+Los conceptos estudiados forman una secuencia lógica que explica cómo se resuelven los problemas mediante métodos numéricos.
+
+### Del problema real a la solución
+
+El proceso completo puede resumirse de la siguiente manera:
+
+**Problema real → Modelo matemático → Método numérico → Algoritmo → Computadora → Solución aproximada**
+
+Cada etapa depende de la anterior y contribuye a transformar una situación del mundo real en un conjunto de resultados útiles para la toma de decisiones.
+
+### El papel del error y la convergencia
+
+Una vez obtenida la solución aproximada, es necesario evaluar su calidad mediante dos aspectos fundamentales:
+
+* **Errores**, que permiten medir la diferencia respecto al valor verdadero.
+* **Convergencia**, que indica si las iteraciones del método se acercan progresivamente a la solución esperada.
+
+Cuando ambos aspectos son satisfactorios, se obtienen **resultados confiables**, aptos para su aplicación en ingeniería.
+
+### Temas fundamentales del curso
+
+El estudio de los métodos numéricos suele organizarse en la siguiente secuencia:
+
+1. Errores numéricos.
+2. Métodos para raíces de ecuaciones.
+3. Sistemas de ecuaciones lineales.
+4. Interpolación.
+5. Integración numérica.
+6. Ecuaciones diferenciales ordinarias.
+7. Optimización.
+
+Cada tema desarrolla herramientas específicas que amplían la capacidad para resolver problemas de creciente complejidad.
+
+## Resumen
+
+Los métodos numéricos integran las matemáticas, los algoritmos y la computación para resolver problemas que no pueden abordarse mediante soluciones exactas. A lo largo del curso se estudiarán los principales métodos, su fundamento matemático y sus aplicaciones, con el propósito de comprender cómo se obtienen resultados aproximados confiables en ingeniería y otras disciplinas científicas.
+<Pizarron12/>

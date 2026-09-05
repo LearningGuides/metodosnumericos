@@ -1,0 +1,1024 @@
+---
+
+---
+
+
+import {Pizarron1,
+        Pizarron2,
+        Pizarron3,
+        Pizarron4,
+        Pizarron5,
+        Pizarron6,
+        Pizarron7,
+        Pizarron8,
+        Pizarron9,
+        Pizarron10,
+        Pizarron11,
+        Pizarron12,
+        Pizarron13,
+        Pizarron14,
+} from "../components/pizzaras/pizarra3";
+
+# Unidad: Exactitud y precisión
+
+## 1. ¿Correcto o consistente?
+
+
+En ingeniería, un conjunto de mediciones puede parecer confiable porque sus valores son muy semejantes entre sí. Sin embargo, la semejanza entre resultados no garantiza que estos se encuentren cerca del valor verdadero.
+
+Para evaluar adecuadamente una medición deben considerarse dos propiedades diferentes: la **exactitud** y la **precisión**.
+
+### Cercanía entre resultados
+
+Supóngase que una pieza tiene una longitud de referencia de **10.00 cm** y se mide varias veces con dos equipos:
+
+| Equipo A | Equipo B |
+| -------: | -------: |
+| 10.48 cm |  9.98 cm |
+| 10.49 cm | 10.04 cm |
+| 10.50 cm |  9.97 cm |
+| 10.49 cm | 10.01 cm |
+
+Las mediciones del equipo A son muy parecidas entre sí. Esto muestra una elevada consistencia. No obstante, todas se encuentran alejadas del valor de referencia.
+
+Las mediciones del equipo B presentan una variación mayor, pero se distribuyen alrededor de **10.00 cm**.
+
+### Dos propiedades diferentes
+
+La situación anterior permite distinguir dos ideas:
+
+* La **exactitud** indica qué tan cerca está un resultado del valor verdadero o de referencia.
+* La **precisión** indica qué tan cercanos están varios resultados entre sí.
+
+Por tanto, un sistema puede producir resultados muy consistentes y, aun así, estar equivocado.
+
+### Valor de referencia
+
+El valor de referencia es la cantidad utilizada como base de comparación. Puede provenir de:
+
+* Un patrón certificado.
+* Una especificación de diseño.
+* Un valor aceptado científicamente.
+* Una medición obtenida con un instrumento de mayor calidad.
+
+Sin una referencia no puede evaluarse directamente la exactitud, aunque sí puede observarse la precisión de un conjunto de mediciones.
+
+## Resumen
+
+Exactitud y precisión describen aspectos distintos de la calidad de un resultado. La primera compara con un valor de referencia; la segunda compara las mediciones entre sí.
+<Pizarron1/>
+
+---
+
+## 2. Concepto de exactitud
+
+
+La exactitud permite determinar qué tan cercano se encuentra un resultado respecto de un valor considerado verdadero, aceptado o nominal.
+
+### Definición de exactitud
+
+La **exactitud** es el grado de cercanía entre un valor medido o calculado y el valor verdadero o de referencia.
+
+Considérese una pieza cuya longitud nominal es:
+
+$20.00\ \text{cm}$
+
+Se obtienen dos mediciones:
+
+$x_A=19.98\ \text{cm}$
+
+$x_B=19.60\ \text{cm}$
+
+La medición de **19.98 cm** es más exacta porque se encuentra más cerca de **20.00 cm**.
+
+### Exactitud y distancia numérica
+
+La exactitud puede visualizarse como una distancia sobre una recta numérica. Cuanto menor sea la separación entre el valor medido y la referencia, mayor será la exactitud.
+
+En el ejemplo:
+
+$|20.00-19.98|=0.02\ \text{cm}$
+
+$|20.00-19.60|=0.40\ \text{cm}$
+
+La primera diferencia es menor y, por tanto, representa una medición más exacta.
+
+### El valor verdadero en ingeniería
+
+En la práctica, el valor absolutamente verdadero no siempre puede conocerse. Por ello, se utiliza un valor de referencia suficientemente confiable, como:
+
+* La dimensión nominal de un plano.
+* La lectura de un patrón calibrado.
+* El valor certificado de una masa.
+* Un resultado experimental aceptado.
+* Una solución analítica conocida.
+
+### Muchos decimales no significan mayor exactitud
+
+El número:
+
+$19.980000\ \text{cm}$
+
+contiene más decimales que:
+
+$19.99\ \text{cm}$
+
+Sin embargo, respecto de una referencia de **20.00 cm**, el segundo valor es más cercano. La cantidad de dígitos mostrados no determina por sí sola la calidad de la medición.
+
+## Resumen
+
+La exactitud depende exclusivamente de la cercanía con una referencia confiable. No debe confundirse con la cantidad de decimales ni con la repetibilidad de los resultados.
+<Pizarron2/>
+
+---
+
+## 3. Exactitud y error absoluto
+
+
+La exactitud puede analizarse cuantitativamente mediante el error absoluto, el cual expresa la distancia entre un valor obtenido y un valor de referencia.
+
+### Error absoluto
+
+El error absoluto se define como:
+
+$E_a=|x_{\text{verdadero}}-x_{\text{medido}}|$
+
+El valor absoluto garantiza que el error se exprese como una magnitud positiva.
+
+Si:
+
+$x_{\text{verdadero}}=20.00\ \text{cm}$
+
+y:
+
+$x_{\text{medido}}=19.98\ \text{cm}$
+
+entonces:
+
+$E_a=|20.00-19.98|$
+
+$E_a=0.02\ \text{cm}$
+
+### Relación entre error y exactitud
+
+La relación entre ambas cantidades es inversa:
+
+$\text{Error pequeño}\rightarrow\text{mayor exactitud}$
+
+$\text{Error grande}\rightarrow\text{menor exactitud}$
+
+El error absoluto conserva las mismas unidades que la magnitud medida. Si se mide una longitud en centímetros, el error también se expresa en centímetros.
+
+### Causas de inexactitud
+
+La exactitud puede disminuir por diferentes factores:
+
+#### Mala calibración
+
+Un instrumento mal ajustado puede agregar o restar una cantidad constante a todas las mediciones.
+
+#### Método inadecuado
+
+Una técnica de medición incorrecta puede introducir desviaciones. Por ejemplo, colocar una regla inclinada sobre una pieza produce una lectura mayor que su longitud real.
+
+#### Condiciones ambientales
+
+La temperatura, la humedad o la presión pueden modificar tanto el instrumento como el objeto medido.
+
+#### Modelo incompleto
+
+En una simulación, omitir una fuerza, una pérdida de energía o una condición física puede producir resultados alejados de la realidad.
+
+### Exactitud y tolerancia
+
+La magnitud aceptable del error depende de la aplicación. Un error de **0.02 cm** puede ser insignificante al medir una mesa, pero excesivo en la fabricación de un componente de alta precisión.
+
+Una especificación como:
+
+$50.00\pm0.05\ \text{mm}$
+
+indica que son aceptables valores entre:
+
+$49.95\ \text{mm}$
+
+y:
+
+$50.05\ \text{mm}$
+
+## Resumen
+
+El error absoluto permite cuantificar la exactitud. Sin embargo, la aceptación de un resultado depende también de las tolerancias y exigencias particulares de cada aplicación.
+<Pizarron3/>
+
+---
+
+## 4. Precisión y repetibilidad
+
+
+Cuando una medición se realiza varias veces, los resultados pueden ser muy semejantes o presentar grandes diferencias. Esta característica se estudia mediante el concepto de precisión.
+
+### Definición de precisión
+
+La **precisión** es el grado de cercanía entre varias mediciones repetidas bajo condiciones semejantes.
+
+Considérese el conjunto:
+
+$15.21,\ 15.22,\ 15.21,\ 15.20,\ 15.21\ \text{cm}$
+
+Los valores se encuentran muy próximos unos de otros. Por tanto, el conjunto presenta alta precisión.
+
+### Repetibilidad
+
+La repetibilidad es la capacidad de obtener resultados semejantes cuando se mantienen condiciones como:
+
+* El mismo instrumento.
+* El mismo procedimiento.
+* El mismo operador.
+* El mismo objeto.
+* Condiciones ambientales similares.
+
+Una buena repetibilidad suele manifestarse como poca dispersión entre los datos.
+
+### La precisión no necesita una referencia
+
+Para observar que los valores anteriores están agrupados no es indispensable conocer la longitud verdadera de la pieza.
+
+Esto diferencia la precisión de la exactitud:
+
+* La exactitud requiere una referencia.
+* La precisión requiere varias mediciones comparables.
+
+### Precisión sin exactitud
+
+Un instrumento descalibrado puede producir resultados como:
+
+$15.50,\ 15.51,\ 15.50,\ 15.49,\ 15.50\ \text{cm}$
+
+Si el valor verdadero es **15.00 cm**, las mediciones son muy precisas porque están agrupadas, pero poco exactas porque están alejadas de la referencia.
+
+### Factores que afectan la precisión
+
+La dispersión puede aumentar por:
+
+* Vibraciones.
+* Cambios de temperatura.
+* Resolución limitada.
+* Variaciones del operador.
+* Ruido eléctrico.
+* Inestabilidad del proceso.
+
+## Resumen
+
+La precisión describe la consistencia de un conjunto de resultados. Una medición precisa es repetible, pero no necesariamente correcta respecto del valor verdadero.
+<Pizarron4/>
+
+---
+
+## 5. Dispersión, rango y desviación estándar
+
+
+La precisión puede evaluarse observando qué tan dispersas se encuentran las mediciones. Existen medidas estadísticas que permiten describir esa dispersión.
+
+### Comparación de dos conjuntos
+
+Considérense los siguientes datos:
+
+| Conjunto A | Conjunto B |
+| ---------: | ---------: |
+|      15.20 |      14.80 |
+|      15.21 |      15.35 |
+|      15.22 |      14.95 |
+|      15.21 |      15.40 |
+|      15.20 |      14.75 |
+
+Los valores del conjunto A se concentran en un intervalo muy pequeño. Los del conjunto B se extienden sobre un intervalo mayor.
+
+Por tanto, el conjunto A es más preciso.
+
+### Promedio aritmético
+
+El promedio de un conjunto de mediciones se calcula mediante:
+
+$\bar{x}=\frac{x_1+x_2+\cdots+x_n}{n}$
+
+El promedio representa el centro numérico de los datos, pero no indica por sí solo si estos están agrupados.
+
+Dos conjuntos pueden tener promedios semejantes y dispersiones muy diferentes.
+
+### Rango
+
+El rango se define como:
+
+$R=x_{\max}-x_{\min}$
+
+Para el conjunto A:
+
+$R_A=15.22-15.20=0.02$
+
+Para el conjunto B:
+
+$R_B=15.40-14.75=0.65$
+
+El conjunto A posee un rango mucho menor y, por tanto, una mayor concentración.
+
+### Desviación estándar
+
+La desviación estándar muestral se expresa como:
+
+$s=\sqrt{\frac{\sum_{i=1}^{n}(x_i-\bar{x})^2}{n-1}}$
+
+Esta medida considera la separación de cada dato respecto del promedio.
+
+Su interpretación general es:
+
+$s\ \text{pequeña}\rightarrow\text{datos concentrados}$
+
+$s\ \text{grande}\rightarrow\text{datos dispersos}$
+
+### Rango y desviación estándar
+
+El rango utiliza únicamente los valores mínimo y máximo. Por ello, es fácil de calcular, pero no describe completamente la distribución.
+
+La desviación estándar utiliza todas las mediciones y ofrece una descripción más representativa de la dispersión.
+
+### Relación entre precisión y dispersión
+
+En términos generales:
+
+$\text{Menor dispersión}\rightarrow\text{mayor precisión}$
+
+$\text{Mayor dispersión}\rightarrow\text{menor precisión}$
+
+## Resumen
+
+La precisión puede evaluarse mediante medidas de dispersión. El rango proporciona una estimación sencilla, mientras que la desviación estándar considera el comportamiento de todos los datos.
+<Pizarron5/>
+
+---
+
+## 6. Diferencias entre exactitud y precisión
+
+
+Exactitud y precisión son propiedades complementarias, pero responden preguntas diferentes. Distinguirlas evita interpretaciones incorrectas de mediciones y resultados numéricos.
+
+### Comparación conceptual
+
+| Exactitud                                          | Precisión                                     |
+| -------------------------------------------------- | --------------------------------------------- |
+| Compara con un valor verdadero o de referencia.    | Compara las mediciones entre sí.              |
+| Indica qué tan correcto es un resultado.           | Indica qué tan repetibles son los resultados. |
+| Se relaciona con el error o sesgo.                 | Se relaciona con la dispersión.               |
+| Puede mejorarse mediante calibración y corrección. | Puede mejorarse controlando variaciones.      |
+| No depende de mostrar muchos decimales.            | No garantiza cercanía al valor real.          |
+
+### Referencia externa y comparación interna
+
+La exactitud utiliza una comparación externa:
+
+$\text{resultado}\longleftrightarrow\text{valor de referencia}$
+
+La precisión utiliza una comparación interna:
+
+$x_1,\ x_2,\ x_3,\ldots,x_n$
+
+En el primer caso interesa la distancia a un valor esperado. En el segundo interesa la separación entre las observaciones.
+
+### Ejemplo de alta precisión y baja exactitud
+
+Una báscula descalibrada mide repetidamente una masa de **5.00 kg** y produce:
+
+$5.48,\ 5.49,\ 5.50,\ 5.49\ \text{kg}$
+
+Las mediciones presentan poca dispersión, por lo que son precisas. Sin embargo, se encuentran alrededor de **0.49 kg** por encima del valor verdadero, por lo que son inexactas.
+
+### Ejemplo de mayor exactitud y baja precisión
+
+Otro instrumento produce:
+
+$4.80,\ 5.20,\ 4.90,\ 5.10\ \text{kg}$
+
+Los valores están dispersos, pero su promedio es cercano a **5.00 kg**. El conjunto presenta baja precisión, aunque el promedio puede ser relativamente exacto.
+
+### Propiedades deseables
+
+En ingeniería se busca que los resultados sean:
+
+* Cercanos al valor verdadero.
+* Consistentes al repetirse.
+* Coherentes con la resolución del instrumento.
+* Suficientes para cumplir una tolerancia.
+
+## Resumen
+
+La exactitud describe la cercanía a una referencia y la precisión describe la consistencia. Un resultado confiable requiere analizar ambas propiedades por separado.
+<Pizarron6/>
+
+---
+
+## 7. Las cuatro combinaciones de exactitud y precisión
+
+
+La relación entre exactitud y precisión puede organizarse en cuatro casos. La analogía de un blanco de tiro permite representar visualmente cada combinación.
+
+El centro del blanco representa el valor verdadero. La distancia de los impactos al centro representa el error, mientras que la separación entre impactos representa la dispersión.
+
+### Alta exactitud y alta precisión
+
+Los impactos se encuentran agrupados alrededor del centro.
+
+Esto significa que:
+
+* Las mediciones están cerca del valor verdadero.
+* Las mediciones están cerca unas de otras.
+* Existe poco error y poca dispersión.
+
+Es la condición ideal en la mayoría de las aplicaciones.
+
+### Baja exactitud y alta precisión
+
+Los impactos están muy agrupados, pero lejos del centro.
+
+Esto indica que:
+
+* El procedimiento es repetible.
+* Existe un desplazamiento constante.
+* Puede haber un error de calibración.
+* Las mediciones son consistentes, pero incorrectas.
+
+### Exactitud del promedio y baja precisión
+
+Los impactos se encuentran dispersos alrededor del centro.
+
+En este caso, las mediciones individuales pueden estar alejadas del valor verdadero, aunque su promedio resulte cercano.
+
+No debe afirmarse que cada medición es exacta. Lo correcto es señalar que el promedio del conjunto puede presentar buena exactitud, mientras que el proceso posee baja precisión.
+
+### Baja exactitud y baja precisión
+
+Los impactos están dispersos y alejados del centro.
+
+Esto representa:
+
+* Gran separación entre mediciones.
+* Promedio desplazado.
+* Errores variables.
+* Posible combinación de errores sistemáticos y aleatorios.
+
+### Interpretación general
+
+Las dos preguntas esenciales son:
+
+$\text{¿Qué tan cerca están del valor verdadero?}$
+
+$\text{¿Qué tan cerca están entre sí?}$
+
+La primera corresponde a la exactitud y la segunda a la precisión.
+
+## Resumen
+
+Las cuatro combinaciones muestran que exactitud y precisión pueden presentarse de manera independiente. La concentración de los datos y su ubicación respecto de la referencia deben analizarse por separado.
+<Pizarron7/>
+
+---
+
+## 8. Interpretación mediante datos numéricos
+
+
+La analogía del blanco facilita la comprensión inicial, pero en ingeniería es necesario interpretar conjuntos numéricos reales.
+
+Considérese un valor de referencia de:
+
+$10.00\ \text{cm}$
+
+### Caso A: alta exactitud y alta precisión
+
+$9.99,\ 10.00,\ 10.01,\ 10.00$
+
+Los valores están agrupados y su promedio es prácticamente igual a la referencia.
+
+El conjunto posee poca dispersión y poco desplazamiento.
+
+### Caso B: alta precisión y baja exactitud
+
+$10.49,\ 10.50,\ 10.51,\ 10.50$
+
+Los datos están muy agrupados, pero alrededor de **10.50 cm**.
+
+El desplazamiento aproximado respecto de la referencia es:
+
+$10.50-10.00=0.50\ \text{cm}$
+
+Esto sugiere la presencia de un sesgo sistemático.
+
+### Caso C: baja precisión y promedio cercano
+
+$9.70,\ 10.30,\ 9.80,\ 10.20$
+
+El promedio es:
+
+$\bar{x}=\frac{9.70+10.30+9.80+10.20}{4}=10.00\ \text{cm}$
+
+Aunque el promedio coincide con la referencia, las mediciones individuales están dispersas. Una sola medición del proceso sería poco confiable.
+
+### Caso D: baja exactitud y baja precisión
+
+$10.60,\ 11.10,\ 10.30,\ 11.40$
+
+Los datos presentan una dispersión considerable y, además, se encuentran desplazados por encima de la referencia.
+
+El conjunto combina poca repetibilidad con baja cercanía al valor verdadero.
+
+### Dos comparaciones necesarias
+
+Para clasificar un conjunto deben analizarse:
+
+1. La distancia entre su promedio y el valor de referencia.
+2. La dispersión de las mediciones alrededor del promedio.
+
+El promedio ayuda a evaluar el desplazamiento general, mientras que el rango o la desviación estándar ayudan a evaluar la precisión.
+
+## Resumen
+
+El análisis numérico de exactitud y precisión requiere observar simultáneamente el promedio y la dispersión. Ninguna de estas medidas resulta suficiente por sí sola.
+<Pizarron8/>
+
+---
+
+## 9. Error sistemático
+
+
+El error sistemático produce una desviación constante o predecible en las mediciones. Su efecto principal consiste en desplazar los resultados respecto del valor verdadero.
+
+### Definición
+
+Un **error sistemático** es una desviación que se mantiene en la misma dirección o sigue un patrón predecible.
+
+También se conoce como **sesgo**.
+
+### Ejemplo de una balanza descalibrada
+
+Supóngase que una balanza agrega siempre **0.5 kg**:
+
+| Masa real | Lectura |
+| --------: | ------: |
+|    2.0 kg |  2.5 kg |
+|    4.0 kg |  4.5 kg |
+|    6.0 kg |  6.5 kg |
+
+La diferencia se repite:
+
+$\text{Error}=+0.5\ \text{kg}$
+
+Aunque las lecturas pueden ser consistentes, todas están desplazadas.
+
+### Efectos sobre exactitud y precisión
+
+Un error sistemático afecta principalmente la exactitud.
+
+Puede existir una alta precisión si el instrumento repite siempre el mismo desplazamiento. Por ello, un conjunto muy agrupado no garantiza que el sistema esté correctamente calibrado.
+
+### Fuentes de error sistemático
+
+#### Instrumento
+
+Un cero desplazado, una escala deformada o un sensor mal calibrado.
+
+#### Procedimiento
+
+Una técnica que introduce siempre la misma desviación.
+
+#### Operador
+
+Una forma constante de leer o posicionar el instrumento.
+
+#### Ambiente
+
+Una temperatura no compensada que altera regularmente la medición.
+
+#### Modelo matemático
+
+La omisión de un efecto físico que desplaza todas las predicciones.
+
+### Repetición y error sistemático
+
+Repetir muchas veces una medición no elimina un sesgo constante.
+
+Un reloj que se adelanta cinco minutos seguirá mostrando una hora incorrecta, aunque se consulte repetidamente.
+
+## Resumen
+
+El error sistemático provoca resultados consistentemente desplazados. Para reducirlo es necesario identificar su causa, calibrar el sistema o aplicar una corrección adecuada.
+<Pizarron9/>
+
+---
+
+## 10. Error aleatorio
+
+
+No todas las desviaciones siguen un patrón constante. Algunas cambian de magnitud y dirección entre una medición y otra.
+
+### Definición
+
+El **error aleatorio** es una variación impredecible que provoca diferencias entre mediciones repetidas.
+
+Puede generar resultados unas veces mayores y otras veces menores que el valor esperado.
+
+### Ejemplo
+
+Al medir repetidamente una longitud se obtiene:
+
+$10.02,\ 9.97,\ 10.05,\ 9.99,\ 10.01\ \text{cm}$
+
+Los resultados se distribuyen a ambos lados de la referencia. No existe un desplazamiento constante evidente, pero sí dispersión.
+
+### Fuentes de error aleatorio
+
+* Vibraciones.
+* Fluctuaciones de temperatura.
+* Ruido eléctrico.
+* Variaciones del proceso.
+* Lectura humana.
+* Resolución limitada del instrumento.
+
+### Efecto sobre la precisión
+
+El error aleatorio afecta principalmente la precisión porque aumenta la separación entre mediciones.
+
+En general:
+
+$\text{mayor variación aleatoria}\rightarrow\text{mayor dispersión}$
+
+$\text{mayor dispersión}\rightarrow\text{menor precisión}$
+
+### Significado de aleatorio
+
+La palabra aleatorio no implica que el fenómeno carezca de causas físicas. Significa que la magnitud y dirección exactas de su efecto no pueden predecirse fácilmente en cada observación.
+
+### Repetición y promedio
+
+Cuando los errores se distribuyen aproximadamente por encima y por debajo del valor verdadero, repetir mediciones y calcular su promedio puede disminuir su efecto.
+
+Sin embargo, el promedio no elimina una mala calibración ni otros errores sistemáticos.
+
+## Resumen
+
+El error aleatorio produce dispersión y reduce la repetibilidad. Su efecto puede disminuirse mediante repetición, promedio y control de las condiciones experimentales.
+<Pizarron10/>
+
+---
+
+## 11. Reducción de errores sistemáticos y aleatorios
+
+
+Los errores sistemáticos y aleatorios tienen comportamientos diferentes. Por ello, no pueden corregirse mediante una misma estrategia.
+
+### Reducción del error sistemático
+
+La estrategia general es:
+
+$\text{Detectar}\rightarrow\text{calibrar}\rightarrow\text{corregir}$
+
+#### Comparación con un patrón
+
+El instrumento se contrasta con una referencia certificada para identificar desviaciones.
+
+#### Calibración
+
+Se ajusta el instrumento para que sus lecturas coincidan con el patrón.
+
+#### Factor de corrección
+
+Cuando no es posible ajustar físicamente el instrumento, puede aplicarse una compensación matemática.
+
+Si una balanza agrega **0.5 kg**, una corrección posible es:
+
+$m_{\text{corregida}}=m_{\text{leída}}-0.5$
+
+#### Corrección del procedimiento
+
+Puede modificarse la técnica de medición para eliminar una desviación constante.
+
+#### Mejora del modelo
+
+En simulaciones, se agregan fenómenos, condiciones o parámetros anteriormente omitidos.
+
+### Reducción del error aleatorio
+
+La estrategia general es:
+
+$\text{Repetir}\rightarrow\text{promediar}\rightarrow\text{controlar}$
+
+#### Repetición de mediciones
+
+Un mayor número de observaciones permite caracterizar mejor la variabilidad.
+
+#### Promedio
+
+El promedio se calcula mediante:
+
+$\bar{x}=\frac{x_1+x_2+\cdots+x_n}{n}$
+
+Cuando las desviaciones ocurren en ambas direcciones, su efecto puede compensarse parcialmente.
+
+#### Control ambiental
+
+Mantener estables la temperatura, la humedad y las vibraciones reduce la dispersión.
+
+#### Estandarización
+
+El uso de un procedimiento uniforme disminuye diferencias entre operadores o ensayos.
+
+#### Mejor resolución
+
+Un instrumento con mayor resolución puede reducir variaciones asociadas con la lectura.
+
+### Elección de la estrategia
+
+Ante una desviación constante, fabricar o medir más veces no soluciona el problema. Es necesario calibrar o corregir.
+
+Ante variaciones impredecibles, una sola medición es insuficiente. Conviene repetir, promediar y controlar las condiciones.
+
+## Resumen
+
+Los errores sistemáticos se reducen mediante calibración y corrección. Los errores aleatorios se reducen mediante repetición, promedio y control de las fuentes de variación.
+<Pizarron11/>
+
+---
+
+## 12. Exactitud y precisión en métodos numéricos
+
+
+En los métodos numéricos, la exactitud y la precisión no dependen únicamente de instrumentos físicos. También intervienen los algoritmos, la representación de números en la computadora y los criterios utilizados para detener los cálculos.
+
+### Solución verdadera y aproximación
+
+Un método numérico busca aproximar una solución que puede expresarse como:
+
+$x=2.7182818\ldots$
+
+El algoritmo puede producir:
+
+$x\approx2.7183$
+
+La exactitud depende de la diferencia entre la aproximación y la solución verdadera o una referencia suficientemente confiable.
+
+### Aproximaciones sucesivas
+
+Muchos algoritmos generan una secuencia:
+
+$x_1,\ x_2,\ x_3,\ldots$
+
+Si el método es convergente, los valores se acercan progresivamente a una solución.
+
+Un criterio de parada común es:
+
+$|x_{i+1}-x_i|<\varepsilon$
+
+donde (\varepsilon) representa una tolerancia.
+
+### Tolerancia numérica
+
+La tolerancia establece qué tan pequeña debe ser la diferencia entre iteraciones para detener el algoritmo.
+
+Una tolerancia menor suele exigir:
+
+* Más iteraciones.
+* Mayor tiempo de cálculo.
+* Más operaciones.
+* Mayor costo computacional.
+
+Por ello, existe un equilibrio entre exactitud esperada y recursos disponibles.
+
+### Cercanía entre iteraciones y exactitud real
+
+Que dos iteraciones consecutivas sean muy parecidas no garantiza por sí solo que estén cerca de la solución verdadera.
+
+El método podría:
+
+* Converger hacia una solución incorrecta.
+* Detenerse prematuramente.
+* Utilizar un modelo deficiente.
+* Presentar inestabilidad.
+* Acumular errores numéricos.
+
+La convergencia debe analizarse junto con la validez del método y del modelo.
+
+### Precisión computacional
+
+Las computadoras almacenan números en espacios finitos. Algunos valores decimales no pueden representarse exactamente en sistema binario.
+
+Por ejemplo, el número decimal:
+
+$0.1$
+
+se almacena normalmente mediante una aproximación binaria. Esto introduce un pequeño error de redondeo.
+
+### Error de truncamiento
+
+Aparece cuando un proceso matemático infinito se sustituye por uno finito, como al:
+
+* Detener una serie.
+* Aproximar una derivada.
+* Utilizar un tamaño de paso.
+* Limitar el número de iteraciones.
+
+### Error de redondeo
+
+Se produce porque la computadora conserva una cantidad limitada de dígitos.
+
+Miles de operaciones pueden acumular pequeños errores de redondeo y afectar el resultado final.
+
+### Muchos decimales y calidad del modelo
+
+Un programa puede mostrar:
+
+$5.2738461\ \text{m}$
+
+pero si la incertidumbre real es de:
+
+$\pm0.01\ \text{m}$
+
+una presentación coherente sería:
+
+$5.27\ \text{m}$
+
+Los dígitos adicionales no aportan información confiable.
+
+## Resumen
+
+En métodos numéricos, la calidad del resultado depende del algoritmo, la tolerancia, la convergencia, la precisión computacional y la validez del modelo. Mostrar muchos decimales no garantiza exactitud.
+<Pizarron12/>
+
+---
+
+## 13. Aplicaciones en ingeniería
+
+
+La exactitud y la precisión tienen consecuencias directas en el diseño, la manufactura, el control automático y la simulación.
+
+### Manufactura
+
+Considérese un eje con especificación:
+
+$\varnothing 50.00\pm0.05\ \text{mm}$
+
+El intervalo aceptable es:
+
+$49.95\leq d\leq50.05\ \text{mm}$
+
+Una máquina produce piezas entre **50.49 mm** y **50.51 mm**.
+
+Las dimensiones son muy semejantes, por lo que el proceso presenta alta precisión. Sin embargo, todas las piezas están fuera de la tolerancia y son inexactas respecto del diseño.
+
+Esta situación puede provocar:
+
+* Problemas de ensamblaje.
+* Desgaste prematuro.
+* Vibraciones.
+* Interferencia entre componentes.
+* Fallas del sistema.
+
+### Instrumentación y control
+
+Supóngase que la temperatura real de un tanque es:
+
+$80^\circ\text{C}$
+
+pero un sensor descalibrado indica constantemente:
+
+$75^\circ\text{C}$
+
+El sensor puede ser muy estable y repetible, pero su baja exactitud provoca que el controlador tome decisiones equivocadas.
+
+Una señal consistente pero incorrecta puede ser más peligrosa que una señal evidentemente inestable, porque aparenta ser confiable.
+
+### Simulación
+
+Una simulación puede producir resultados numéricamente estables y con numerosos decimales. Sin embargo, puede ser inexacta si:
+
+* El modelo físico es incompleto.
+* Los datos de entrada son deficientes.
+* Las condiciones de frontera son incorrectas.
+* Se utiliza un método inapropiado.
+* No se realiza validación experimental.
+
+La consistencia computacional no sustituye la comparación con la realidad.
+
+### Control de calidad
+
+En control de calidad deben evaluarse dos aspectos:
+
+* Si el promedio del proceso coincide con la especificación.
+* Si la variabilidad del proceso es suficientemente pequeña.
+
+Un proceso centrado pero muy disperso producirá muchas piezas defectuosas. Un proceso muy preciso pero desplazado producirá defectos consistentes.
+
+### Diseño y tolerancias
+
+No todas las aplicaciones requieren el mismo nivel de exactitud y precisión.
+
+Una estructura civil, un engrane, un circuito electrónico y un implante médico poseen tolerancias distintas. El nivel requerido debe definirse según:
+
+* Seguridad.
+* Función.
+* Costo.
+* Material.
+* Proceso de fabricación.
+* Condiciones de operación.
+
+## Resumen
+
+La exactitud y la precisión determinan si un producto cumple su diseño, si un sensor controla correctamente y si una simulación representa la realidad. Ambas deben evaluarse según las tolerancias de la aplicación.
+<Pizarron13/>
+
+---
+
+## 14. Integración de exactitud, precisión y confiabilidad
+
+
+La calidad de un resultado no puede juzgarse por una sola medición, por la cantidad de decimales o por la estabilidad aparente de un algoritmo. Es necesario integrar la exactitud, la precisión y el análisis de errores.
+
+### Calidad del resultado
+
+La calidad puede organizarse en dos ramas principales:
+
+$\text{Calidad del resultado}$
+
+$\downarrow$
+
+$\text{Exactitud}\qquad\text{Precisión}$
+
+La exactitud se relaciona con la cercanía al valor verdadero y con el sesgo. La precisión se relaciona con la dispersión y la repetibilidad.
+
+### Relación con los tipos de error
+
+El error sistemático suele desplazar el conjunto de mediciones:
+
+$\text{Error sistemático}\rightarrow\text{sesgo}\rightarrow\text{menor exactitud}$
+
+El error aleatorio suele aumentar la separación entre datos:
+
+$\text{Error aleatorio}\rightarrow\text{dispersión}\rightarrow\text{menor precisión}$
+
+En una situación real pueden coexistir ambos tipos de error.
+
+### Diagnóstico de resultados
+
+Un análisis completo considera cuatro aspectos:
+
+1. La existencia de un valor de referencia.
+2. La distancia entre el resultado y esa referencia.
+3. La dispersión de las mediciones repetidas.
+4. El comportamiento constante o variable del error.
+
+Estas observaciones permiten decidir si es necesario calibrar, corregir, repetir, promediar o mejorar el procedimiento.
+
+### Caso integrado de manufactura
+
+Una máquina fabrica diez ejes con diámetros entre:
+
+$50.49\ \text{mm}$
+
+y:
+
+$50.51\ \text{mm}$
+
+La especificación es:
+
+$50.00\pm0.05\ \text{mm}$
+
+Las piezas son muy semejantes entre sí, por lo que el proceso posee alta precisión.
+
+Sin embargo, se encuentran fuera del intervalo permitido:
+
+$49.95\leq d\leq50.05\ \text{mm}$
+
+Por tanto, el proceso tiene baja exactitud respecto del diseño.
+
+La causa probable es un sesgo sistemático, como una mala calibración. Fabricar más piezas no resolvería el problema; sería necesario ajustar el proceso.
+
+### Integración con métodos numéricos
+
+En un problema computacional intervienen:
+
+$\text{Datos}+\text{modelo}+\text{algoritmo}+\text{tolerancia}$
+
+Estos elementos producen un resultado numérico que debe ser validado e interpretado.
+
+Un resultado puede ser estable entre ejecuciones, pero inexacto por un modelo inadecuado. También puede acercarse al valor correcto, pero presentar sensibilidad excesiva a pequeñas variaciones.
+
+### Principios fundamentales
+
+La interpretación adecuada de los resultados se apoya en tres ideas:
+
+* Un resultado correcto no necesariamente es repetible.
+* Un resultado repetible no necesariamente es correcto.
+* Muchos decimales no demuestran alta exactitud.
+
+La confiabilidad debe sustentarse mediante comparación, repetición, análisis del error y validación.
+
+## Resumen
+
+La exactitud indica si un resultado se encuentra cerca del valor correcto. La precisión indica si el procedimiento puede reproducir resultados semejantes. En ingeniería, ambas propiedades deben evaluarse antes de aceptar una medición, un proceso o una solución numérica como confiable.
+
+<Pizarron14/>

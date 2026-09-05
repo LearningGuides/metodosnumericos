@@ -1,0 +1,60 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const archivos = import.meta.glob("../lessons/*.mdx", {
+  eager: true,
+});
+
+const lecciones = Object.entries(archivos)
+  .map(([ruta, modulo]: [string, any], indice) => {
+    const archivo = ruta.split("/").pop() ?? "";
+    const nombre = archivo.replace(/\.mdx$/, "");
+
+    const titulo =
+      modulo.frontmatter?.title ??
+      nombre
+        .replaceAll("-", " ")
+        .replaceAll("_", " ")
+        .replace(/\b\w/g, (letra) => letra.toUpperCase());
+
+    return {
+      nombre,
+      titulo,
+      orden: modulo.frontmatter?.order ?? indice + 1,
+    };
+  })
+  .sort((a, b) => a.orden - b.orden);
+---
+
+<Layout
+  title="Inicio"
+  description="Lecciones del curso de métodos numéricos"
+>
+  <h1>Métodos Numéricos</h1>
+
+  <p class="page-description">
+    Material, ejemplos y ejercicios para aprender métodos numéricos
+    paso a paso.
+  </p>
+
+  <ul class="lesson-grid">
+    {
+      lecciones.map((leccion, indice) => (
+        <li>
+          <a
+            class="lesson-card"
+            href={`${import.meta.env.BASE_URL}/lessons/${leccion.nombre}`}
+          >
+            <span class="lesson-number">
+              Lección {indice + 1}
+            </span>
+
+            <h2 class="lesson-title">
+              {leccion.titulo}
+            </h2>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</Layout>
