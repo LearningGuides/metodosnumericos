@@ -1,0 +1,438 @@
+---
+title: Programación de métodos de interpolación en computadora
+---
+
+## Lección 9: Programación de métodos de interpolación en computadora
+
+### Objetivo
+
+Al finalizar la lección, el estudiante será capaz de comprender, implementar y comparar cuatro métodos de interpolación:
+
+1. Interpolación lineal
+2. Interpolación de Newton
+3. Interpolación de Lagrange
+4. Splines cúbicos
+
+### 1. Introducción a la interpolación
+
+La **interpolación** es una técnica numérica que permite estimar valores desconocidos de una función a partir de un conjunto de datos conocidos.
+
+Supongamos que conocemos:
+
+$$
+(x_0,y_0),(x_1,y_1),\ldots,(x_n,y_n)
+$$
+
+y queremos estimar el valor de $y$ para un valor de $x$ que se encuentra dentro del intervalo de los datos.
+
+Por ejemplo:
+
+| $x$ | $y$ |
+| ----: | ----: |
+|     1 |     2 |
+|     2 |     4 |
+|     3 |     8 |
+|     4 |    16 |
+
+Si queremos conocer aproximadamente el valor de $y$ cuando:
+
+$$
+x=2.5
+$$
+
+podemos utilizar un método de interpolación.
+
+---
+
+# 2. Interpolación lineal
+
+Es el método más sencillo. Se utilizan **dos puntos** y se supone que entre ellos existe una línea recta.
+
+Dados:
+
+$$
+(x_0,y_0)
+$$
+
+y
+
+$$
+(x_1,y_1)
+$$
+
+la ecuación es:
+
+$$
+y=y_0+
+\frac{y_1-y_0}{x_1-x_0}(x-x_0)
+$$
+
+### Ejemplo
+
+Tenemos los puntos:
+
+$$
+(2,4)
+$$
+
+y
+
+$$
+(3,8)
+$$
+
+Queremos calcular $y$ para:
+
+$$
+x=2.5
+$$
+
+Entonces:
+
+$$
+y=4+
+\frac{8-4}{3-2}(2.5-2)
+$$
+
+$$
+y=6
+$$
+
+### Programación en Python
+
+```python
+def interpolacion_lineal(x0, y0, x1, y1, x):
+    y = y0 + ((y1 - y0) / (x1 - x0)) * (x - x0)
+    return y
+
+
+resultado = interpolacion_lineal(2, 4, 3, 8, 2.5)
+
+print("Valor interpolado:", resultado)
+```
+
+Resultado:
+
+```text
+Valor interpolado: 6.0
+```
+
+### Actividad
+
+Utiliza los puntos:
+
+$$
+(10,25)
+$$
+
+y
+
+$$
+(20,40)
+$$
+
+para calcular el valor correspondiente a:
+
+$$
+x=16
+$$
+
+Primero resuélvelo manualmente y después comprueba el resultado con Python.
+
+---
+
+# 3. Interpolación de Newton
+
+La interpolación de Newton construye un **polinomio interpolador** utilizando diferencias divididas.
+
+Para tres puntos:
+
+$$
+(x_0,y_0),(x_1,y_1),(x_2,y_2)
+$$
+
+el polinomio es:
+
+$$
+P(x)=f[x_0]+
+f[x_0,x_1](x-x_0)
++
+f[x_0,x_1,x_2](x-x_0)(x-x_1)
+$$
+
+Las primeras diferencias divididas son:
+
+$$
+f[x_i,x_{i+1}]
+=
+\frac{f[x_{i+1}]-f[x_i]}
+{x_{i+1}-x_i}
+$$
+
+Las diferencias de orden superior se calculan de forma recursiva.
+
+### Implementación en Python
+
+```python
+def diferencias_divididas(x, y):
+    n = len(x)
+    coef = y.copy()
+
+    for j in range(1, n):
+        for i in range(n - 1, j - 1, -1):
+            coef[i] = (
+                (coef[i] - coef[i - 1])
+                / (x[i] - x[i - j])
+            )
+
+    return coef
+
+
+def interpolacion_newton(x, y, valor):
+    coef = diferencias_divididas(x, y)
+
+    resultado = coef[0]
+    producto = 1
+
+    for i in range(1, len(x)):
+        producto *= valor - x[i - 1]
+        resultado += coef[i] * producto
+
+    return resultado
+
+
+x = [1, 2, 3]
+y = [1, 4, 9]
+
+resultado = interpolacion_newton(x, y, 2.5)
+
+print("Resultado:", resultado)
+```
+
+Obtenemos:
+
+```text
+Resultado: 6.25
+```
+
+En este caso los datos corresponden a:
+
+$$
+f(x)=x^2
+$$
+
+por lo que:
+
+$$
+f(2.5)=2.5^2=6.25
+$$
+
+La interpolación recupera exactamente el valor porque los puntos provienen de un polinomio de segundo grado.
+
+---
+
+# 4. Interpolación de Lagrange
+
+Lagrange también construye un único polinomio que pasa exactamente por todos los puntos proporcionados.
+
+Su expresión general es:
+
+$$
+P(x)=
+\sum_{i=0}^{n} y_iL_i(x)
+$$
+
+donde:
+
+$$
+L_i(x)=
+\prod_{\substack{j=0\\j\neq i}}^{n}
+\frac{x-x_j}{x_i-x_j}
+$$
+
+### Implementación en Python
+
+```python
+def interpolacion_lagrange(x, y, valor):
+    n = len(x)
+    resultado = 0
+
+    for i in range(n):
+        termino = y[i]
+
+        for j in range(n):
+            if i != j:
+                termino *= (
+                    (valor - x[j])
+                    / (x[i] - x[j])
+                )
+
+        resultado += termino
+
+    return resultado
+
+
+x = [1, 2, 3]
+y = [1, 4, 9]
+
+resultado = interpolacion_lagrange(x, y, 2.5)
+
+print("Resultado:", resultado)
+```
+
+Resultado:
+
+```text
+Resultado: 6.25
+```
+
+### Pregunta para el estudiante
+
+¿Por qué Newton y Lagrange producen el mismo resultado?
+
+Porque ambos construyen el **mismo polinomio interpolador** para un conjunto de nodos distintos; lo que cambia es la forma matemática y computacional de representarlo.
+
+---
+
+# 5. Splines cúbicos
+
+Existe un problema cuando intentamos interpolar muchos puntos utilizando un único polinomio de grado elevado: pueden aparecer oscilaciones importantes.
+
+Los **splines cúbicos** solucionan este problema utilizando varios polinomios de tercer grado.
+
+Entre cada par de puntos:
+
+$$
+[x_i,x_{i+1}]
+$$
+
+se construye un polinomio:
+
+$$
+S_i(x)=
+a_i+b_i(x-x_i)
++c_i(x-x_i)^2
++d_i(x-x_i)^3
+$$
+
+Estos polinomios se conectan de manera suave.
+
+Un spline cúbico normalmente garantiza continuidad de:
+
+$$
+S(x)
+$$
+
+$$
+S'(x)
+$$
+
+y
+
+$$
+S''(x)
+$$
+
+Esto hace que la curva sea mucho más suave.
+
+### Implementación con SciPy
+
+En aplicaciones reales no suele ser necesario programar desde cero todo el sistema de ecuaciones del spline. Podemos utilizar `scipy`.
+
+```python
+import numpy as np
+from scipy.interpolate import CubicSpline
+
+x = np.array([0, 1, 2, 3, 4])
+y = np.array([0, 1, 4, 9, 16])
+
+spline = CubicSpline(x, y)
+
+valor = 2.5
+resultado = spline(valor)
+
+print("Resultado:", resultado)
+```
+
+También podemos visualizar la interpolación:
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.interpolate import CubicSpline
+
+x = np.array([0, 1, 2, 3, 4])
+y = np.array([0, 1, 4, 9, 16])
+
+spline = CubicSpline(x, y)
+
+x_nuevo = np.linspace(0, 4, 100)
+y_nuevo = spline(x_nuevo)
+
+plt.plot(x_nuevo, y_nuevo, label="Spline cúbico")
+plt.scatter(x, y, label="Datos")
+
+plt.xlabel("x")
+plt.ylabel("y")
+plt.title("Interpolación mediante spline cúbico")
+plt.legend()
+plt.grid()
+
+plt.show()
+```
+
+---
+
+# 6. Comparación de los métodos
+
+| Método        | Característica                       | Ventaja                     | Limitación                             |
+| ------------- | ------------------------------------ | --------------------------- | -------------------------------------- |
+| Lineal        | Rectas entre puntos                  | Muy sencillo                | No produce curvas suaves               |
+| Newton        | Polinomio por diferencias divididas  | Fácil agregar nuevos puntos | Puede oscilar con muchos puntos        |
+| Lagrange      | Polinomio mediante bases de Lagrange | Conceptualmente claro       | Poco práctico con muchos puntos        |
+| Spline cúbico | Polinomios cúbicos por intervalos    | Curva suave y estable       | Implementación matemática más compleja |
+
+Una idea importante para la clase es distinguir entre **Newton y Lagrange**, que representan un polinomio global, y **splines**, que construyen polinomios por tramos.
+
+---
+
+# 7. Práctica integradora en Python
+
+Considera los siguientes datos experimentales:
+
+| Tiempo $x$ | Temperatura $y$ |
+| -----------: | ----------------: |
+|            0 |                20 |
+|            1 |                24 |
+|            2 |                31 |
+|            3 |                39 |
+|            4 |                52 |
+
+Se desea estimar:
+
+$$
+y(2.5)
+$$
+
+El estudiante deberá:
+
+1. Realizar una interpolación lineal utilizando los puntos apropiados.
+2. Implementar Newton.
+3. Implementar Lagrange.
+4. Aplicar un spline cúbico.
+5. Comparar los cuatro resultados.
+6. Graficar los datos originales y las curvas interpoladas.
+7. Explicar por qué los métodos pueden producir resultados diferentes.
+
+### Actividad final
+
+Desarrollar un programa en Python que solicite o reciba un conjunto de puntos $(x,y)$ y permita seleccionar:
+
+```text
+1. Interpolación lineal
+2. Newton
+3. Lagrange
+4. Spline cúbico
+```
+
+El programa deberá calcular $f(x)$, mostrar el resultado y generar una gráfica con los puntos originales y la interpolación correspondiente.
