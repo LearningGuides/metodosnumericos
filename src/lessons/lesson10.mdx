@@ -1,0 +1,121 @@
+---
+title: Ejercicios de interpolación
+order: 10
+---
+
+# Problemas de interpolación
+
+## Problema 1. Volumen específico de vapor sobrecalentado
+
+El volumen específico del vapor de agua sobrecalentado varía con la temperatura. A una presión absoluta constante de $3000\ \text{lb/in}^2$, se obtuvieron los siguientes valores de una tabla de propiedades termodinámicas:
+
+| Temperatura, $T$ (°F)             |     700 |     720 |     740 |     760 |     780 |
+| ----------------------------------- | ------: | ------: | ------: | ------: | ------: |
+| Volumen específico, $v$ (ft³/lbm) | 0.09770 | 0.12184 | 0.14060 | 0.15509 | 0.16643 |
+
+Utilice el **método de interpolación que considere adecuado** para determinar el volumen específico del vapor a una temperatura de:
+
+$$
+T=750\,^\circ\text{F}
+$$
+
+Justifique brevemente la elección del método y reporte el resultado en $\text{ft}^3/\text{lbm}$.
+
+## Problema 2. Concentración de neurotransmisores unidos a receptores
+
+En un estudio relacionado con la enfermedad de Alzheimer se analizó la cantidad de receptores de neurotransmisores que permanecen en tejido cerebral afectado. Se incubó el tejido con diferentes concentraciones de neurotransmisor libre, $[F]$, y se midió la concentración que se unió específicamente a los receptores, $[B]$.
+
+Los datos experimentales fueron:
+
+| $[F]$ (nM) |   0.1 |   0.5 |     1 |     5 |    10 |    20 |     50 |
+| ------------ | ----: | ----: | ----: | ----: | ----: | ----: | -----: |
+| $[B]$ (nM) | 10.57 | 36.61 | 52.93 | 82.65 | 89.46 | 94.35 | 101.00 |
+
+Utilice un **método de interpolación adecuado** para estimar la concentración de neurotransmisor unido $[B]$ cuando:
+
+$$
+[F]=7.5\ \text{nM}
+$$
+
+Seleccione los datos necesarios para efectuar la interpolación y justifique brevemente el procedimiento empleado.
+
+## Problema 3. Perfil de temperatura en un reactor estratificado
+
+Un reactor presenta estratificación térmica debido a diferencias de temperatura entre las capas superiores e inferiores del líquido. Experimentalmente se obtuvo el siguiente perfil:
+
+| Profundidad, $z$ (m)  |  0 | 0.5 | 1.0 | 1.5 | 2.0 | 2.5 | 3.0 |
+| ----------------------- | -: | --: | --: | --: | --: | --: | --: |
+| Temperatura, $T$ (°C) | 70 |  68 |  55 |  22 |  13 |  11 |  10 |
+
+Utilice el **método de interpolación que considere más adecuado** para obtener una representación aproximada de la temperatura en función de la profundidad.
+
+A partir de la interpolación:
+
+1. Estime la temperatura a una profundidad de
+
+$$
+z=1.25\ \text{m}.
+$$
+
+2. Estime la temperatura a
+
+$$
+z=1.75\ \text{m}.
+$$
+
+3. Determine en cuál de estos dos intervalos se presenta el mayor cambio de temperatura.
+
+Justifique la elección del método de interpolación utilizado.
+
+## Problema 4. Velocidad de reacción en un reactor de tanque agitado
+
+En un reactor de tanque agitado se lleva a cabo la reacción:
+
+$$
+A\rightarrow B
+$$
+
+Durante una serie de experimentos se midieron la temperatura, la concentración del reactivo $A$ y su velocidad de desaparición:
+
+| Temperatura, $T$ (K)         | 280 | 320 |  450 |  500 |  550 |
+| ------------------------------ | --: | --: | ---: | ---: | ---: |
+| Concentración de $A$ (mol/L) | 200 | 150 |   50 |   20 |   10 |
+| $-dA/dt$ (mol/L·s)           | 460 | 960 | 2485 | 1600 | 1245 |
+
+Utilice un **método de interpolación adecuado** con los datos de temperatura y velocidad de reacción para estimar:
+
+$$
+-\frac{dA}{dt}
+$$
+
+cuando la temperatura del reactor es:
+
+$$
+T=475\ \text{K}.
+$$
+
+Explique qué puntos de la tabla seleccionó para efectuar la interpolación y por qué.
+
+## Problema 5. Viscosidad de un líquido en función de la temperatura
+
+Durante la caracterización de un líquido utilizado en un proceso químico se midió su viscosidad dinámica a diferentes temperaturas, obteniéndose los siguientes resultados:
+
+| Temperatura, $T$ (°C)     |   20 |   30 |   40 |   50 |   60 |   70 |
+| --------------------------- | ---: | ---: | ---: | ---: | ---: | ---: |
+| Viscosidad, $\mu$ (mPa·s) | 4.80 | 3.65 | 2.85 | 2.30 | 1.91 | 1.62 |
+
+Durante la operación de un intercambiador de calor se requiere conocer la viscosidad del líquido a una temperatura de:
+
+$$
+T=45\,^\circ\text{C}.
+$$
+
+Utilice el **método de interpolación que considere adecuado** para estimar la viscosidad $\mu$ a dicha temperatura.
+
+Posteriormente, estime también la viscosidad a:
+
+$$
+T=55\,^\circ\text{C}.
+$$
+
+Justifique brevemente el método de interpolación seleccionado y reporte los resultados en $\text{mPa}\cdot\text{s}$.

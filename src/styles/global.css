@@ -156,7 +156,6 @@ a {
 .documentation-content {
   margin: 0 auto;
   padding: 3rem;
-
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 16px;
@@ -383,4 +382,9 @@ a {
   .site-header-link {
     display: none;
   }
+}
+
+table{
+    width: 100%;
+
 }
