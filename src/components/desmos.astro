@@ -1,0 +1,44 @@
+---
+interface Props {
+  latex: string | string[];
+}
+
+const { latex } = Astro.props;
+
+// Siempre convertir a array
+const expressions = Array.isArray(latex)
+  ? latex
+  : [latex];
+
+const id = `desmos-${crypto.randomUUID()}`;
+---
+
+<div id={id} class="desmos-calculator"></div>
+
+<script
+  is:inline
+  src="https://www.desmos.com/api/v1.11/calculator.js?apiKey=68fee52521914e31b546c567c36f33a2"
+></script>
+
+<script define:vars={{ id, expressions }}>
+  const element = document.getElementById(id);
+
+  if (element) {
+    const calculator = Desmos.GraphingCalculator(element);
+
+    expressions.forEach((expression, index) => {
+      calculator.setExpression({
+        id: `expression-${index}`,
+        latex: expression
+      });
+    });
+  }
+</script>
+
+<style>
+  .desmos-calculator {
+    width: 700px;
+    height: 500px;
+  }
+</style>
+

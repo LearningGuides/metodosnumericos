@@ -246,7 +246,7 @@ a {
 
 .documentation-content pre code {
   padding: 0;
-  background: transparent;
+  background: #fffaf2;
   color: inherit;
 }
 

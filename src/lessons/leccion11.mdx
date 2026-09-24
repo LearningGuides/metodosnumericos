@@ -1,0 +1,389 @@
+---
+title: Metodo de Newton-Raphson
+order: 11
+---
+---
+---
+import Desmos from "../components/desmos.astro";
+
+
+
+# Lección 7. Método de Newton-Raphson
+
+## 1. El problema: encontrar raíces
+
+### ¿Qué es una raíz?
+
+Una **raíz** o **cero** de una función es un valor de $x$ que hace que:
+
+$$
+f(x)=0
+$$
+
+Por ejemplo, para:
+
+$$
+f(x)=x^2-2
+$$
+
+se buscan los valores que cumplen:
+
+$$
+x^2-2=0
+$$
+
+La solución positiva es:
+
+$$
+x=\sqrt{2}\approx1.4142
+$$
+
+<Desmos latex="f(x)=x^2-2" />
+
+Cuando una ecuación es difícil de resolver algebraicamente, pueden utilizarse **métodos numéricos** para obtener una aproximación. Newton-Raphson es uno de estos métodos.
+
+
+---
+
+## 2. Idea fundamental de Newton-Raphson
+
+
+
+### Aproximación inicial
+
+El método comienza seleccionando un valor inicial:
+
+$$
+x_0
+$$
+
+Este valor representa una primera estimación de dónde podría encontrarse la raíz.
+
+
+
+### Uso de la recta tangente
+
+En $x_0$ se calcula la **recta tangente** a la función. El punto donde esta recta cruza el eje $x$ se utiliza como una nueva aproximación:
+
+$$
+x_1
+$$
+
+El procedimiento vuelve a aplicarse utilizando $x_1$, produciendo $x_2$, y así sucesivamente:
+
+$$
+x_0\rightarrow x_1\rightarrow x_2\rightarrow x_3\rightarrow\cdots
+$$
+
+Si el método converge, las aproximaciones se acercan progresivamente a una raíz.
+
+<Desmos
+  latex={[
+    "f(x)=x^2-2",
+    "x_i = 1",
+    "x=x_i",
+    "p_i=(x_i,f(x_i))",
+    "m = f'(x_i)",
+    "b=f(x_i)-mx_i",
+    "y=mx+b"
+
+
+  ]}
+/>
+
+---
+
+## 3. Fórmula de Newton-Raphson
+
+
+
+### Fórmula general
+
+Newton-Raphson utiliza la expresión:
+
+$$
+\underline{x_{n+1}=x_n-\frac{f(x_n)}{f'(x_n)}}
+$$
+
+donde:
+
+* $x_n$ es la aproximación actual.
+* $x_{n+1}$ es la siguiente aproximación.
+* $f(x_n)$ es el valor de la función en la aproximación actual.
+* $f'(x_n)$ es el valor de la derivada en ese mismo punto.
+
+Por tanto, para utilizar el método es necesario conocer **la función y su derivada**.
+
+<Desmos
+  latex={[
+    "f(x)=x^2-2",
+    "x_i=1",
+    "x_i \\to x_i - \\frac{f(x_i)}{f'(x_i)}",
+  ]}
+/>
+
+---
+
+## 4. Ejemplo paso a paso
+
+
+
+### Planteamiento
+
+Se desea resolver:
+
+$$
+x^2-2=0
+$$
+
+Se define:
+
+$$
+f(x)=x^2-2
+$$
+
+y su derivada:
+
+$$
+f'(x)=2x
+$$
+
+Al sustituirlas en la fórmula de Newton-Raphson se obtiene:
+
+$$
+x_{n+1}=x_n-\frac{x_n^2-2}{2x_n}
+$$
+
+Se selecciona:
+
+$$
+x_0=1
+$$
+
+
+
+### Primera iteración
+
+Partiendo de $x_0=1$:
+
+$$
+x_1=1-\frac{1^2-2}{2(1)}
+$$
+
+Por tanto:
+
+$$
+x_1=1-\frac{-1}{2}=1.5
+$$
+
+### Segunda iteración
+
+Ahora se utiliza $x_1=1.5$:
+
+$$
+x_2=1.5-\frac{1.5^2-2}{2(1.5)}
+$$
+
+$$
+x_2=1.5-\frac{0.25}{3}\approx1.41667
+$$
+
+### Tercera iteración
+
+Repitiendo el procedimiento:
+
+$$
+x_3\approx1.41422
+$$
+
+Después de pocas iteraciones:
+
+$$
+\underline{x\approx1.41421}
+$$
+
+Este resultado aproxima a:
+
+$$
+\sqrt{2}\approx1.41421
+$$
+
+
+
+---
+
+## 5. Criterio para detener las iteraciones
+
+
+
+### Tolerancia
+
+El procedimiento no necesita continuar indefinidamente. Una forma habitual de detenerlo consiste en comparar dos aproximaciones consecutivas.
+
+**Error aproximado relativo**:
+$$
+\varepsilon_a = \left|\frac{x_{n+1}-x_n}{x_{n+1}}\right| < \varepsilon
+$$
+
+El símbolo $\varepsilon$ representa una **tolerancia**.
+
+Por ejemplo:
+
+$$
+\varepsilon=0.000001=10^{-6}
+$$
+
+Cuando la diferencia entre dos aproximaciones consecutivas es menor que esta cantidad, puede considerarse que se ha alcanzado la precisión establecida.
+
+---
+
+## Ejercicios
+1. Usar $x_0=0.5$ y realizar 4 iteraciones, para aproximar una raiz de: $f(x)=e^{−x}−x$
+
+2. Usar $x_0=0.3$ para encontrar una raíz de $ f(x)=x^4-10x+3 $ con error menor que $10^{-5}$
+
+3. Encontrar el valor de \(x\) que satisface: $e^x=3x$
+
+---
+
+
+## 6. Limitaciones del método
+
+
+
+### Derivada igual a cero
+
+Newton-Raphson utiliza:
+
+$$
+\frac{f(x_n)}{f'(x_n)}
+$$
+
+Por ello, si:
+
+$$
+f'(x_n)=0
+$$
+
+aparece una división entre cero y no puede calcularse normalmente la siguiente aproximación.
+
+En una implementación más robusta en Python conviene comprobar esta situación antes de efectuar la división.
+
+
+
+### Importancia del valor inicial
+
+El valor inicial $x_0$ también influye en el comportamiento del método. Dependiendo de la función y del punto seleccionado, las iteraciones pueden:
+
+* converger hacia una raíz;
+* converger hacia una raíz diferente;
+* alejarse de las raíces;
+* no converger.
+
+Por ello, Newton-Raphson es un método muy rápido en muchos problemas, pero **la convergencia no está garantizada para cualquier función y cualquier valor inicial**.
+
+
+
+---
+
+
+## 7. Newton-Raphson en Python
+
+
+
+### Representación de la función
+
+Para resolver:
+
+$$
+x^2-2=0
+$$
+
+la función y su derivada pueden representarse en Python mediante:
+
+```python
+def f(x):
+    return x**2 - 2
+
+def df(x):
+    return 2*x
+```
+
+La función `f(x)` representa $f(x)$, mientras que `df(x)` representa $f'(x)$.
+
+
+
+### Implementación del método
+
+Puede establecerse una aproximación inicial y una tolerancia:
+
+```python
+x = 1
+tolerancia = 1e-6
+```
+
+Después se realizan iteraciones utilizando directamente la fórmula de Newton-Raphson:
+
+```python
+while True:
+    x_nuevo = x - f(x) / df(x)
+
+    E_ar = abs((x_nuevo - x) / x_nuevo)
+
+    if E_ar < tolerancia:
+        break
+
+    x = x_nuevo
+
+print(x_nuevo)
+```
+
+El resultado será aproximadamente:
+
+```text
+1.4142135623730951
+```
+
+El programa calcula una nueva aproximación mediante:
+
+```python
+x_nuevo = x - f(x) / df(x)
+```
+
+y posteriormente verifica el criterio:
+
+```python
+abs((x_nuevo - x) / x_nuevo)
+```
+
+Cuando se cumple esta condición, el ciclo termina.
+
+
+
+---
+
+## Resumen general
+
+Newton-Raphson es un método numérico para aproximar soluciones de ecuaciones:
+
+$$
+f(x)=0
+$$
+
+Su fórmula fundamental es:
+
+$$
+\underline{x_{n+1}=x_n-\frac{f(x_n)}{f'(x_n)}}
+$$
+
+El procedimiento parte de una aproximación inicial $x_0$, utiliza la función y su derivada para generar nuevas aproximaciones y continúa hasta satisfacer un criterio de tolerancia.
+
+En **Python**, la misma lógica puede implementarse mediante funciones y un ciclo `while`. Para el ejemplo $x^2-2=0$, las iteraciones convergen rápidamente hacia:
+
+$$
+\underline{x\approx1.41421}
+$$
+
+que corresponde a la raíz positiva $\sqrt{2}$.
+
+---
