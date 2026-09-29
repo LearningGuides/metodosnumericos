@@ -1,0 +1,549 @@
+---
+title: Ejercicios encontrar la raiz
+order: 12
+---
+
+## 8.1 Reactor de flujo tipo tapón con recirculación
+
+En ingeniería química, los reactores de flujo tipo tapón (es decir, aquellos en que el fluido va de un extremo al otro con una mezcla mínima a lo largo del eje longitudinal) se usan para convertir reactantes en productos. Se ha determinado que la eficiencia de la conversión algunas veces se mejora recirculando una porción de la corriente del producto, de tal forma que regrese a la entrada para un paso adicional a través del reactor. La razón de recirculación se define como
+
+$$
+R=
+\frac{\text{volumen de fluido que regresa a la entrada}}
+{\text{volumen que sale del sistema}}
+$$
+
+Suponga que se está procesando una sustancia química $A$ para generar un producto $B$. Para el caso en que $A$ forma a $B$ de acuerdo con una reacción autocatalítica (es decir, una en la cual uno de los productos actúa como catalizador o estimula en la reacción), es posible demostrar que una razón óptima de recirculación debe satisfacer
+
+$$
+\ln
+\frac{1+R(1-X_{Af})}
+{R(1-X_{Af})}
+=
+\frac{R+1}
+{R[1+R(1-X_{Af})]}
+$$
+
+donde $X_{Af}$ es la fracción del reactante $A$ que se convierte en el producto $B$. La razón óptima de recirculación corresponde a un reactor de tamaño mínimo necesario para alcanzar el nivel deseado de conversión. Utilice un método numérico para determinar la razón de recirculación necesaria, de manera que se minimice el tamaño del reactor para una conversión fraccional de
+
+$$
+X_{Af}=0.95
+$$
+
+
+---
+
+## 8.2 Disociación del vapor de agua
+
+En un proceso de ingeniería química el vapor de agua $(H_2O)$ se calienta a temperaturas lo suficientemente altas para que una porción significativa del agua se disocie, o se rompa, para formar oxígeno $(O_2)$ e hidrógeno $(H_2)$:
+
+$$
+H_2O \rightleftharpoons H_2+\frac{1}{2}O_2
+$$
+
+Si se asume que ésta es la única reacción que se lleva a cabo, la fracción molar $x$ de $H_2O$ que se disocia se representa por
+
+$$
+K=
+\frac{x}{1-x}
+\sqrt{\frac{2p_t}{2+x}}
+$$
+
+donde $K$ es la constante de equilibrio de la reacción y $p_t$ la presión total de la mezcla. Si
+
+$$
+p_t=3.5\ \text{atm}
+$$
+
+y
+
+$$
+K=0.04
+$$
+
+determine el valor de $x$ que satisfaga la ecuación.
+
+---
+
+## 8.3 Concentración en un reactor
+
+La siguiente ecuación permite calcular la concentración de un químico en un reactor donde se tiene una mezcla completa:
+
+$$
+c=c_{\mathrm{ent}}\left(1-e^{-0.04t}\right)
++c_0e^{-0.04t}
+$$
+
+Si la concentración inicial es
+
+$$
+c_0=5
+$$
+
+y la concentración de entrada es
+
+$$
+c_{\mathrm{ent}}=12
+$$
+
+calcule el tiempo requerido para que $c$ sea el $85\%$ de $c_{\mathrm{ent}}$.
+
+---
+
+## 8.4 Reacción química reversible
+
+Una reacción química reversible
+
+$$
+2A+B\rightleftharpoons C
+$$
+
+se caracteriza por la relación de equilibrio
+
+$$
+K=\frac{c_c}{c_a^2c_b}
+$$
+
+donde la nomenclatura $c_n$ representa la concentración del componente $N$. Suponga que se define una variable $x$ que representa el número de moles de $C$ producido. La conservación de la masa se utiliza para reformular la relación de equilibrio como
+
+$$
+K=
+\frac{(c_{c,0}+x)}
+{(c_{a,0}-2x)^2(c_{b,0}-x)}
+$$
+
+donde el subíndice 0 indica la concentración inicial de cada componente. Si
+
+$$
+K=0.016,\qquad
+c_{a,0}=42,\qquad
+c_{b,0}=28,\qquad
+c_{c,0}=4
+$$
+
+calcule $x$.
+
+---
+
+## 8.5 Sistema cerrado con dos reacciones
+
+Las siguientes reacciones químicas se llevan a cabo en un sistema cerrado:
+
+$$
+2A+B\rightleftharpoons C
+$$
+
+$$
+A+D\rightleftharpoons C
+$$
+
+En equilibrio, éstas pueden caracterizarse por
+
+$$
+K_1=\frac{c_c}{c_a^2c_b}
+$$
+
+$$
+K_2=\frac{c_c}{c_ac_d}
+$$
+
+donde la nomenclatura $c_n$ representa la concentración del componente $N$. Si $x_1$ y $x_2$ son el número de moles de $C$ que se producen debido a la primera y segunda reacciones, respectivamente, emplee un método similar al del problema 8.5 para reformular las relaciones de equilibrio en términos de las concentraciones iniciales de los componentes.
+
+Después, use el método de Newton-Raphson para resolver el par de ecuaciones simultáneas no lineales para $x_1$ y $x_2$, si
+
+$$
+K_1=4\times10^{-4}
+$$
+
+$$
+K_2=3.7\times10^{-2}
+$$
+
+$$
+c_{a,0}=50,\qquad
+c_{b,0}=20,\qquad
+c_{c,0}=5,\qquad
+c_{d,0}=10
+$$
+
+Utilice un método gráfico para proponer los valores iniciales.
+
+---
+
+## 8.6 Ecuación de estado de Redlich-Kwong
+
+La ecuación de estado de Redlich-Kwong está dada por
+
+$$
+p=
+\frac{RT}{v-b}
+-
+\frac{a}{v(v+b)\sqrt{T}}
+$$
+
+donde:
+
+$$
+R=0.518\ \frac{\mathrm{kJ}}{\mathrm{kg\,K}}
+$$
+
+es la constante universal de los gases,
+
+$$
+T=\text{temperatura absoluta (K)}
+$$
+
+$$
+p=\text{presión absoluta (kPa)}
+$$
+
+$$
+v=\text{volumen de un kg de gas }(m^3/kg)
+$$
+
+Los parámetros $a$ y $b$ se calculan mediante
+
+$$
+a=0.427\frac{R^2T_c^{2.5}}{p_c}
+$$
+
+$$
+b=0.0866\frac{RT_c}{p_c}
+$$
+
+donde
+
+$$
+p_c=4580\ \mathrm{kPa}
+$$
+
+y
+
+$$
+T_c=191\ \mathrm{K}
+$$
+
+Como ingeniero químico, se le pide determinar la cantidad de combustible metano que se puede almacenar en un tanque de
+
+$$
+3\ m^3
+$$
+
+a una temperatura de
+
+$$
+-50^\circ C
+$$
+
+con una presión de
+
+$$
+65000\ \mathrm{kPa}
+$$
+
+Emplee el método de localización de raíces de su elección para calcular $v$ y luego determine la masa de metano contenida en el tanque.
+
+---
+
+## 8.7 Tanque horizontal cilíndrico
+
+El volumen $V$ de un líquido contenido en un tanque horizontal cilíndrico de radio $r$ y longitud $L$ está relacionado con la profundidad del líquido $h$ por
+
+$$
+V=
+\left[
+r^2\cos^{-1}\left(\frac{r-h}{r}\right)
+-(r-h)\sqrt{2rh-h^2}
+\right]L
+$$
+
+Determine $h$ para
+
+$$
+r=2\ m,\qquad
+L=5\ m,\qquad
+V=8.5\ m^3
+$$
+
+Observe que si utiliza un lenguaje de programación o herramienta de software, el arco coseno se puede calcular como
+
+$$
+\cos^{-1}x=
+\frac{\pi}{2}
+-\tan^{-1}
+\left(
+\frac{x}{\sqrt{1-x^2}}
+\right)
+$$
+
+---
+
+## 8.8 Tanque esférico
+
+El volumen $V$ del líquido contenido en un tanque esférico de radio $r$ está relacionado con la profundidad $h$ del líquido por
+
+$$
+V=
+\frac{\pi h^2(3r-h)}{3}
+$$
+
+Determine $h$ para
+
+$$
+r=1\ m
+$$
+
+y
+
+$$
+V=0.75\ m^3
+$$
+
+---
+
+## 8.9 Método de punto fijo
+
+Para el tanque esférico del problema 8.8, es posible desarrollar las siguientes fórmulas para el método de punto fijo:
+
+$$
+h=
+\sqrt{
+\frac{h^3+(3V/\pi)}
+{3r}
+}
+$$
+
+y
+
+$$
+h=
+\sqrt[3]{
+3\left(
+rh^2-\frac{V}{\pi}
+\right)
+}
+$$
+
+Si
+
+$$
+r=1\ m
+$$
+
+y
+
+$$
+V=0.75\ m^3
+$$
+
+determine si cualquiera de las dos alternativas es estable, y el rango de valores iniciales para los que sí son estables.
+
+---
+
+## 8.10 Ecuación de Ergun
+
+La ecuación de Ergun sirve para describir el flujo de un líquido a través de un lecho empacado. $\Delta P$ es la caída de presión, $\rho$ es la densidad del fluido, $G_0$ es la velocidad másica (el cociente del flujo de masa dividido entre el área de la sección transversal), $D_p$ es el diámetro de las partículas dentro del lecho, $\mu$ es la viscosidad del fluido, $L$ es la longitud del lecho y $\varepsilon$ es la fracción vacía del lecho.
+
+$$
+\frac{\Delta P\,\rho D_p}{G_0^2L}
+\frac{\varepsilon^3}{(1-\varepsilon)}
+=
+150
+\left(
+\frac{1-\varepsilon}
+{D_pG_0/\mu}
+\right)
++1.75
+$$
+
+Dados los siguientes valores para los parámetros, encuentre la fracción vacía $\varepsilon$ del lecho:
+
+$$
+\frac{D_pG_0}{\mu}=1000
+$$
+
+$$
+\frac{\Delta P\,\rho D_p}{G_0^2L}=10
+$$
+
+---
+
+## 8.11 Caída de presión en un tubo
+
+En una sección de tubo, la caída de presión se calcula así:
+
+$$
+\Delta p=
+f\frac{L\rho V^2}{2D}
+$$
+
+donde:
+
+$$
+\Delta p=\text{caída de presión (Pa)}
+$$
+
+$$
+f=\text{factor de fricción}
+$$
+
+$$
+L=\text{longitud del tubo (m)}
+$$
+
+$$
+\rho=\text{densidad }(kg/m^3)
+$$
+
+$$
+V=\text{velocidad }(m/s)
+$$
+
+$$
+D=\text{diámetro }(m)
+$$
+
+Para el flujo turbulento, la ecuación de **Colebrook** proporciona un medio para calcular el factor de fricción:
+
+$$
+\frac{1}{\sqrt f}
+=
+-2.0\log
+\left(
+\frac{\varepsilon}{3.7D}
++
+\frac{2.51}{Re\sqrt f}
+\right)
+$$
+
+donde $\varepsilon$ es la rugosidad (m), y $Re$ es el número de Reynolds:
+
+$$
+Re=\frac{\rho VD}{\mu}
+$$
+
+donde $\mu$ es la viscosidad dinámica $(N\cdot s/m^2)$.
+
+**a)** Determine $\Delta p$ para un tramo horizontal de tubo liso de $0.2\ m$ de longitud, dados
+
+$$
+\rho=1.23\ kg/m^3
+$$
+
+$$
+\mu=1.79\times10^{-5}\ N\cdot s/m^2
+$$
+
+$$
+D=0.005\ m
+$$
+
+$$
+V=40\ m/s
+$$
+
+$$
+\varepsilon=0.0015\ mm
+$$
+
+Utilice un método numérico para determinar el factor de fricción. Observe que los tubos lisos tienen $Re<10^5$; un valor inicial apropiado se obtiene con la fórmula de Blasius:
+
+$$
+f=0.316/Re^{0.25}
+$$
+
+**b)** Repita el cálculo para un tubo de acero comercial más rugoso:
+
+$$
+\varepsilon=0.045\ mm
+$$
+
+---
+
+## 8.12 pH del agua
+
+El pH del agua tiene gran importancia para los ingenieros ambientales y químicos. Se relaciona con procesos que van de la corrosión de tubos de lluvia ácida. El pH se relaciona con la concentración del ion de hidrógeno por medio de
+
+$$
+pH=-\log_{10}[H^+]
+$$
+
+Las cinco ecuaciones que siguen gobiernan las concentraciones de una mezcla de dióxido de carbono y agua para un sistema cerrado:
+
+$$
+K_1=
+\frac{[H^+][HCO_3^-]}
+{[CO_2]}
+$$
+
+$$
+K_2=
+\frac{[H^+][CO_3^{2-}]}
+{[HCO_3^-]}
+$$
+
+$$
+K_w=[H^+][OH^-]
+$$
+
+$$
+c_T=[CO_2]+[HCO_3^-]+[CO_3^{2-}]
+$$
+
+$$
+Alk=[HCO_3^-]+2[CO_3^{2-}]+[OH^-]-[H^+]
+$$
+
+donde $Alk$ = alcalinidad, $c_T$ = total de carbón inorgánico, y las $K$ son coeficientes de equilibrio.
+
+Las cinco incógnitas son
+
+$$
+[CO_2],\quad
+[HCO_3^-],\quad
+[CO_3^{2-}],\quad
+[H^+],\quad
+[OH^-]
+$$
+
+Resuelva para las cinco incógnitas dado que
+
+$$
+Alk=2\times10^{-3}
+$$
+
+$$
+c_T=3\times10^{-3}
+$$
+
+$$
+K_1=10^{-6.3}
+$$
+
+$$
+K_2=10^{-10.3}
+$$
+
+$$
+K_w=10^{-14}
+$$
+
+Asimismo, calcule el pH de las soluciones.
+
+---
+
+## 8.13 Reactor de flujo por inyección de densidad constante
+
+La ecuación que se presenta a continuación describe la operación de un reactor de flujo por inyección de densidad constante para la producción de una sustancia por medio de una reacción enzimática, donde $V$ es el volumen del reactor, $F$ es la tasa de flujo del reactivo $C$, $C_{ent}$ y $C_{sal}$ son las concentraciones del reactivo que entra y sale del reactor, respectivamente, y $K$ y $k_{\max}$ son constantes.
+
+Para un reactor de 500 L, con una concentración en la toma de $C_{ent}=0.5\ \text{M}$, tasa de entrada de flujo de 40 L/s, $k_{\max}=5\times10^{-3}\ \text{s}^{-1}$, y $K=0.1\ \text{M}$, encuentre la concentración de $C$ a la salida del reactor.
+
+$$
+\frac{V}{F}
+=
+-\int_{C_{ent}}^{C_{sal}}
+\frac{K}{k_{\max}C}
++
+\frac{1}{k_{\max}}
+\,dC
+$$
